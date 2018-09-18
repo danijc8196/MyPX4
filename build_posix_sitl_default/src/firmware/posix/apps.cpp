@@ -54,6 +54,7 @@ int simulator_main(int argc, char *argv[]);
 int uorb_main(int argc, char *argv[]);
 int vtol_att_control_main(int argc, char *argv[]);
 int px4_simple_app_main(int argc, char *argv[]);
+int new_app_main(int argc, char *argv[]);
 int mc_att_control_m_main(int argc, char *argv[]);
 int mc_pos_control_m_main(int argc, char *argv[]);
 int ekf_att_pos_estimator_main(int argc, char *argv[]);
@@ -122,6 +123,7 @@ void init_app_map(apps_map_type &apps)
 	apps["uorb"] = uorb_main;
 	apps["vtol_att_control"] = vtol_att_control_main;
 	apps["px4_simple_app"] = px4_simple_app_main;
+	apps["new_app"] = new_app_main;
 	apps["mc_att_control_m"] = mc_att_control_m_main;
 	apps["mc_pos_control_m"] = mc_pos_control_m_main;
 	apps["ekf_att_pos_estimator"] = ekf_att_pos_estimator_main;

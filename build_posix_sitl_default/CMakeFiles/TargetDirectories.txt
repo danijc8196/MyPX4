@@ -34,9 +34,12 @@
 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/CMakeFiles/gazebo_iris_opt_flow_lldb.dir
 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/CMakeFiles/gazebo_iris_lldb.dir
 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/CMakeFiles/gazebo___lldb.dir
-/home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/examples/mc_pos_control_multiplatform/CMakeFiles/examples__mc_pos_control_multiplatform.dir
+/home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/CMakeFiles/replay_typhoon_h480_gdb.dir
+/home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/CMakeFiles/gazebo_typhoon_h480_gdb.dir
 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/examples/mc_att_control_multiplatform/CMakeFiles/examples__mc_att_control_multiplatform.dir
 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/lib/ecl/CMakeFiles/lib__ecl.dir
+/home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/examples/mc_pos_control_multiplatform/CMakeFiles/examples__mc_pos_control_multiplatform.dir
+/home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/examples/new_app/CMakeFiles/examples__new_app.dir
 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/modules/vtol_att_control/CMakeFiles/modules__vtol_att_control.dir
 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/lib/terrain_estimation/CMakeFiles/lib__terrain_estimation.dir
 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/CMakeFiles/replay_iris_ddd.dir
@@ -89,6 +92,9 @@
 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/CMakeFiles/replay.dir
 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/CMakeFiles/none_iris_opt_flow_gdb.dir
 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/drivers/device/CMakeFiles/drivers__device.dir
+/home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/CMakeFiles/replay_solo_lldb.dir
+/home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/platforms/posix/drivers/gpssim/CMakeFiles/platforms__posix__drivers__gpssim.dir
+/home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/lib/launchdetection/CMakeFiles/lib__launchdetection.dir
 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/modules/sdlog2/CMakeFiles/modules__sdlog2.dir
 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/CMakeFiles/git_jmavsim.dir
 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/CMakeFiles/jmavsim___lldb.dir
@@ -138,9 +144,6 @@
 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/CMakeFiles/git_gtest.dir
 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/CMakeFiles/jmavsim_typhoon_h480_gdb.dir
 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/CMakeFiles/jmavsim_iris_opt_flow_lldb.dir
-/home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/CMakeFiles/replay_solo_lldb.dir
-/home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/lib/launchdetection/CMakeFiles/lib__launchdetection.dir
-/home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/platforms/posix/drivers/gpssim/CMakeFiles/platforms__posix__drivers__gpssim.dir
 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/platforms/posix/work_queue/CMakeFiles/platforms__posix__work_queue.dir
 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/modules/simulator/CMakeFiles/modules__simulator.dir
 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/platforms/posix/drivers/rgbledsim/CMakeFiles/platforms__posix__drivers__rgbledsim.dir
@@ -260,5 +263,3 @@
 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/CMakeFiles/gazebo_typhoon_h480.dir
 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/CMakeFiles/none_iris_opt_flow.dir
 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/CMakeFiles/gazebo_tailsitter_gdb.dir
-/home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/CMakeFiles/replay_typhoon_h480_gdb.dir
-/home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/CMakeFiles/gazebo_typhoon_h480_gdb.dir

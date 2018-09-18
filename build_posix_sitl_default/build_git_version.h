@@ -1,5 +1,5 @@
 /* Auto Magically Generated file */
 /* Do not edit! */
-#define PX4_GIT_VERSION_STR  "9cb6d148d52e87cfac3499b514b987ca99f9d3bb"
-#define PX4_GIT_VERSION_BINARY 0x9cb6d148d52e87cf
-#define PX4_GIT_TAG_STR  "v1.5.5-2-g9cb6d14"
+#define PX4_GIT_VERSION_STR  "356c2048605cf1b8fa702690ede8644ec81ce011"
+#define PX4_GIT_VERSION_BINARY 0x356c2048605cf1b8
+#define PX4_GIT_TAG_STR  "v1.5.5-5-g356c204"
