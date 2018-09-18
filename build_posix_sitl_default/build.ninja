@@ -872,18 +872,6 @@ build test: phony CMakeFiles/test.util
 build xml_gen: phony CMakeFiles/xml_gen parameters.xml airframes.xml
 
 #############################################
-# Custom command for airframes.xml
-
-build airframes.xml: CUSTOM_COMMAND
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default && /usr/bin/python /home/dani/ROS_WS/src/MyPX4/Tools/px_process_airframes.py -a /home/dani/ROS_WS/src/MyPX4/ROMFS/px4fmu_common/init.d --board CONFIG_ARCH_BOARD_sitl --xml
-  DESC = Generating airframes.xml
-
-#############################################
-# Phony custom command for CMakeFiles/git_uavcan
-
-build CMakeFiles/git_uavcan: phony git_init_src_modules_uavcan_libuavcan.stamp
-
-#############################################
 # Custom command for git_init_Tools_genmsg.stamp
 
 build git_init_Tools_genmsg.stamp: CUSTOM_COMMAND ../.gitmodules
@@ -891,74 +879,9 @@ build git_init_Tools_genmsg.stamp: CUSTOM_COMMAND ../.gitmodules
   DESC = Generating git_init_Tools_genmsg.stamp
 
 #############################################
-# Custom command for git_init_NuttX.stamp
-
-build git_init_NuttX.stamp: CUSTOM_COMMAND ../.gitmodules
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4 && touch /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/git_init_NuttX.stamp
-  DESC = Generating git_init_NuttX.stamp
-
-#############################################
-# Custom command for git_init_Tools_gencpp.stamp
-
-build git_init_Tools_gencpp.stamp: CUSTOM_COMMAND ../.gitmodules
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4 && touch /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/git_init_Tools_gencpp.stamp
-  DESC = Generating git_init_Tools_gencpp.stamp
-
-#############################################
-# Phony custom command for CMakeFiles/git_gencpp
-
-build CMakeFiles/git_gencpp: phony git_init_Tools_gencpp.stamp
-
-#############################################
-# Phony custom command for CMakeFiles/git_genmsg
-
-build CMakeFiles/git_genmsg: phony git_init_Tools_genmsg.stamp
-
-#############################################
-# Custom command for git_init_mavlink_include_mavlink_v1.0.stamp
-
-build git_init_mavlink_include_mavlink_v1.0.stamp: CUSTOM_COMMAND ../.gitmodules
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4 && touch /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/git_init_mavlink_include_mavlink_v1.0.stamp
-  DESC = Generating git_init_mavlink_include_mavlink_v1.0.stamp
-
-#############################################
-# Phony custom command for CMakeFiles/git_mavlink
-
-build CMakeFiles/git_mavlink: phony git_init_mavlink_include_mavlink_v1.0.stamp
-
-#############################################
-# Custom command for git_init_unittests_gtest.stamp
-
-build git_init_unittests_gtest.stamp: CUSTOM_COMMAND ../.gitmodules
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4 && touch /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/git_init_unittests_gtest.stamp
-  DESC = Generating git_init_unittests_gtest.stamp
-
-#############################################
-# Phony custom command for CMakeFiles/git_gtest
-
-build CMakeFiles/git_gtest: phony git_init_unittests_gtest.stamp
-
-#############################################
-# Custom command for git_init_src_modules_uavcan_libuavcan.stamp
-
-build git_init_src_modules_uavcan_libuavcan.stamp: CUSTOM_COMMAND ../.gitmodules
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4 && touch /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/git_init_src_modules_uavcan_libuavcan.stamp
-  DESC = Generating git_init_src_modules_uavcan_libuavcan.stamp
-
-#############################################
 # Phony custom command for CMakeFiles/git_nuttx
 
 build CMakeFiles/git_nuttx: phony git_init_NuttX.stamp
-
-#############################################
-# Phony custom command for CMakeFiles/git_ecl
-
-build CMakeFiles/git_ecl: phony git_init_src_lib_ecl.stamp
-
-#############################################
-# Phony custom command for CMakeFiles/git_driverframework
-
-build CMakeFiles/git_driverframework: phony git_init_src_lib_DriverFramework.stamp
 
 #############################################
 # Custom command for git_init_src_lib_DriverFramework.stamp
@@ -968,9 +891,81 @@ build git_init_src_lib_DriverFramework.stamp: CUSTOM_COMMAND ../.gitmodules
   DESC = Generating git_init_src_lib_DriverFramework.stamp
 
 #############################################
-# Phony custom command for CMakeFiles/git_jmavsim
+# Phony custom command for CMakeFiles/git_genmsg
 
-build CMakeFiles/git_jmavsim: phony git_init_Tools_jMAVSim.stamp
+build CMakeFiles/git_genmsg: phony git_init_Tools_genmsg.stamp
+
+#############################################
+# Phony custom command for CMakeFiles/git_gencpp
+
+build CMakeFiles/git_gencpp: phony git_init_Tools_gencpp.stamp
+
+#############################################
+# Custom command for git_init_Tools_gencpp.stamp
+
+build git_init_Tools_gencpp.stamp: CUSTOM_COMMAND ../.gitmodules
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4 && touch /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/git_init_Tools_gencpp.stamp
+  DESC = Generating git_init_Tools_gencpp.stamp
+
+#############################################
+# Phony custom command for CMakeFiles/git_mavlink
+
+build CMakeFiles/git_mavlink: phony git_init_mavlink_include_mavlink_v1.0.stamp
+
+#############################################
+# Custom command for git_init_mavlink_include_mavlink_v1.0.stamp
+
+build git_init_mavlink_include_mavlink_v1.0.stamp: CUSTOM_COMMAND ../.gitmodules
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4 && touch /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/git_init_mavlink_include_mavlink_v1.0.stamp
+  DESC = Generating git_init_mavlink_include_mavlink_v1.0.stamp
+
+#############################################
+# Phony custom command for CMakeFiles/git_gtest
+
+build CMakeFiles/git_gtest: phony git_init_unittests_gtest.stamp
+
+#############################################
+# Custom command for git_init_unittests_gtest.stamp
+
+build git_init_unittests_gtest.stamp: CUSTOM_COMMAND ../.gitmodules
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4 && touch /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/git_init_unittests_gtest.stamp
+  DESC = Generating git_init_unittests_gtest.stamp
+
+#############################################
+# Custom command for git_init_src_modules_uavcan_libuavcan.stamp
+
+build git_init_src_modules_uavcan_libuavcan.stamp: CUSTOM_COMMAND ../.gitmodules
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4 && touch /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/git_init_src_modules_uavcan_libuavcan.stamp
+  DESC = Generating git_init_src_modules_uavcan_libuavcan.stamp
+
+#############################################
+# Custom command for git_init_NuttX.stamp
+
+build git_init_NuttX.stamp: CUSTOM_COMMAND ../.gitmodules
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4 && touch /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/git_init_NuttX.stamp
+  DESC = Generating git_init_NuttX.stamp
+
+#############################################
+# Custom command for git_init_Tools_jMAVSim.stamp
+
+build git_init_Tools_jMAVSim.stamp: CUSTOM_COMMAND ../.gitmodules
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4 && touch /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/git_init_Tools_jMAVSim.stamp
+  DESC = Generating git_init_Tools_jMAVSim.stamp
+
+#############################################
+# Phony custom command for CMakeFiles/git_uavcan
+
+build CMakeFiles/git_uavcan: phony git_init_src_modules_uavcan_libuavcan.stamp
+
+#############################################
+# Phony custom command for CMakeFiles/git_driverframework
+
+build CMakeFiles/git_driverframework: phony git_init_src_lib_DriverFramework.stamp
+
+#############################################
+# Phony custom command for CMakeFiles/git_ecl
+
+build CMakeFiles/git_ecl: phony git_init_src_lib_ecl.stamp
 
 #############################################
 # Custom command for git_init_src_lib_ecl.stamp
@@ -980,11 +975,16 @@ build git_init_src_lib_ecl.stamp: CUSTOM_COMMAND ../.gitmodules
   DESC = Generating git_init_src_lib_ecl.stamp
 
 #############################################
-# Custom command for git_init_Tools_jMAVSim.stamp
+# Phony custom command for CMakeFiles/git_jmavsim
 
-build git_init_Tools_jMAVSim.stamp: CUSTOM_COMMAND ../.gitmodules
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4 && touch /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/git_init_Tools_jMAVSim.stamp
-  DESC = Generating git_init_Tools_jMAVSim.stamp
+build CMakeFiles/git_jmavsim: phony git_init_Tools_jMAVSim.stamp
+
+#############################################
+# Custom command for git_init_cmake_cmake_hexagon.stamp
+
+build git_init_cmake_cmake_hexagon.stamp: CUSTOM_COMMAND ../.gitmodules
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4 && touch /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/git_init_cmake_cmake_hexagon.stamp
+  DESC = Generating git_init_cmake_cmake_hexagon.stamp
 
 #############################################
 # Custom command for git_init_Tools_sitl_gazebo.stamp
@@ -999,11 +999,6 @@ build git_init_Tools_sitl_gazebo.stamp: CUSTOM_COMMAND ../.gitmodules
 build CMakeFiles/git_gazebo: phony git_init_Tools_sitl_gazebo.stamp
 
 #############################################
-# Phony custom command for CMakeFiles/git_matrix
-
-build CMakeFiles/git_matrix: phony git_init_src_lib_matrix.stamp
-
-#############################################
 # Custom command for git_init_src_lib_matrix.stamp
 
 build git_init_src_lib_matrix.stamp: CUSTOM_COMMAND ../.gitmodules
@@ -1011,22 +1006,9 @@ build git_init_src_lib_matrix.stamp: CUSTOM_COMMAND ../.gitmodules
   DESC = Generating git_init_src_lib_matrix.stamp
 
 #############################################
-# Phony custom command for CMakeFiles/git_cmake_hexagon
+# Phony custom command for CMakeFiles/git_matrix
 
-build CMakeFiles/git_cmake_hexagon: phony git_init_cmake_cmake_hexagon.stamp
-
-#############################################
-# Custom command for git_init_cmake_cmake_hexagon.stamp
-
-build git_init_cmake_cmake_hexagon.stamp: CUSTOM_COMMAND ../.gitmodules
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4 && touch /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/git_init_cmake_cmake_hexagon.stamp
-  DESC = Generating git_init_cmake_cmake_hexagon.stamp
-
-#############################################
-# Custom command for CMakeFiles/submodule_clean
-
-build CMakeFiles/submodule_clean: CUSTOM_COMMAND
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4 && git submodule deinit -f . && rm -rf .git/modules/*
+build CMakeFiles/git_matrix: phony git_init_src_lib_matrix.stamp
 
 #############################################
 # Custom command for CMakeFiles/check_format
@@ -1035,10 +1017,21 @@ build CMakeFiles/check_format: CUSTOM_COMMAND
   COMMAND = cd /home/dani/ROS_WS/src/MyPX4 && Tools/check_code_style.sh
 
 #############################################
+# Custom command for CMakeFiles/submodule_clean
+
+build CMakeFiles/submodule_clean: CUSTOM_COMMAND
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4 && git submodule deinit -f . && rm -rf .git/modules/*
+
+#############################################
 # Custom command for CMakeFiles/config
 
 build CMakeFiles/config: CUSTOM_COMMAND
   COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default && cmake-gui .
+
+#############################################
+# Phony custom command for CMakeFiles/git_cmake_hexagon
+
+build CMakeFiles/git_cmake_hexagon: phony git_init_cmake_cmake_hexagon.stamp
 
 #############################################
 # Custom command for parameters.xml
@@ -1048,6 +1041,11 @@ build parameters.xml: CUSTOM_COMMAND ../src/systemcmds/tests/test_params.c ../sr
   DESC = Generating parameters.xml
 
 #############################################
+# Phony custom command for CMakeFiles/xml_gen
+
+build CMakeFiles/xml_gen: phony parameters.xml airframes.xml
+
+#############################################
 # Custom command for src/modules/uORB/topics/actuator_armed.h
 
 build src/modules/uORB/topics/actuator_armed.h src/modules/uORB/topics/actuator_controls.h src/modules/uORB/topics/actuator_direct.h src/modules/uORB/topics/actuator_outputs.h src/modules/uORB/topics/adc_report.h src/modules/uORB/topics/airspeed.h src/modules/uORB/topics/att_pos_mocap.h src/modules/uORB/topics/battery_status.h src/modules/uORB/topics/camera_trigger.h src/modules/uORB/topics/commander_state.h src/modules/uORB/topics/control_state.h src/modules/uORB/topics/cpuload.h src/modules/uORB/topics/debug_key_value.h src/modules/uORB/topics/differential_pressure.h src/modules/uORB/topics/distance_sensor.h src/modules/uORB/topics/ekf2_innovations.h src/modules/uORB/topics/ekf2_replay.h src/modules/uORB/topics/esc_report.h src/modules/uORB/topics/esc_status.h src/modules/uORB/topics/estimator_status.h src/modules/uORB/topics/fence.h src/modules/uORB/topics/fence_vertex.h src/modules/uORB/topics/filtered_bottom_flow.h src/modules/uORB/topics/follow_target.h src/modules/uORB/topics/fw_pos_ctrl_status.h src/modules/uORB/topics/fw_virtual_attitude_setpoint.h src/modules/uORB/topics/fw_virtual_rates_setpoint.h src/modules/uORB/topics/geofence_result.h src/modules/uORB/topics/gps_dump.h src/modules/uORB/topics/gps_inject_data.h src/modules/uORB/topics/hil_sensor.h src/modules/uORB/topics/home_position.h src/modules/uORB/topics/input_rc.h src/modules/uORB/topics/log_message.h src/modules/uORB/topics/manual_control_setpoint.h src/modules/uORB/topics/mavlink_log.h src/modules/uORB/topics/mc_att_ctrl_status.h src/modules/uORB/topics/mc_virtual_attitude_setpoint.h src/modules/uORB/topics/mc_virtual_rates_setpoint.h src/modules/uORB/topics/mission.h src/modules/uORB/topics/mission_result.h src/modules/uORB/topics/multirotor_motor_limits.h src/modules/uORB/topics/offboard_control_mode.h src/modules/uORB/topics/optical_flow.h src/modules/uORB/topics/output_pwm.h src/modules/uORB/topics/parameter_update.h src/modules/uORB/topics/position_setpoint.h src/modules/uORB/topics/position_setpoint_triplet.h src/modules/uORB/topics/pwm_input.h src/modules/uORB/topics/qshell_req.h src/modules/uORB/topics/rc_channels.h src/modules/uORB/topics/rc_parameter_map.h src/modules/uORB/topics/safety.h src/modules/uORB/topics/satellite_info.h src/modules/uORB/topics/sensor_accel.h src/modules/uORB/topics/sensor_baro.h src/modules/uORB/topics/sensor_combined.h src/modules/uORB/topics/sensor_gyro.h src/modules/uORB/topics/sensor_mag.h src/modules/uORB/topics/sensor_preflight.h src/modules/uORB/topics/servorail_status.h src/modules/uORB/topics/subsystem_info.h src/modules/uORB/topics/system_power.h src/modules/uORB/topics/tecs_status.h src/modules/uORB/topics/telemetry_status.h src/modules/uORB/topics/test_motor.h src/modules/uORB/topics/time_offset.h src/modules/uORB/topics/transponder_report.h src/modules/uORB/topics/uavcan_parameter_request.h src/modules/uORB/topics/uavcan_parameter_value.h src/modules/uORB/topics/ulog_stream.h src/modules/uORB/topics/ulog_stream_ack.h src/modules/uORB/topics/vehicle_attitude.h src/modules/uORB/topics/vehicle_attitude_setpoint.h src/modules/uORB/topics/vehicle_command_ack.h src/modules/uORB/topics/vehicle_command.h src/modules/uORB/topics/vehicle_control_mode.h src/modules/uORB/topics/vehicle_force_setpoint.h src/modules/uORB/topics/vehicle_global_position.h src/modules/uORB/topics/vehicle_global_velocity_setpoint.h src/modules/uORB/topics/vehicle_gps_position.h src/modules/uORB/topics/vehicle_land_detected.h src/modules/uORB/topics/vehicle_local_position.h src/modules/uORB/topics/vehicle_local_position_setpoint.h src/modules/uORB/topics/vehicle_rates_setpoint.h src/modules/uORB/topics/vehicle_status.h src/modules/uORB/topics/vision_position_estimate.h src/modules/uORB/topics/vtol_vehicle_status.h src/modules/uORB/topics/wind_estimate.h src/modules/uORB/topics/vehicle_roi.h src/modules/uORB/topics/mount_orientation.h src/modules/uORB/topics/collision_report.h: CUSTOM_COMMAND ../msg/actuator_armed.msg ../msg/actuator_controls.msg ../msg/actuator_direct.msg ../msg/actuator_outputs.msg ../msg/adc_report.msg ../msg/airspeed.msg ../msg/att_pos_mocap.msg ../msg/battery_status.msg ../msg/camera_trigger.msg ../msg/commander_state.msg ../msg/control_state.msg ../msg/cpuload.msg ../msg/debug_key_value.msg ../msg/differential_pressure.msg ../msg/distance_sensor.msg ../msg/ekf2_innovations.msg ../msg/ekf2_replay.msg ../msg/esc_report.msg ../msg/esc_status.msg ../msg/estimator_status.msg ../msg/fence.msg ../msg/fence_vertex.msg ../msg/filtered_bottom_flow.msg ../msg/follow_target.msg ../msg/fw_pos_ctrl_status.msg ../msg/fw_virtual_attitude_setpoint.msg ../msg/fw_virtual_rates_setpoint.msg ../msg/geofence_result.msg ../msg/gps_dump.msg ../msg/gps_inject_data.msg ../msg/hil_sensor.msg ../msg/home_position.msg ../msg/input_rc.msg ../msg/log_message.msg ../msg/manual_control_setpoint.msg ../msg/mavlink_log.msg ../msg/mc_att_ctrl_status.msg ../msg/mc_virtual_attitude_setpoint.msg ../msg/mc_virtual_rates_setpoint.msg ../msg/mission.msg ../msg/mission_result.msg ../msg/multirotor_motor_limits.msg ../msg/offboard_control_mode.msg ../msg/optical_flow.msg ../msg/output_pwm.msg ../msg/parameter_update.msg ../msg/position_setpoint.msg ../msg/position_setpoint_triplet.msg ../msg/pwm_input.msg ../msg/qshell_req.msg ../msg/rc_channels.msg ../msg/rc_parameter_map.msg ../msg/safety.msg ../msg/satellite_info.msg ../msg/sensor_accel.msg ../msg/sensor_baro.msg ../msg/sensor_combined.msg ../msg/sensor_gyro.msg ../msg/sensor_mag.msg ../msg/sensor_preflight.msg ../msg/servorail_status.msg ../msg/subsystem_info.msg ../msg/system_power.msg ../msg/tecs_status.msg ../msg/telemetry_status.msg ../msg/test_motor.msg ../msg/time_offset.msg ../msg/transponder_report.msg ../msg/uavcan_parameter_request.msg ../msg/uavcan_parameter_value.msg ../msg/ulog_stream.msg ../msg/ulog_stream_ack.msg ../msg/vehicle_attitude.msg ../msg/vehicle_attitude_setpoint.msg ../msg/vehicle_command_ack.msg ../msg/vehicle_command.msg ../msg/vehicle_control_mode.msg ../msg/vehicle_force_setpoint.msg ../msg/vehicle_global_position.msg ../msg/vehicle_global_velocity_setpoint.msg ../msg/vehicle_gps_position.msg ../msg/vehicle_land_detected.msg ../msg/vehicle_local_position.msg ../msg/vehicle_local_position_setpoint.msg ../msg/vehicle_rates_setpoint.msg ../msg/vehicle_status.msg ../msg/vision_position_estimate.msg ../msg/vtol_vehicle_status.msg ../msg/wind_estimate.msg ../msg/vehicle_roi.msg ../msg/mount_orientation.msg ../msg/collision_report.msg || git_gencpp git_genmsg prebuild_targets
@@ -1055,16 +1053,18 @@ build src/modules/uORB/topics/actuator_armed.h src/modules/uORB/topics/actuator_
   DESC = Generating uORB topic headers
 
 #############################################
-# Phony custom command for CMakeFiles/xml_gen
-
-build CMakeFiles/xml_gen: phony parameters.xml airframes.xml
-
-#############################################
 # Custom command for topics_sources/uORBTopics.cpp
 
 build topics_sources/uORBTopics.cpp topics_sources/actuator_armed.cpp topics_sources/actuator_controls.cpp topics_sources/actuator_direct.cpp topics_sources/actuator_outputs.cpp topics_sources/adc_report.cpp topics_sources/airspeed.cpp topics_sources/att_pos_mocap.cpp topics_sources/battery_status.cpp topics_sources/camera_trigger.cpp topics_sources/commander_state.cpp topics_sources/control_state.cpp topics_sources/cpuload.cpp topics_sources/debug_key_value.cpp topics_sources/differential_pressure.cpp topics_sources/distance_sensor.cpp topics_sources/ekf2_innovations.cpp topics_sources/ekf2_replay.cpp topics_sources/esc_report.cpp topics_sources/esc_status.cpp topics_sources/estimator_status.cpp topics_sources/fence.cpp topics_sources/fence_vertex.cpp topics_sources/filtered_bottom_flow.cpp topics_sources/follow_target.cpp topics_sources/fw_pos_ctrl_status.cpp topics_sources/fw_virtual_attitude_setpoint.cpp topics_sources/fw_virtual_rates_setpoint.cpp topics_sources/geofence_result.cpp topics_sources/gps_dump.cpp topics_sources/gps_inject_data.cpp topics_sources/hil_sensor.cpp topics_sources/home_position.cpp topics_sources/input_rc.cpp topics_sources/log_message.cpp topics_sources/manual_control_setpoint.cpp topics_sources/mavlink_log.cpp topics_sources/mc_att_ctrl_status.cpp topics_sources/mc_virtual_attitude_setpoint.cpp topics_sources/mc_virtual_rates_setpoint.cpp topics_sources/mission.cpp topics_sources/mission_result.cpp topics_sources/multirotor_motor_limits.cpp topics_sources/offboard_control_mode.cpp topics_sources/optical_flow.cpp topics_sources/output_pwm.cpp topics_sources/parameter_update.cpp topics_sources/position_setpoint.cpp topics_sources/position_setpoint_triplet.cpp topics_sources/pwm_input.cpp topics_sources/qshell_req.cpp topics_sources/rc_channels.cpp topics_sources/rc_parameter_map.cpp topics_sources/safety.cpp topics_sources/satellite_info.cpp topics_sources/sensor_accel.cpp topics_sources/sensor_baro.cpp topics_sources/sensor_combined.cpp topics_sources/sensor_gyro.cpp topics_sources/sensor_mag.cpp topics_sources/sensor_preflight.cpp topics_sources/servorail_status.cpp topics_sources/subsystem_info.cpp topics_sources/system_power.cpp topics_sources/tecs_status.cpp topics_sources/telemetry_status.cpp topics_sources/test_motor.cpp topics_sources/time_offset.cpp topics_sources/transponder_report.cpp topics_sources/uavcan_parameter_request.cpp topics_sources/uavcan_parameter_value.cpp topics_sources/ulog_stream.cpp topics_sources/ulog_stream_ack.cpp topics_sources/vehicle_attitude.cpp topics_sources/vehicle_attitude_setpoint.cpp topics_sources/vehicle_command_ack.cpp topics_sources/vehicle_command.cpp topics_sources/vehicle_control_mode.cpp topics_sources/vehicle_force_setpoint.cpp topics_sources/vehicle_global_position.cpp topics_sources/vehicle_global_velocity_setpoint.cpp topics_sources/vehicle_gps_position.cpp topics_sources/vehicle_land_detected.cpp topics_sources/vehicle_local_position.cpp topics_sources/vehicle_local_position_setpoint.cpp topics_sources/vehicle_rates_setpoint.cpp topics_sources/vehicle_status.cpp topics_sources/vision_position_estimate.cpp topics_sources/vtol_vehicle_status.cpp topics_sources/wind_estimate.cpp topics_sources/vehicle_roi.cpp topics_sources/mount_orientation.cpp topics_sources/collision_report.cpp: CUSTOM_COMMAND ../msg/actuator_armed.msg ../msg/actuator_controls.msg ../msg/actuator_direct.msg ../msg/actuator_outputs.msg ../msg/adc_report.msg ../msg/airspeed.msg ../msg/att_pos_mocap.msg ../msg/battery_status.msg ../msg/camera_trigger.msg ../msg/commander_state.msg ../msg/control_state.msg ../msg/cpuload.msg ../msg/debug_key_value.msg ../msg/differential_pressure.msg ../msg/distance_sensor.msg ../msg/ekf2_innovations.msg ../msg/ekf2_replay.msg ../msg/esc_report.msg ../msg/esc_status.msg ../msg/estimator_status.msg ../msg/fence.msg ../msg/fence_vertex.msg ../msg/filtered_bottom_flow.msg ../msg/follow_target.msg ../msg/fw_pos_ctrl_status.msg ../msg/fw_virtual_attitude_setpoint.msg ../msg/fw_virtual_rates_setpoint.msg ../msg/geofence_result.msg ../msg/gps_dump.msg ../msg/gps_inject_data.msg ../msg/hil_sensor.msg ../msg/home_position.msg ../msg/input_rc.msg ../msg/log_message.msg ../msg/manual_control_setpoint.msg ../msg/mavlink_log.msg ../msg/mc_att_ctrl_status.msg ../msg/mc_virtual_attitude_setpoint.msg ../msg/mc_virtual_rates_setpoint.msg ../msg/mission.msg ../msg/mission_result.msg ../msg/multirotor_motor_limits.msg ../msg/offboard_control_mode.msg ../msg/optical_flow.msg ../msg/output_pwm.msg ../msg/parameter_update.msg ../msg/position_setpoint.msg ../msg/position_setpoint_triplet.msg ../msg/pwm_input.msg ../msg/qshell_req.msg ../msg/rc_channels.msg ../msg/rc_parameter_map.msg ../msg/safety.msg ../msg/satellite_info.msg ../msg/sensor_accel.msg ../msg/sensor_baro.msg ../msg/sensor_combined.msg ../msg/sensor_gyro.msg ../msg/sensor_mag.msg ../msg/sensor_preflight.msg ../msg/servorail_status.msg ../msg/subsystem_info.msg ../msg/system_power.msg ../msg/tecs_status.msg ../msg/telemetry_status.msg ../msg/test_motor.msg ../msg/time_offset.msg ../msg/transponder_report.msg ../msg/uavcan_parameter_request.msg ../msg/uavcan_parameter_value.msg ../msg/ulog_stream.msg ../msg/ulog_stream_ack.msg ../msg/vehicle_attitude.msg ../msg/vehicle_attitude_setpoint.msg ../msg/vehicle_command_ack.msg ../msg/vehicle_command.msg ../msg/vehicle_control_mode.msg ../msg/vehicle_force_setpoint.msg ../msg/vehicle_global_position.msg ../msg/vehicle_global_velocity_setpoint.msg ../msg/vehicle_gps_position.msg ../msg/vehicle_land_detected.msg ../msg/vehicle_local_position.msg ../msg/vehicle_local_position_setpoint.msg ../msg/vehicle_rates_setpoint.msg ../msg/vehicle_status.msg ../msg/vision_position_estimate.msg ../msg/vtol_vehicle_status.msg ../msg/wind_estimate.msg ../msg/vehicle_roi.msg ../msg/mount_orientation.msg ../msg/collision_report.msg || git_gencpp git_genmsg prebuild_targets
   COMMAND = cd /home/dani/ROS_WS/src/MyPX4 && /usr/bin/python Tools/px_generate_uorb_topic_files.py --sources -q -f /home/dani/ROS_WS/src/MyPX4/msg/actuator_armed.msg /home/dani/ROS_WS/src/MyPX4/msg/actuator_controls.msg /home/dani/ROS_WS/src/MyPX4/msg/actuator_direct.msg /home/dani/ROS_WS/src/MyPX4/msg/actuator_outputs.msg /home/dani/ROS_WS/src/MyPX4/msg/adc_report.msg /home/dani/ROS_WS/src/MyPX4/msg/airspeed.msg /home/dani/ROS_WS/src/MyPX4/msg/att_pos_mocap.msg /home/dani/ROS_WS/src/MyPX4/msg/battery_status.msg /home/dani/ROS_WS/src/MyPX4/msg/camera_trigger.msg /home/dani/ROS_WS/src/MyPX4/msg/commander_state.msg /home/dani/ROS_WS/src/MyPX4/msg/control_state.msg /home/dani/ROS_WS/src/MyPX4/msg/cpuload.msg /home/dani/ROS_WS/src/MyPX4/msg/debug_key_value.msg /home/dani/ROS_WS/src/MyPX4/msg/differential_pressure.msg /home/dani/ROS_WS/src/MyPX4/msg/distance_sensor.msg /home/dani/ROS_WS/src/MyPX4/msg/ekf2_innovations.msg /home/dani/ROS_WS/src/MyPX4/msg/ekf2_replay.msg /home/dani/ROS_WS/src/MyPX4/msg/esc_report.msg /home/dani/ROS_WS/src/MyPX4/msg/esc_status.msg /home/dani/ROS_WS/src/MyPX4/msg/estimator_status.msg /home/dani/ROS_WS/src/MyPX4/msg/fence.msg /home/dani/ROS_WS/src/MyPX4/msg/fence_vertex.msg /home/dani/ROS_WS/src/MyPX4/msg/filtered_bottom_flow.msg /home/dani/ROS_WS/src/MyPX4/msg/follow_target.msg /home/dani/ROS_WS/src/MyPX4/msg/fw_pos_ctrl_status.msg /home/dani/ROS_WS/src/MyPX4/msg/fw_virtual_attitude_setpoint.msg /home/dani/ROS_WS/src/MyPX4/msg/fw_virtual_rates_setpoint.msg /home/dani/ROS_WS/src/MyPX4/msg/geofence_result.msg /home/dani/ROS_WS/src/MyPX4/msg/gps_dump.msg /home/dani/ROS_WS/src/MyPX4/msg/gps_inject_data.msg /home/dani/ROS_WS/src/MyPX4/msg/hil_sensor.msg /home/dani/ROS_WS/src/MyPX4/msg/home_position.msg /home/dani/ROS_WS/src/MyPX4/msg/input_rc.msg /home/dani/ROS_WS/src/MyPX4/msg/log_message.msg /home/dani/ROS_WS/src/MyPX4/msg/manual_control_setpoint.msg /home/dani/ROS_WS/src/MyPX4/msg/mavlink_log.msg /home/dani/ROS_WS/src/MyPX4/msg/mc_att_ctrl_status.msg /home/dani/ROS_WS/src/MyPX4/msg/mc_virtual_attitude_setpoint.msg /home/dani/ROS_WS/src/MyPX4/msg/mc_virtual_rates_setpoint.msg /home/dani/ROS_WS/src/MyPX4/msg/mission.msg /home/dani/ROS_WS/src/MyPX4/msg/mission_result.msg /home/dani/ROS_WS/src/MyPX4/msg/multirotor_motor_limits.msg /home/dani/ROS_WS/src/MyPX4/msg/offboard_control_mode.msg /home/dani/ROS_WS/src/MyPX4/msg/optical_flow.msg /home/dani/ROS_WS/src/MyPX4/msg/output_pwm.msg /home/dani/ROS_WS/src/MyPX4/msg/parameter_update.msg /home/dani/ROS_WS/src/MyPX4/msg/position_setpoint.msg /home/dani/ROS_WS/src/MyPX4/msg/position_setpoint_triplet.msg /home/dani/ROS_WS/src/MyPX4/msg/pwm_input.msg /home/dani/ROS_WS/src/MyPX4/msg/qshell_req.msg /home/dani/ROS_WS/src/MyPX4/msg/rc_channels.msg /home/dani/ROS_WS/src/MyPX4/msg/rc_parameter_map.msg /home/dani/ROS_WS/src/MyPX4/msg/safety.msg /home/dani/ROS_WS/src/MyPX4/msg/satellite_info.msg /home/dani/ROS_WS/src/MyPX4/msg/sensor_accel.msg /home/dani/ROS_WS/src/MyPX4/msg/sensor_baro.msg /home/dani/ROS_WS/src/MyPX4/msg/sensor_combined.msg /home/dani/ROS_WS/src/MyPX4/msg/sensor_gyro.msg /home/dani/ROS_WS/src/MyPX4/msg/sensor_mag.msg /home/dani/ROS_WS/src/MyPX4/msg/sensor_preflight.msg /home/dani/ROS_WS/src/MyPX4/msg/servorail_status.msg /home/dani/ROS_WS/src/MyPX4/msg/subsystem_info.msg /home/dani/ROS_WS/src/MyPX4/msg/system_power.msg /home/dani/ROS_WS/src/MyPX4/msg/tecs_status.msg /home/dani/ROS_WS/src/MyPX4/msg/telemetry_status.msg /home/dani/ROS_WS/src/MyPX4/msg/test_motor.msg /home/dani/ROS_WS/src/MyPX4/msg/time_offset.msg /home/dani/ROS_WS/src/MyPX4/msg/transponder_report.msg /home/dani/ROS_WS/src/MyPX4/msg/uavcan_parameter_request.msg /home/dani/ROS_WS/src/MyPX4/msg/uavcan_parameter_value.msg /home/dani/ROS_WS/src/MyPX4/msg/ulog_stream.msg /home/dani/ROS_WS/src/MyPX4/msg/ulog_stream_ack.msg /home/dani/ROS_WS/src/MyPX4/msg/vehicle_attitude.msg /home/dani/ROS_WS/src/MyPX4/msg/vehicle_attitude_setpoint.msg /home/dani/ROS_WS/src/MyPX4/msg/vehicle_command_ack.msg /home/dani/ROS_WS/src/MyPX4/msg/vehicle_command.msg /home/dani/ROS_WS/src/MyPX4/msg/vehicle_control_mode.msg /home/dani/ROS_WS/src/MyPX4/msg/vehicle_force_setpoint.msg /home/dani/ROS_WS/src/MyPX4/msg/vehicle_global_position.msg /home/dani/ROS_WS/src/MyPX4/msg/vehicle_global_velocity_setpoint.msg /home/dani/ROS_WS/src/MyPX4/msg/vehicle_gps_position.msg /home/dani/ROS_WS/src/MyPX4/msg/vehicle_land_detected.msg /home/dani/ROS_WS/src/MyPX4/msg/vehicle_local_position.msg /home/dani/ROS_WS/src/MyPX4/msg/vehicle_local_position_setpoint.msg /home/dani/ROS_WS/src/MyPX4/msg/vehicle_rates_setpoint.msg /home/dani/ROS_WS/src/MyPX4/msg/vehicle_status.msg /home/dani/ROS_WS/src/MyPX4/msg/vision_position_estimate.msg /home/dani/ROS_WS/src/MyPX4/msg/vtol_vehicle_status.msg /home/dani/ROS_WS/src/MyPX4/msg/wind_estimate.msg /home/dani/ROS_WS/src/MyPX4/msg/vehicle_roi.msg /home/dani/ROS_WS/src/MyPX4/msg/mount_orientation.msg /home/dani/ROS_WS/src/MyPX4/msg/collision_report.msg -o /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/topics_sources -e msg/templates/uorb -t /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/topics_temporary_sources
   DESC = Generating uORB topic sources
+
+#############################################
+# Custom command for airframes.xml
+
+build airframes.xml: CUSTOM_COMMAND
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default && /usr/bin/python /home/dani/ROS_WS/src/MyPX4/Tools/px_process_airframes.py -a /home/dani/ROS_WS/src/MyPX4/ROMFS/px4fmu_common/init.d --board CONFIG_ARCH_BOARD_sitl --xml
+  DESC = Generating airframes.xml
 
 #############################################
 # Custom command for src/platforms/posix/px4_messages/px4_actuator_armed.h
@@ -1077,7 +1077,7 @@ build src/platforms/posix/px4_messages/px4_actuator_armed.h src/platforms/posix/
 # Custom command for CMakeFiles/list_cmake_targets
 
 build CMakeFiles/list_cmake_targets: CUSTOM_COMMAND
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default && sh -c "printf \"drivers__boards__sitl\\ndrivers__device\\ndrivers__gps\\ndrivers__pwm_out_sim\\ndrivers__sf0x__sf0x_tests\\ndrivers__vmount\\nexamples__attitude_estimator_ekf\\nexamples__ekf_att_pos_estimator\\nexamples__fixedwing_control\\nexamples__mc_att_control_multiplatform\\nexamples__mc_pos_control_multiplatform\\nexamples__new_app\\nexamples__px4_simple_app\\nlib__DriverFramework__framework\\nlib__controllib\\nlib__conversion\\nlib__ecl\\nlib__external_lgpl\\nlib__geo\\nlib__geo_lookup\\nlib__launchdetection\\nlib__mathlib\\nlib__mathlib__math__filter\\nlib__rc\\nlib__rc__rc_tests\\nlib__runway_takeoff\\nlib__tailsitter_recovery\\nlib__terrain_estimation\\nmodules__attitude_estimator_q\\nmodules__commander\\nmodules__commander__commander_tests\\nmodules__controllib_test\\nmodules__dataman\\nmodules__ekf2\\nmodules__fw_att_control\\nmodules__fw_pos_control_l1\\nmodules__land_detector\\nmodules__local_position_estimator\\nmodules__logger\\nmodules__mavlink\\nmodules__mc_att_control\\nmodules__mc_pos_control\\nmodules__mc_pos_control__mc_pos_control_tests\\nmodules__navigator\\nmodules__param\\nmodules__position_estimator_inav\\nmodules__replay\\nmodules__sdlog2\\nmodules__sensors\\nmodules__simulator\\nmodules__systemlib\\nmodules__systemlib__mixer\\nmodules__uORB\\nmodules__uORB__uORB_tests\\nmodules__unit_test\\nmodules__vtol_att_control\\nmsg_gen\\nplatforms__common\\nplatforms__posix__drivers__accelsim\\nplatforms__posix__drivers__adcsim\\nplatforms__posix__drivers__airspeedsim\\nplatforms__posix__drivers__barosim\\nplatforms__posix__drivers__gpssim\\nplatforms__posix__drivers__gyrosim\\nplatforms__posix__drivers__ledsim\\nplatforms__posix__drivers__rgbledsim\\nplatforms__posix__drivers__tonealrmsim\\nplatforms__posix__px4_layer\\nplatforms__posix__work_queue\\npx4\\nsystemcmds__esc_calib\\nsystemcmds__mixer\\nsystemcmds__motor_ramp\\nsystemcmds__param\\nsystemcmds__perf\\nsystemcmds__reboot\\nsystemcmds__sd_bench\\nsystemcmds__tests\\nsystemcmds__top\\nsystemcmds__topic_listener\\nsystemcmds__ver\\n\""
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default && sh -c "printf \"drivers__boards__sitl\\ndrivers__device\\ndrivers__gps\\ndrivers__pwm_out_sim\\ndrivers__sf0x__sf0x_tests\\ndrivers__vmount\\nexamples__attitude_estimator_ekf\\nexamples__ekf_att_pos_estimator\\nexamples__fixedwing_control\\nexamples__mc_att_control_multiplatform\\nexamples__mc_pos_control_multiplatform\\nexamples__px4_simple_app\\nlib__DriverFramework__framework\\nlib__controllib\\nlib__conversion\\nlib__ecl\\nlib__external_lgpl\\nlib__geo\\nlib__geo_lookup\\nlib__launchdetection\\nlib__mathlib\\nlib__mathlib__math__filter\\nlib__rc\\nlib__rc__rc_tests\\nlib__runway_takeoff\\nlib__tailsitter_recovery\\nlib__terrain_estimation\\nmodules__attitude_estimator_q\\nmodules__commander\\nmodules__commander__commander_tests\\nmodules__controllib_test\\nmodules__dataman\\nmodules__ekf2\\nmodules__fw_att_control\\nmodules__fw_pos_control_l1\\nmodules__land_detector\\nmodules__local_position_estimator\\nmodules__logger\\nmodules__mavlink\\nmodules__mc_att_control\\nmodules__mc_pos_control\\nmodules__mc_pos_control__mc_pos_control_tests\\nmodules__navigator\\nmodules__param\\nmodules__position_estimator_inav\\nmodules__replay\\nmodules__sdlog2\\nmodules__sensors\\nmodules__simulator\\nmodules__systemlib\\nmodules__systemlib__mixer\\nmodules__uORB\\nmodules__uORB__uORB_tests\\nmodules__unit_test\\nmodules__vtol_att_control\\nmsg_gen\\nplatforms__common\\nplatforms__posix__drivers__accelsim\\nplatforms__posix__drivers__adcsim\\nplatforms__posix__drivers__airspeedsim\\nplatforms__posix__drivers__barosim\\nplatforms__posix__drivers__gpssim\\nplatforms__posix__drivers__gyrosim\\nplatforms__posix__drivers__ledsim\\nplatforms__posix__drivers__rgbledsim\\nplatforms__posix__drivers__tonealrmsim\\nplatforms__posix__px4_layer\\nplatforms__posix__work_queue\\npx4\\nsystemcmds__esc_calib\\nsystemcmds__mixer\\nsystemcmds__motor_ramp\\nsystemcmds__param\\nsystemcmds__perf\\nsystemcmds__reboot\\nsystemcmds__sd_bench\\nsystemcmds__tests\\nsystemcmds__top\\nsystemcmds__topic_listener\\nsystemcmds__ver\\n\""
   DESC = List of cmake targets that can be matched by PX4_NO_OPTIMIZATION:
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
@@ -4584,41 +4584,6 @@ build src/examples/px4_simple_app/libexamples__px4_simple_app.a: C_STATIC_LIBRAR
 # =============================================================================
 
 # =============================================================================
-# Object build statements for STATIC_LIBRARY target examples__new_app
-
-
-#############################################
-# Order-only phony target for examples__new_app
-
-build cmake_order_depends_target_examples__new_app: phony || src/platforms/common/libplatforms__common.a
-build src/examples/new_app/CMakeFiles/examples__new_app.dir/new_app.c.o: C_COMPILER__examples__new_app ../src/examples/new_app/new_app.c || cmake_order_depends_target_examples__new_app
-  DEFINES = -DCONFIG_ARCH_BOARD_SITL -DMODULE_NAME=\"new_app\" -DPX4_MAIN=new_app_app_main -D__DF_LINUX -D__PX4_LINUX -D__PX4_POSIX -D__STDC_FORMAT_MACROS -Dnoreturn_function="__attribute__((noreturn))"
-  DEP_FILE = src/examples/new_app/CMakeFiles/examples__new_app.dir/new_app.c.o.d
-  FLAGS = -g -std=gnu99 -fno-common -Wall -Werror -Wextra -Wno-sign-compare -Wshadow -Wfloat-equal -Wpointer-arith -Wmissing-declarations -Wno-unused-parameter -Werror=format-security -Werror=array-bounds -Wfatal-errors -Werror=unused-variable -Werror=reorder -Werror=uninitialized -Werror=init-self -Werror=unused-but-set-variable -Wformat=1 -Wdouble-promotion -Werror=double-promotion -Wbad-function-cast -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -Wold-style-declaration -Wmissing-parameter-type -fvisibility=hidden -include visibility.h -O2 -fno-strict-aliasing -fomit-frame-pointer -funsafe-math-optimizations -ffunction-sections -fdata-sections -fno-strength-reduce -fno-builtin-printf   -include visibility.h -O2 -fno-strict-aliasing -fomit-frame-pointer -funsafe-math-optimizations -ffunction-sections -fdata-sections -fno-strength-reduce -fno-builtin-printf
-  INCLUDES = -I../src -I. -Isrc -I../src/modules -I../src/include -I../src/lib -I../src/platforms -I../src/drivers/boards/sitl -Isrc/modules/px4_messages -Isrc/modules -I../mavlink/include/mavlink -I../src/lib/DriverFramework/framework/include -I../src/lib/matrix -I../src/modules/systemlib -I../src/lib/eigen -I../src/platforms/posix/include -Iexternal/Install/include
-  OBJECT_DIR = src/examples/new_app/CMakeFiles/examples__new_app.dir
-  OBJECT_FILE_DIR = src/examples/new_app/CMakeFiles/examples__new_app.dir
-
-# =============================================================================
-# Link build statements for STATIC_LIBRARY target examples__new_app
-
-
-#############################################
-# Link the static library src/examples/new_app/libexamples__new_app.a
-
-build src/examples/new_app/libexamples__new_app.a: C_STATIC_LIBRARY_LINKER__examples__new_app src/examples/new_app/CMakeFiles/examples__new_app.dir/new_app.c.o || src/platforms/common/libplatforms__common.a
-  LANGUAGE_COMPILE_FLAGS = -g -std=gnu99 -fno-common -Wall -Werror -Wextra -Wno-sign-compare -Wshadow -Wfloat-equal -Wpointer-arith -Wmissing-declarations -Wno-unused-parameter -Werror=format-security -Werror=array-bounds -Wfatal-errors -Werror=unused-variable -Werror=reorder -Werror=uninitialized -Werror=init-self -Werror=unused-but-set-variable -Wformat=1 -Wdouble-promotion -Werror=double-promotion -Wbad-function-cast -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -Wold-style-declaration -Wmissing-parameter-type -fvisibility=hidden -include visibility.h -O2 -fno-strict-aliasing -fomit-frame-pointer -funsafe-math-optimizations -ffunction-sections -fdata-sections -fno-strength-reduce -fno-builtin-printf
-  OBJECT_DIR = src/examples/new_app/CMakeFiles/examples__new_app.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  TARGET_FILE = src/examples/new_app/libexamples__new_app.a
-  TARGET_PDB = examples__new_app.a.dbg
-# =============================================================================
-# Write statements declared in CMakeLists.txt:
-# /home/dani/ROS_WS/src/MyPX4/CMakeLists.txt
-# =============================================================================
-
-# =============================================================================
 # Object build statements for STATIC_LIBRARY target examples__mc_att_control_multiplatform
 
 
@@ -5993,7 +5958,7 @@ build src/firmware/posix/none_typhoon_h480_valgrind: phony src/firmware/posix/CM
 #############################################
 # Order-only phony target for px4
 
-build cmake_order_depends_target_px4: phony || libmsg_gen.a src/drivers/boards/sitl/libdrivers__boards__sitl.a src/drivers/device/libdrivers__device.a src/drivers/gps/libdrivers__gps.a src/drivers/pwm_out_sim/libdrivers__pwm_out_sim.a src/drivers/vmount/libdrivers__vmount.a src/platforms/common/libplatforms__common.a src/platforms/posix/drivers/accelsim/libplatforms__posix__drivers__accelsim.a src/platforms/posix/drivers/adcsim/libplatforms__posix__drivers__adcsim.a src/platforms/posix/drivers/airspeedsim/libplatforms__posix__drivers__airspeedsim.a src/platforms/posix/drivers/barosim/libplatforms__posix__drivers__barosim.a src/platforms/posix/drivers/gpssim/libplatforms__posix__drivers__gpssim.a src/platforms/posix/drivers/gyrosim/libplatforms__posix__drivers__gyrosim.a src/platforms/posix/drivers/ledsim/libplatforms__posix__drivers__ledsim.a src/platforms/posix/drivers/rgbledsim/libplatforms__posix__drivers__rgbledsim.a src/platforms/posix/drivers/tonealrmsim/libplatforms__posix__drivers__tonealrmsim.a src/platforms/posix/px4_layer/libplatforms__posix__px4_layer.a src/platforms/posix/work_queue/libplatforms__posix__work_queue.a src/systemcmds/esc_calib/libsystemcmds__esc_calib.a src/systemcmds/mixer/libsystemcmds__mixer.a src/systemcmds/param/libsystemcmds__param.a src/systemcmds/perf/libsystemcmds__perf.a src/systemcmds/reboot/libsystemcmds__reboot.a src/systemcmds/sd_bench/libsystemcmds__sd_bench.a src/systemcmds/topic_listener/libsystemcmds__topic_listener.a src/systemcmds/ver/libsystemcmds__ver.a src/systemcmds/top/libsystemcmds__top.a src/systemcmds/motor_ramp/libsystemcmds__motor_ramp.a src/modules/attitude_estimator_q/libmodules__attitude_estimator_q.a src/modules/commander/libmodules__commander.a src/modules/dataman/libmodules__dataman.a src/modules/ekf2/libmodules__ekf2.a src/modules/fw_att_control/libmodules__fw_att_control.a src/modules/fw_pos_control_l1/libmodules__fw_pos_control_l1.a src/modules/land_detector/libmodules__land_detector.a src/modules/logger/libmodules__logger.a src/modules/mavlink/libmodules__mavlink.a src/modules/mc_att_control/libmodules__mc_att_control.a src/modules/mc_pos_control/libmodules__mc_pos_control.a src/modules/navigator/libmodules__navigator.a src/modules/param/libmodules__param.a src/modules/position_estimator_inav/libmodules__position_estimator_inav.a src/modules/local_position_estimator/libmodules__local_position_estimator.a src/modules/replay/libmodules__replay.a src/modules/sdlog2/libmodules__sdlog2.a src/modules/sensors/libmodules__sensors.a src/modules/simulator/libmodules__simulator.a src/modules/systemlib/libmodules__systemlib.a src/modules/systemlib/mixer/libmodules__systemlib__mixer.a src/modules/uORB/libmodules__uORB.a src/modules/vtol_att_control/libmodules__vtol_att_control.a src/lib/controllib/liblib__controllib.a src/lib/conversion/liblib__conversion.a src/lib/DriverFramework/framework/liblib__DriverFramework__framework.a src/lib/DriverFramework/framework/src/libdf_driver_framework.a src/lib/ecl/liblib__ecl.a src/lib/external_lgpl/liblib__external_lgpl.a src/lib/geo/liblib__geo.a src/lib/geo_lookup/liblib__geo_lookup.a src/lib/launchdetection/liblib__launchdetection.a src/lib/mathlib/liblib__mathlib.a src/lib/mathlib/math/filter/liblib__mathlib__math__filter.a src/lib/rc/liblib__rc.a src/lib/runway_takeoff/liblib__runway_takeoff.a src/lib/tailsitter_recovery/liblib__tailsitter_recovery.a src/lib/terrain_estimation/liblib__terrain_estimation.a src/examples/px4_simple_app/libexamples__px4_simple_app.a src/examples/new_app/libexamples__new_app.a src/examples/mc_att_control_multiplatform/libexamples__mc_att_control_multiplatform.a src/examples/mc_pos_control_multiplatform/libexamples__mc_pos_control_multiplatform.a src/examples/ekf_att_pos_estimator/libexamples__ekf_att_pos_estimator.a src/examples/attitude_estimator_ekf/libexamples__attitude_estimator_ekf.a src/examples/fixedwing_control/libexamples__fixedwing_control.a src/drivers/sf0x/sf0x_tests/libdrivers__sf0x__sf0x_tests.a src/lib/rc/rc_tests/liblib__rc__rc_tests.a src/modules/commander/commander_tests/libmodules__commander__commander_tests.a src/modules/mc_pos_control/mc_pos_control_tests/libmodules__mc_pos_control__mc_pos_control_tests.a src/modules/controllib_test/libmodules__controllib_test.a src/modules/unit_test/libmodules__unit_test.a src/modules/uORB/uORB_tests/libmodules__uORB__uORB_tests.a src/systemcmds/tests/libsystemcmds__tests.a
+build cmake_order_depends_target_px4: phony || libmsg_gen.a src/drivers/boards/sitl/libdrivers__boards__sitl.a src/drivers/device/libdrivers__device.a src/drivers/gps/libdrivers__gps.a src/drivers/pwm_out_sim/libdrivers__pwm_out_sim.a src/drivers/vmount/libdrivers__vmount.a src/platforms/common/libplatforms__common.a src/platforms/posix/drivers/accelsim/libplatforms__posix__drivers__accelsim.a src/platforms/posix/drivers/adcsim/libplatforms__posix__drivers__adcsim.a src/platforms/posix/drivers/airspeedsim/libplatforms__posix__drivers__airspeedsim.a src/platforms/posix/drivers/barosim/libplatforms__posix__drivers__barosim.a src/platforms/posix/drivers/gpssim/libplatforms__posix__drivers__gpssim.a src/platforms/posix/drivers/gyrosim/libplatforms__posix__drivers__gyrosim.a src/platforms/posix/drivers/ledsim/libplatforms__posix__drivers__ledsim.a src/platforms/posix/drivers/rgbledsim/libplatforms__posix__drivers__rgbledsim.a src/platforms/posix/drivers/tonealrmsim/libplatforms__posix__drivers__tonealrmsim.a src/platforms/posix/px4_layer/libplatforms__posix__px4_layer.a src/platforms/posix/work_queue/libplatforms__posix__work_queue.a src/systemcmds/esc_calib/libsystemcmds__esc_calib.a src/systemcmds/mixer/libsystemcmds__mixer.a src/systemcmds/param/libsystemcmds__param.a src/systemcmds/perf/libsystemcmds__perf.a src/systemcmds/reboot/libsystemcmds__reboot.a src/systemcmds/sd_bench/libsystemcmds__sd_bench.a src/systemcmds/topic_listener/libsystemcmds__topic_listener.a src/systemcmds/ver/libsystemcmds__ver.a src/systemcmds/top/libsystemcmds__top.a src/systemcmds/motor_ramp/libsystemcmds__motor_ramp.a src/modules/attitude_estimator_q/libmodules__attitude_estimator_q.a src/modules/commander/libmodules__commander.a src/modules/dataman/libmodules__dataman.a src/modules/ekf2/libmodules__ekf2.a src/modules/fw_att_control/libmodules__fw_att_control.a src/modules/fw_pos_control_l1/libmodules__fw_pos_control_l1.a src/modules/land_detector/libmodules__land_detector.a src/modules/logger/libmodules__logger.a src/modules/mavlink/libmodules__mavlink.a src/modules/mc_att_control/libmodules__mc_att_control.a src/modules/mc_pos_control/libmodules__mc_pos_control.a src/modules/navigator/libmodules__navigator.a src/modules/param/libmodules__param.a src/modules/position_estimator_inav/libmodules__position_estimator_inav.a src/modules/local_position_estimator/libmodules__local_position_estimator.a src/modules/replay/libmodules__replay.a src/modules/sdlog2/libmodules__sdlog2.a src/modules/sensors/libmodules__sensors.a src/modules/simulator/libmodules__simulator.a src/modules/systemlib/libmodules__systemlib.a src/modules/systemlib/mixer/libmodules__systemlib__mixer.a src/modules/uORB/libmodules__uORB.a src/modules/vtol_att_control/libmodules__vtol_att_control.a src/lib/controllib/liblib__controllib.a src/lib/conversion/liblib__conversion.a src/lib/DriverFramework/framework/liblib__DriverFramework__framework.a src/lib/DriverFramework/framework/src/libdf_driver_framework.a src/lib/ecl/liblib__ecl.a src/lib/external_lgpl/liblib__external_lgpl.a src/lib/geo/liblib__geo.a src/lib/geo_lookup/liblib__geo_lookup.a src/lib/launchdetection/liblib__launchdetection.a src/lib/mathlib/liblib__mathlib.a src/lib/mathlib/math/filter/liblib__mathlib__math__filter.a src/lib/rc/liblib__rc.a src/lib/runway_takeoff/liblib__runway_takeoff.a src/lib/tailsitter_recovery/liblib__tailsitter_recovery.a src/lib/terrain_estimation/liblib__terrain_estimation.a src/examples/px4_simple_app/libexamples__px4_simple_app.a src/examples/mc_att_control_multiplatform/libexamples__mc_att_control_multiplatform.a src/examples/mc_pos_control_multiplatform/libexamples__mc_pos_control_multiplatform.a src/examples/ekf_att_pos_estimator/libexamples__ekf_att_pos_estimator.a src/examples/attitude_estimator_ekf/libexamples__attitude_estimator_ekf.a src/examples/fixedwing_control/libexamples__fixedwing_control.a src/drivers/sf0x/sf0x_tests/libdrivers__sf0x__sf0x_tests.a src/lib/rc/rc_tests/liblib__rc__rc_tests.a src/modules/commander/commander_tests/libmodules__commander__commander_tests.a src/modules/mc_pos_control/mc_pos_control_tests/libmodules__mc_pos_control__mc_pos_control_tests.a src/modules/controllib_test/libmodules__controllib_test.a src/modules/unit_test/libmodules__unit_test.a src/modules/uORB/uORB_tests/libmodules__uORB__uORB_tests.a src/systemcmds/tests/libsystemcmds__tests.a
 build src/firmware/posix/CMakeFiles/px4.dir/__/__/platforms/posix/main.cpp.o: CXX_COMPILER__px4 ../src/platforms/posix/main.cpp || cmake_order_depends_target_px4
   DEFINES = -DCONFIG_ARCH_BOARD_SITL -D__DF_LINUX -D__PX4_LINUX -D__PX4_POSIX -D__STDC_FORMAT_MACROS -Dnoreturn_function="__attribute__((noreturn))"
   DEP_FILE = src/firmware/posix/CMakeFiles/px4.dir/__/__/platforms/posix/main.cpp.o.d
@@ -6016,10 +5981,10 @@ build src/firmware/posix/CMakeFiles/px4.dir/apps.cpp.o: CXX_COMPILER__px4 src/fi
 #############################################
 # Link the executable src/firmware/posix/px4
 
-build src/firmware/posix/px4: CXX_EXECUTABLE_LINKER__px4 src/firmware/posix/CMakeFiles/px4.dir/__/__/platforms/posix/main.cpp.o src/firmware/posix/CMakeFiles/px4.dir/apps.cpp.o | src/drivers/boards/sitl/libdrivers__boards__sitl.a src/drivers/device/libdrivers__device.a src/drivers/gps/libdrivers__gps.a src/drivers/pwm_out_sim/libdrivers__pwm_out_sim.a src/drivers/vmount/libdrivers__vmount.a src/platforms/common/libplatforms__common.a src/platforms/posix/drivers/accelsim/libplatforms__posix__drivers__accelsim.a src/platforms/posix/drivers/adcsim/libplatforms__posix__drivers__adcsim.a src/platforms/posix/drivers/airspeedsim/libplatforms__posix__drivers__airspeedsim.a src/platforms/posix/drivers/barosim/libplatforms__posix__drivers__barosim.a src/platforms/posix/drivers/gpssim/libplatforms__posix__drivers__gpssim.a src/platforms/posix/drivers/gyrosim/libplatforms__posix__drivers__gyrosim.a src/platforms/posix/drivers/ledsim/libplatforms__posix__drivers__ledsim.a src/platforms/posix/drivers/rgbledsim/libplatforms__posix__drivers__rgbledsim.a src/platforms/posix/drivers/tonealrmsim/libplatforms__posix__drivers__tonealrmsim.a src/platforms/posix/px4_layer/libplatforms__posix__px4_layer.a src/platforms/posix/work_queue/libplatforms__posix__work_queue.a src/systemcmds/esc_calib/libsystemcmds__esc_calib.a src/systemcmds/mixer/libsystemcmds__mixer.a src/systemcmds/param/libsystemcmds__param.a src/systemcmds/perf/libsystemcmds__perf.a src/systemcmds/reboot/libsystemcmds__reboot.a src/systemcmds/sd_bench/libsystemcmds__sd_bench.a src/systemcmds/topic_listener/libsystemcmds__topic_listener.a src/systemcmds/ver/libsystemcmds__ver.a src/systemcmds/top/libsystemcmds__top.a src/systemcmds/motor_ramp/libsystemcmds__motor_ramp.a src/modules/attitude_estimator_q/libmodules__attitude_estimator_q.a src/modules/commander/libmodules__commander.a src/modules/dataman/libmodules__dataman.a src/modules/ekf2/libmodules__ekf2.a src/modules/fw_att_control/libmodules__fw_att_control.a src/modules/fw_pos_control_l1/libmodules__fw_pos_control_l1.a src/modules/land_detector/libmodules__land_detector.a src/modules/logger/libmodules__logger.a src/modules/mavlink/libmodules__mavlink.a src/modules/mc_att_control/libmodules__mc_att_control.a src/modules/mc_pos_control/libmodules__mc_pos_control.a src/modules/navigator/libmodules__navigator.a src/modules/param/libmodules__param.a src/modules/position_estimator_inav/libmodules__position_estimator_inav.a src/modules/local_position_estimator/libmodules__local_position_estimator.a src/modules/replay/libmodules__replay.a src/modules/sdlog2/libmodules__sdlog2.a src/modules/sensors/libmodules__sensors.a src/modules/simulator/libmodules__simulator.a src/modules/systemlib/libmodules__systemlib.a src/modules/systemlib/mixer/libmodules__systemlib__mixer.a src/modules/uORB/libmodules__uORB.a src/modules/vtol_att_control/libmodules__vtol_att_control.a src/lib/controllib/liblib__controllib.a src/lib/conversion/liblib__conversion.a src/lib/DriverFramework/framework/liblib__DriverFramework__framework.a src/lib/ecl/liblib__ecl.a src/lib/external_lgpl/liblib__external_lgpl.a src/lib/geo/liblib__geo.a src/lib/geo_lookup/liblib__geo_lookup.a src/lib/launchdetection/liblib__launchdetection.a src/lib/mathlib/liblib__mathlib.a src/lib/mathlib/math/filter/liblib__mathlib__math__filter.a src/lib/rc/liblib__rc.a src/lib/runway_takeoff/liblib__runway_takeoff.a src/lib/tailsitter_recovery/liblib__tailsitter_recovery.a src/lib/terrain_estimation/liblib__terrain_estimation.a src/examples/px4_simple_app/libexamples__px4_simple_app.a src/examples/new_app/libexamples__new_app.a src/examples/mc_att_control_multiplatform/libexamples__mc_att_control_multiplatform.a src/examples/mc_pos_control_multiplatform/libexamples__mc_pos_control_multiplatform.a src/examples/ekf_att_pos_estimator/libexamples__ekf_att_pos_estimator.a src/examples/attitude_estimator_ekf/libexamples__attitude_estimator_ekf.a src/examples/fixedwing_control/libexamples__fixedwing_control.a src/drivers/sf0x/sf0x_tests/libdrivers__sf0x__sf0x_tests.a src/lib/rc/rc_tests/liblib__rc__rc_tests.a src/modules/commander/commander_tests/libmodules__commander__commander_tests.a src/modules/mc_pos_control/mc_pos_control_tests/libmodules__mc_pos_control__mc_pos_control_tests.a src/modules/controllib_test/libmodules__controllib_test.a src/modules/unit_test/libmodules__unit_test.a src/modules/uORB/uORB_tests/libmodules__uORB__uORB_tests.a src/systemcmds/tests/libsystemcmds__tests.a libmsg_gen.a src/lib/DriverFramework/framework/src/libdf_driver_framework.a || libmsg_gen.a src/drivers/boards/sitl/libdrivers__boards__sitl.a src/drivers/device/libdrivers__device.a src/drivers/gps/libdrivers__gps.a src/drivers/pwm_out_sim/libdrivers__pwm_out_sim.a src/drivers/vmount/libdrivers__vmount.a src/platforms/common/libplatforms__common.a src/platforms/posix/drivers/accelsim/libplatforms__posix__drivers__accelsim.a src/platforms/posix/drivers/adcsim/libplatforms__posix__drivers__adcsim.a src/platforms/posix/drivers/airspeedsim/libplatforms__posix__drivers__airspeedsim.a src/platforms/posix/drivers/barosim/libplatforms__posix__drivers__barosim.a src/platforms/posix/drivers/gpssim/libplatforms__posix__drivers__gpssim.a src/platforms/posix/drivers/gyrosim/libplatforms__posix__drivers__gyrosim.a src/platforms/posix/drivers/ledsim/libplatforms__posix__drivers__ledsim.a src/platforms/posix/drivers/rgbledsim/libplatforms__posix__drivers__rgbledsim.a src/platforms/posix/drivers/tonealrmsim/libplatforms__posix__drivers__tonealrmsim.a src/platforms/posix/px4_layer/libplatforms__posix__px4_layer.a src/platforms/posix/work_queue/libplatforms__posix__work_queue.a src/systemcmds/esc_calib/libsystemcmds__esc_calib.a src/systemcmds/mixer/libsystemcmds__mixer.a src/systemcmds/param/libsystemcmds__param.a src/systemcmds/perf/libsystemcmds__perf.a src/systemcmds/reboot/libsystemcmds__reboot.a src/systemcmds/sd_bench/libsystemcmds__sd_bench.a src/systemcmds/topic_listener/libsystemcmds__topic_listener.a src/systemcmds/ver/libsystemcmds__ver.a src/systemcmds/top/libsystemcmds__top.a src/systemcmds/motor_ramp/libsystemcmds__motor_ramp.a src/modules/attitude_estimator_q/libmodules__attitude_estimator_q.a src/modules/commander/libmodules__commander.a src/modules/dataman/libmodules__dataman.a src/modules/ekf2/libmodules__ekf2.a src/modules/fw_att_control/libmodules__fw_att_control.a src/modules/fw_pos_control_l1/libmodules__fw_pos_control_l1.a src/modules/land_detector/libmodules__land_detector.a src/modules/logger/libmodules__logger.a src/modules/mavlink/libmodules__mavlink.a src/modules/mc_att_control/libmodules__mc_att_control.a src/modules/mc_pos_control/libmodules__mc_pos_control.a src/modules/navigator/libmodules__navigator.a src/modules/param/libmodules__param.a src/modules/position_estimator_inav/libmodules__position_estimator_inav.a src/modules/local_position_estimator/libmodules__local_position_estimator.a src/modules/replay/libmodules__replay.a src/modules/sdlog2/libmodules__sdlog2.a src/modules/sensors/libmodules__sensors.a src/modules/simulator/libmodules__simulator.a src/modules/systemlib/libmodules__systemlib.a src/modules/systemlib/mixer/libmodules__systemlib__mixer.a src/modules/uORB/libmodules__uORB.a src/modules/vtol_att_control/libmodules__vtol_att_control.a src/lib/controllib/liblib__controllib.a src/lib/conversion/liblib__conversion.a src/lib/DriverFramework/framework/liblib__DriverFramework__framework.a src/lib/DriverFramework/framework/src/libdf_driver_framework.a src/lib/ecl/liblib__ecl.a src/lib/external_lgpl/liblib__external_lgpl.a src/lib/geo/liblib__geo.a src/lib/geo_lookup/liblib__geo_lookup.a src/lib/launchdetection/liblib__launchdetection.a src/lib/mathlib/liblib__mathlib.a src/lib/mathlib/math/filter/liblib__mathlib__math__filter.a src/lib/rc/liblib__rc.a src/lib/runway_takeoff/liblib__runway_takeoff.a src/lib/tailsitter_recovery/liblib__tailsitter_recovery.a src/lib/terrain_estimation/liblib__terrain_estimation.a src/examples/px4_simple_app/libexamples__px4_simple_app.a src/examples/new_app/libexamples__new_app.a src/examples/mc_att_control_multiplatform/libexamples__mc_att_control_multiplatform.a src/examples/mc_pos_control_multiplatform/libexamples__mc_pos_control_multiplatform.a src/examples/ekf_att_pos_estimator/libexamples__ekf_att_pos_estimator.a src/examples/attitude_estimator_ekf/libexamples__attitude_estimator_ekf.a src/examples/fixedwing_control/libexamples__fixedwing_control.a src/drivers/sf0x/sf0x_tests/libdrivers__sf0x__sf0x_tests.a src/lib/rc/rc_tests/liblib__rc__rc_tests.a src/modules/commander/commander_tests/libmodules__commander__commander_tests.a src/modules/mc_pos_control/mc_pos_control_tests/libmodules__mc_pos_control__mc_pos_control_tests.a src/modules/controllib_test/libmodules__controllib_test.a src/modules/unit_test/libmodules__unit_test.a src/modules/uORB/uORB_tests/libmodules__uORB__uORB_tests.a src/systemcmds/tests/libsystemcmds__tests.a
+build src/firmware/posix/px4: CXX_EXECUTABLE_LINKER__px4 src/firmware/posix/CMakeFiles/px4.dir/__/__/platforms/posix/main.cpp.o src/firmware/posix/CMakeFiles/px4.dir/apps.cpp.o | src/drivers/boards/sitl/libdrivers__boards__sitl.a src/drivers/device/libdrivers__device.a src/drivers/gps/libdrivers__gps.a src/drivers/pwm_out_sim/libdrivers__pwm_out_sim.a src/drivers/vmount/libdrivers__vmount.a src/platforms/common/libplatforms__common.a src/platforms/posix/drivers/accelsim/libplatforms__posix__drivers__accelsim.a src/platforms/posix/drivers/adcsim/libplatforms__posix__drivers__adcsim.a src/platforms/posix/drivers/airspeedsim/libplatforms__posix__drivers__airspeedsim.a src/platforms/posix/drivers/barosim/libplatforms__posix__drivers__barosim.a src/platforms/posix/drivers/gpssim/libplatforms__posix__drivers__gpssim.a src/platforms/posix/drivers/gyrosim/libplatforms__posix__drivers__gyrosim.a src/platforms/posix/drivers/ledsim/libplatforms__posix__drivers__ledsim.a src/platforms/posix/drivers/rgbledsim/libplatforms__posix__drivers__rgbledsim.a src/platforms/posix/drivers/tonealrmsim/libplatforms__posix__drivers__tonealrmsim.a src/platforms/posix/px4_layer/libplatforms__posix__px4_layer.a src/platforms/posix/work_queue/libplatforms__posix__work_queue.a src/systemcmds/esc_calib/libsystemcmds__esc_calib.a src/systemcmds/mixer/libsystemcmds__mixer.a src/systemcmds/param/libsystemcmds__param.a src/systemcmds/perf/libsystemcmds__perf.a src/systemcmds/reboot/libsystemcmds__reboot.a src/systemcmds/sd_bench/libsystemcmds__sd_bench.a src/systemcmds/topic_listener/libsystemcmds__topic_listener.a src/systemcmds/ver/libsystemcmds__ver.a src/systemcmds/top/libsystemcmds__top.a src/systemcmds/motor_ramp/libsystemcmds__motor_ramp.a src/modules/attitude_estimator_q/libmodules__attitude_estimator_q.a src/modules/commander/libmodules__commander.a src/modules/dataman/libmodules__dataman.a src/modules/ekf2/libmodules__ekf2.a src/modules/fw_att_control/libmodules__fw_att_control.a src/modules/fw_pos_control_l1/libmodules__fw_pos_control_l1.a src/modules/land_detector/libmodules__land_detector.a src/modules/logger/libmodules__logger.a src/modules/mavlink/libmodules__mavlink.a src/modules/mc_att_control/libmodules__mc_att_control.a src/modules/mc_pos_control/libmodules__mc_pos_control.a src/modules/navigator/libmodules__navigator.a src/modules/param/libmodules__param.a src/modules/position_estimator_inav/libmodules__position_estimator_inav.a src/modules/local_position_estimator/libmodules__local_position_estimator.a src/modules/replay/libmodules__replay.a src/modules/sdlog2/libmodules__sdlog2.a src/modules/sensors/libmodules__sensors.a src/modules/simulator/libmodules__simulator.a src/modules/systemlib/libmodules__systemlib.a src/modules/systemlib/mixer/libmodules__systemlib__mixer.a src/modules/uORB/libmodules__uORB.a src/modules/vtol_att_control/libmodules__vtol_att_control.a src/lib/controllib/liblib__controllib.a src/lib/conversion/liblib__conversion.a src/lib/DriverFramework/framework/liblib__DriverFramework__framework.a src/lib/ecl/liblib__ecl.a src/lib/external_lgpl/liblib__external_lgpl.a src/lib/geo/liblib__geo.a src/lib/geo_lookup/liblib__geo_lookup.a src/lib/launchdetection/liblib__launchdetection.a src/lib/mathlib/liblib__mathlib.a src/lib/mathlib/math/filter/liblib__mathlib__math__filter.a src/lib/rc/liblib__rc.a src/lib/runway_takeoff/liblib__runway_takeoff.a src/lib/tailsitter_recovery/liblib__tailsitter_recovery.a src/lib/terrain_estimation/liblib__terrain_estimation.a src/examples/px4_simple_app/libexamples__px4_simple_app.a src/examples/mc_att_control_multiplatform/libexamples__mc_att_control_multiplatform.a src/examples/mc_pos_control_multiplatform/libexamples__mc_pos_control_multiplatform.a src/examples/ekf_att_pos_estimator/libexamples__ekf_att_pos_estimator.a src/examples/attitude_estimator_ekf/libexamples__attitude_estimator_ekf.a src/examples/fixedwing_control/libexamples__fixedwing_control.a src/drivers/sf0x/sf0x_tests/libdrivers__sf0x__sf0x_tests.a src/lib/rc/rc_tests/liblib__rc__rc_tests.a src/modules/commander/commander_tests/libmodules__commander__commander_tests.a src/modules/mc_pos_control/mc_pos_control_tests/libmodules__mc_pos_control__mc_pos_control_tests.a src/modules/controllib_test/libmodules__controllib_test.a src/modules/unit_test/libmodules__unit_test.a src/modules/uORB/uORB_tests/libmodules__uORB__uORB_tests.a src/systemcmds/tests/libsystemcmds__tests.a libmsg_gen.a src/lib/DriverFramework/framework/src/libdf_driver_framework.a || libmsg_gen.a src/drivers/boards/sitl/libdrivers__boards__sitl.a src/drivers/device/libdrivers__device.a src/drivers/gps/libdrivers__gps.a src/drivers/pwm_out_sim/libdrivers__pwm_out_sim.a src/drivers/vmount/libdrivers__vmount.a src/platforms/common/libplatforms__common.a src/platforms/posix/drivers/accelsim/libplatforms__posix__drivers__accelsim.a src/platforms/posix/drivers/adcsim/libplatforms__posix__drivers__adcsim.a src/platforms/posix/drivers/airspeedsim/libplatforms__posix__drivers__airspeedsim.a src/platforms/posix/drivers/barosim/libplatforms__posix__drivers__barosim.a src/platforms/posix/drivers/gpssim/libplatforms__posix__drivers__gpssim.a src/platforms/posix/drivers/gyrosim/libplatforms__posix__drivers__gyrosim.a src/platforms/posix/drivers/ledsim/libplatforms__posix__drivers__ledsim.a src/platforms/posix/drivers/rgbledsim/libplatforms__posix__drivers__rgbledsim.a src/platforms/posix/drivers/tonealrmsim/libplatforms__posix__drivers__tonealrmsim.a src/platforms/posix/px4_layer/libplatforms__posix__px4_layer.a src/platforms/posix/work_queue/libplatforms__posix__work_queue.a src/systemcmds/esc_calib/libsystemcmds__esc_calib.a src/systemcmds/mixer/libsystemcmds__mixer.a src/systemcmds/param/libsystemcmds__param.a src/systemcmds/perf/libsystemcmds__perf.a src/systemcmds/reboot/libsystemcmds__reboot.a src/systemcmds/sd_bench/libsystemcmds__sd_bench.a src/systemcmds/topic_listener/libsystemcmds__topic_listener.a src/systemcmds/ver/libsystemcmds__ver.a src/systemcmds/top/libsystemcmds__top.a src/systemcmds/motor_ramp/libsystemcmds__motor_ramp.a src/modules/attitude_estimator_q/libmodules__attitude_estimator_q.a src/modules/commander/libmodules__commander.a src/modules/dataman/libmodules__dataman.a src/modules/ekf2/libmodules__ekf2.a src/modules/fw_att_control/libmodules__fw_att_control.a src/modules/fw_pos_control_l1/libmodules__fw_pos_control_l1.a src/modules/land_detector/libmodules__land_detector.a src/modules/logger/libmodules__logger.a src/modules/mavlink/libmodules__mavlink.a src/modules/mc_att_control/libmodules__mc_att_control.a src/modules/mc_pos_control/libmodules__mc_pos_control.a src/modules/navigator/libmodules__navigator.a src/modules/param/libmodules__param.a src/modules/position_estimator_inav/libmodules__position_estimator_inav.a src/modules/local_position_estimator/libmodules__local_position_estimator.a src/modules/replay/libmodules__replay.a src/modules/sdlog2/libmodules__sdlog2.a src/modules/sensors/libmodules__sensors.a src/modules/simulator/libmodules__simulator.a src/modules/systemlib/libmodules__systemlib.a src/modules/systemlib/mixer/libmodules__systemlib__mixer.a src/modules/uORB/libmodules__uORB.a src/modules/vtol_att_control/libmodules__vtol_att_control.a src/lib/controllib/liblib__controllib.a src/lib/conversion/liblib__conversion.a src/lib/DriverFramework/framework/liblib__DriverFramework__framework.a src/lib/DriverFramework/framework/src/libdf_driver_framework.a src/lib/ecl/liblib__ecl.a src/lib/external_lgpl/liblib__external_lgpl.a src/lib/geo/liblib__geo.a src/lib/geo_lookup/liblib__geo_lookup.a src/lib/launchdetection/liblib__launchdetection.a src/lib/mathlib/liblib__mathlib.a src/lib/mathlib/math/filter/liblib__mathlib__math__filter.a src/lib/rc/liblib__rc.a src/lib/runway_takeoff/liblib__runway_takeoff.a src/lib/tailsitter_recovery/liblib__tailsitter_recovery.a src/lib/terrain_estimation/liblib__terrain_estimation.a src/examples/px4_simple_app/libexamples__px4_simple_app.a src/examples/mc_att_control_multiplatform/libexamples__mc_att_control_multiplatform.a src/examples/mc_pos_control_multiplatform/libexamples__mc_pos_control_multiplatform.a src/examples/ekf_att_pos_estimator/libexamples__ekf_att_pos_estimator.a src/examples/attitude_estimator_ekf/libexamples__attitude_estimator_ekf.a src/examples/fixedwing_control/libexamples__fixedwing_control.a src/drivers/sf0x/sf0x_tests/libdrivers__sf0x__sf0x_tests.a src/lib/rc/rc_tests/liblib__rc__rc_tests.a src/modules/commander/commander_tests/libmodules__commander__commander_tests.a src/modules/mc_pos_control/mc_pos_control_tests/libmodules__mc_pos_control__mc_pos_control_tests.a src/modules/controllib_test/libmodules__controllib_test.a src/modules/unit_test/libmodules__unit_test.a src/modules/uORB/uORB_tests/libmodules__uORB__uORB_tests.a src/systemcmds/tests/libsystemcmds__tests.a
   FLAGS = -g -fno-exceptions -fno-rtti -std=gnu++0x -fno-threadsafe-statics -DCONFIG_WCHAR_BUILTIN -D__CUSTOM_FILE_IO__ -fcheck-new -Wall -Werror -Wextra -Wno-sign-compare -Wshadow -Wfloat-equal -Wpointer-arith -Wmissing-declarations -Wno-unused-parameter -Werror=format-security -Werror=array-bounds -Wfatal-errors -Werror=unused-variable -Werror=reorder -Werror=uninitialized -Werror=init-self -Werror=unused-but-set-variable -Wformat=1 -Wdouble-promotion -Werror=double-promotion -Wno-missing-field-initializers -fvisibility=hidden -include visibility.h -pthread -O2 -fno-strict-aliasing -fomit-frame-pointer -funsafe-math-optimizations -ffunction-sections -fdata-sections -fno-strength-reduce -fno-builtin-printf
   LINK_FLAGS = -Wl,--warn-common -Wl,--gc-sections
-  LINK_LIBRARIES = -rdynamic -Wl,--start-group src/drivers/boards/sitl/libdrivers__boards__sitl.a src/drivers/device/libdrivers__device.a src/drivers/gps/libdrivers__gps.a src/drivers/pwm_out_sim/libdrivers__pwm_out_sim.a src/drivers/vmount/libdrivers__vmount.a src/platforms/common/libplatforms__common.a src/platforms/posix/drivers/accelsim/libplatforms__posix__drivers__accelsim.a src/platforms/posix/drivers/adcsim/libplatforms__posix__drivers__adcsim.a src/platforms/posix/drivers/airspeedsim/libplatforms__posix__drivers__airspeedsim.a src/platforms/posix/drivers/barosim/libplatforms__posix__drivers__barosim.a src/platforms/posix/drivers/gpssim/libplatforms__posix__drivers__gpssim.a src/platforms/posix/drivers/gyrosim/libplatforms__posix__drivers__gyrosim.a src/platforms/posix/drivers/ledsim/libplatforms__posix__drivers__ledsim.a src/platforms/posix/drivers/rgbledsim/libplatforms__posix__drivers__rgbledsim.a src/platforms/posix/drivers/tonealrmsim/libplatforms__posix__drivers__tonealrmsim.a src/platforms/posix/px4_layer/libplatforms__posix__px4_layer.a src/platforms/posix/work_queue/libplatforms__posix__work_queue.a src/systemcmds/esc_calib/libsystemcmds__esc_calib.a src/systemcmds/mixer/libsystemcmds__mixer.a src/systemcmds/param/libsystemcmds__param.a src/systemcmds/perf/libsystemcmds__perf.a src/systemcmds/reboot/libsystemcmds__reboot.a src/systemcmds/sd_bench/libsystemcmds__sd_bench.a src/systemcmds/topic_listener/libsystemcmds__topic_listener.a src/systemcmds/ver/libsystemcmds__ver.a src/systemcmds/top/libsystemcmds__top.a src/systemcmds/motor_ramp/libsystemcmds__motor_ramp.a src/modules/attitude_estimator_q/libmodules__attitude_estimator_q.a src/modules/commander/libmodules__commander.a src/modules/dataman/libmodules__dataman.a src/modules/ekf2/libmodules__ekf2.a src/modules/fw_att_control/libmodules__fw_att_control.a src/modules/fw_pos_control_l1/libmodules__fw_pos_control_l1.a src/modules/land_detector/libmodules__land_detector.a src/modules/logger/libmodules__logger.a src/modules/mavlink/libmodules__mavlink.a src/modules/mc_att_control/libmodules__mc_att_control.a src/modules/mc_pos_control/libmodules__mc_pos_control.a src/modules/navigator/libmodules__navigator.a src/modules/param/libmodules__param.a src/modules/position_estimator_inav/libmodules__position_estimator_inav.a src/modules/local_position_estimator/libmodules__local_position_estimator.a src/modules/replay/libmodules__replay.a src/modules/sdlog2/libmodules__sdlog2.a src/modules/sensors/libmodules__sensors.a src/modules/simulator/libmodules__simulator.a src/modules/systemlib/libmodules__systemlib.a src/modules/systemlib/mixer/libmodules__systemlib__mixer.a src/modules/uORB/libmodules__uORB.a src/modules/vtol_att_control/libmodules__vtol_att_control.a src/lib/controllib/liblib__controllib.a src/lib/conversion/liblib__conversion.a src/lib/DriverFramework/framework/liblib__DriverFramework__framework.a src/lib/ecl/liblib__ecl.a src/lib/external_lgpl/liblib__external_lgpl.a src/lib/geo/liblib__geo.a src/lib/geo_lookup/liblib__geo_lookup.a src/lib/launchdetection/liblib__launchdetection.a src/lib/mathlib/liblib__mathlib.a src/lib/mathlib/math/filter/liblib__mathlib__math__filter.a src/lib/rc/liblib__rc.a src/lib/runway_takeoff/liblib__runway_takeoff.a src/lib/tailsitter_recovery/liblib__tailsitter_recovery.a src/lib/terrain_estimation/liblib__terrain_estimation.a src/examples/px4_simple_app/libexamples__px4_simple_app.a src/examples/new_app/libexamples__new_app.a src/examples/mc_att_control_multiplatform/libexamples__mc_att_control_multiplatform.a src/examples/mc_pos_control_multiplatform/libexamples__mc_pos_control_multiplatform.a src/examples/ekf_att_pos_estimator/libexamples__ekf_att_pos_estimator.a src/examples/attitude_estimator_ekf/libexamples__attitude_estimator_ekf.a src/examples/fixedwing_control/libexamples__fixedwing_control.a src/drivers/sf0x/sf0x_tests/libdrivers__sf0x__sf0x_tests.a src/lib/rc/rc_tests/liblib__rc__rc_tests.a src/modules/commander/commander_tests/libmodules__commander__commander_tests.a src/modules/mc_pos_control/mc_pos_control_tests/libmodules__mc_pos_control__mc_pos_control_tests.a src/modules/controllib_test/libmodules__controllib_test.a src/modules/unit_test/libmodules__unit_test.a src/modules/uORB/uORB_tests/libmodules__uORB__uORB_tests.a src/systemcmds/tests/libsystemcmds__tests.a -lpthread -lm -lrt -Wl,--end-group libmsg_gen.a src/lib/DriverFramework/framework/src/libdf_driver_framework.a -Wl,-rpath,/home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/external/Install/lib:
+  LINK_LIBRARIES = -rdynamic -Wl,--start-group src/drivers/boards/sitl/libdrivers__boards__sitl.a src/drivers/device/libdrivers__device.a src/drivers/gps/libdrivers__gps.a src/drivers/pwm_out_sim/libdrivers__pwm_out_sim.a src/drivers/vmount/libdrivers__vmount.a src/platforms/common/libplatforms__common.a src/platforms/posix/drivers/accelsim/libplatforms__posix__drivers__accelsim.a src/platforms/posix/drivers/adcsim/libplatforms__posix__drivers__adcsim.a src/platforms/posix/drivers/airspeedsim/libplatforms__posix__drivers__airspeedsim.a src/platforms/posix/drivers/barosim/libplatforms__posix__drivers__barosim.a src/platforms/posix/drivers/gpssim/libplatforms__posix__drivers__gpssim.a src/platforms/posix/drivers/gyrosim/libplatforms__posix__drivers__gyrosim.a src/platforms/posix/drivers/ledsim/libplatforms__posix__drivers__ledsim.a src/platforms/posix/drivers/rgbledsim/libplatforms__posix__drivers__rgbledsim.a src/platforms/posix/drivers/tonealrmsim/libplatforms__posix__drivers__tonealrmsim.a src/platforms/posix/px4_layer/libplatforms__posix__px4_layer.a src/platforms/posix/work_queue/libplatforms__posix__work_queue.a src/systemcmds/esc_calib/libsystemcmds__esc_calib.a src/systemcmds/mixer/libsystemcmds__mixer.a src/systemcmds/param/libsystemcmds__param.a src/systemcmds/perf/libsystemcmds__perf.a src/systemcmds/reboot/libsystemcmds__reboot.a src/systemcmds/sd_bench/libsystemcmds__sd_bench.a src/systemcmds/topic_listener/libsystemcmds__topic_listener.a src/systemcmds/ver/libsystemcmds__ver.a src/systemcmds/top/libsystemcmds__top.a src/systemcmds/motor_ramp/libsystemcmds__motor_ramp.a src/modules/attitude_estimator_q/libmodules__attitude_estimator_q.a src/modules/commander/libmodules__commander.a src/modules/dataman/libmodules__dataman.a src/modules/ekf2/libmodules__ekf2.a src/modules/fw_att_control/libmodules__fw_att_control.a src/modules/fw_pos_control_l1/libmodules__fw_pos_control_l1.a src/modules/land_detector/libmodules__land_detector.a src/modules/logger/libmodules__logger.a src/modules/mavlink/libmodules__mavlink.a src/modules/mc_att_control/libmodules__mc_att_control.a src/modules/mc_pos_control/libmodules__mc_pos_control.a src/modules/navigator/libmodules__navigator.a src/modules/param/libmodules__param.a src/modules/position_estimator_inav/libmodules__position_estimator_inav.a src/modules/local_position_estimator/libmodules__local_position_estimator.a src/modules/replay/libmodules__replay.a src/modules/sdlog2/libmodules__sdlog2.a src/modules/sensors/libmodules__sensors.a src/modules/simulator/libmodules__simulator.a src/modules/systemlib/libmodules__systemlib.a src/modules/systemlib/mixer/libmodules__systemlib__mixer.a src/modules/uORB/libmodules__uORB.a src/modules/vtol_att_control/libmodules__vtol_att_control.a src/lib/controllib/liblib__controllib.a src/lib/conversion/liblib__conversion.a src/lib/DriverFramework/framework/liblib__DriverFramework__framework.a src/lib/ecl/liblib__ecl.a src/lib/external_lgpl/liblib__external_lgpl.a src/lib/geo/liblib__geo.a src/lib/geo_lookup/liblib__geo_lookup.a src/lib/launchdetection/liblib__launchdetection.a src/lib/mathlib/liblib__mathlib.a src/lib/mathlib/math/filter/liblib__mathlib__math__filter.a src/lib/rc/liblib__rc.a src/lib/runway_takeoff/liblib__runway_takeoff.a src/lib/tailsitter_recovery/liblib__tailsitter_recovery.a src/lib/terrain_estimation/liblib__terrain_estimation.a src/examples/px4_simple_app/libexamples__px4_simple_app.a src/examples/mc_att_control_multiplatform/libexamples__mc_att_control_multiplatform.a src/examples/mc_pos_control_multiplatform/libexamples__mc_pos_control_multiplatform.a src/examples/ekf_att_pos_estimator/libexamples__ekf_att_pos_estimator.a src/examples/attitude_estimator_ekf/libexamples__attitude_estimator_ekf.a src/examples/fixedwing_control/libexamples__fixedwing_control.a src/drivers/sf0x/sf0x_tests/libdrivers__sf0x__sf0x_tests.a src/lib/rc/rc_tests/liblib__rc__rc_tests.a src/modules/commander/commander_tests/libmodules__commander__commander_tests.a src/modules/mc_pos_control/mc_pos_control_tests/libmodules__mc_pos_control__mc_pos_control_tests.a src/modules/controllib_test/libmodules__controllib_test.a src/modules/unit_test/libmodules__unit_test.a src/modules/uORB/uORB_tests/libmodules__uORB__uORB_tests.a src/systemcmds/tests/libsystemcmds__tests.a -lpthread -lm -lrt -Wl,--end-group libmsg_gen.a src/lib/DriverFramework/framework/src/libdf_driver_framework.a -Wl,-rpath,/home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/external/Install/lib:
   LINK_PATH = -L/home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/external/Install/lib
   OBJECT_DIR = src/firmware/posix/CMakeFiles/px4.dir
   POST_BUILD = :
@@ -6238,13 +6203,6 @@ build src/firmware/posix/run_config: phony src/firmware/posix/CMakeFiles/run_con
 build src/firmware/posix/sitl_gazebo: phony src/firmware/posix/CMakeFiles/sitl_gazebo src/firmware/posix/CMakeFiles/sitl_gazebo-complete external/Stamp/sitl_gazebo/sitl_gazebo-done external/Stamp/sitl_gazebo/sitl_gazebo-install external/Stamp/sitl_gazebo/sitl_gazebo-mkdir external/Stamp/sitl_gazebo/sitl_gazebo-download external/Stamp/sitl_gazebo/sitl_gazebo-update external/Stamp/sitl_gazebo/sitl_gazebo-patch external/Stamp/sitl_gazebo/sitl_gazebo-configure external/Stamp/sitl_gazebo/sitl_gazebo-build
 
 #############################################
-# Custom command for src/firmware/posix/CMakeFiles/gazebo_typhoon_h480_gdb
-
-build src/firmware/posix/CMakeFiles/gazebo_typhoon_h480_gdb: CUSTOM_COMMAND || src/firmware/posix/px4 src/firmware/posix/sitl_gazebo
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe gdb gazebo typhoon_h480 /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
-  pool = console
-
-#############################################
 # Custom command for src/firmware/posix/CMakeFiles/run_config
 
 build src/firmware/posix/CMakeFiles/run_config: CUSTOM_COMMAND || src/firmware/posix/px4
@@ -6255,13 +6213,6 @@ build src/firmware/posix/CMakeFiles/run_config: CUSTOM_COMMAND || src/firmware/p
 # Phony custom command for src/firmware/posix/CMakeFiles/sitl_gazebo
 
 build src/firmware/posix/CMakeFiles/sitl_gazebo: phony src/firmware/posix/CMakeFiles/sitl_gazebo-complete
-
-#############################################
-# Custom command for src/firmware/posix/CMakeFiles/list_vmd_make_targets
-
-build src/firmware/posix/CMakeFiles/list_vmd_make_targets: CUSTOM_COMMAND
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix && sh -c "printf \"none\\nnone_iris\\nnone_iris_opt_flow\\nnone_tailsitter\\nnone_standard_vtol\\nnone_plane\\nnone_solo\\nnone_typhoon_h480\\nnone___gdb\\nnone_iris_gdb\\nnone_iris_opt_flow_gdb\\nnone_tailsitter_gdb\\nnone_standard_vtol_gdb\\nnone_plane_gdb\\nnone_solo_gdb\\nnone_typhoon_h480_gdb\\nnone___lldb\\nnone_iris_lldb\\nnone_iris_opt_flow_lldb\\nnone_tailsitter_lldb\\nnone_standard_vtol_lldb\\nnone_plane_lldb\\nnone_solo_lldb\\nnone_typhoon_h480_lldb\\nnone___ddd\\nnone_iris_ddd\\nnone_iris_opt_flow_ddd\\nnone_tailsitter_ddd\\nnone_standard_vtol_ddd\\nnone_plane_ddd\\nnone_solo_ddd\\nnone_typhoon_h480_ddd\\nnone___valgrind\\nnone_iris_valgrind\\nnone_iris_opt_flow_valgrind\\nnone_tailsitter_valgrind\\nnone_standard_vtol_valgrind\\nnone_plane_valgrind\\nnone_solo_valgrind\\nnone_typhoon_h480_valgrind\\njmavsim\\njmavsim_iris\\njmavsim_iris_opt_flow\\njmavsim_tailsitter\\njmavsim_standard_vtol\\njmavsim_plane\\njmavsim_solo\\njmavsim_typhoon_h480\\njmavsim___gdb\\njmavsim_iris_gdb\\njmavsim_iris_opt_flow_gdb\\njmavsim_tailsitter_gdb\\njmavsim_standard_vtol_gdb\\njmavsim_plane_gdb\\njmavsim_solo_gdb\\njmavsim_typhoon_h480_gdb\\njmavsim___lldb\\njmavsim_iris_lldb\\njmavsim_iris_opt_flow_lldb\\njmavsim_tailsitter_lldb\\njmavsim_standard_vtol_lldb\\njmavsim_plane_lldb\\njmavsim_solo_lldb\\njmavsim_typhoon_h480_lldb\\njmavsim___ddd\\njmavsim_iris_ddd\\njmavsim_iris_opt_flow_ddd\\njmavsim_tailsitter_ddd\\njmavsim_standard_vtol_ddd\\njmavsim_plane_ddd\\njmavsim_solo_ddd\\njmavsim_typhoon_h480_ddd\\njmavsim___valgrind\\njmavsim_iris_valgrind\\njmavsim_iris_opt_flow_valgrind\\njmavsim_tailsitter_valgrind\\njmavsim_standard_vtol_valgrind\\njmavsim_plane_valgrind\\njmavsim_solo_valgrind\\njmavsim_typhoon_h480_valgrind\\ngazebo\\ngazebo_iris\\ngazebo_iris_opt_flow\\ngazebo_tailsitter\\ngazebo_standard_vtol\\ngazebo_plane\\ngazebo_solo\\ngazebo_typhoon_h480\\ngazebo___gdb\\ngazebo_iris_gdb\\ngazebo_iris_opt_flow_gdb\\ngazebo_tailsitter_gdb\\ngazebo_standard_vtol_gdb\\ngazebo_plane_gdb\\ngazebo_solo_gdb\\ngazebo_typhoon_h480_gdb\\ngazebo___lldb\\ngazebo_iris_lldb\\ngazebo_iris_opt_flow_lldb\\ngazebo_tailsitter_lldb\\ngazebo_standard_vtol_lldb\\ngazebo_plane_lldb\\ngazebo_solo_lldb\\ngazebo_typhoon_h480_lldb\\ngazebo___ddd\\ngazebo_iris_ddd\\ngazebo_iris_opt_flow_ddd\\ngazebo_tailsitter_ddd\\ngazebo_standard_vtol_ddd\\ngazebo_plane_ddd\\ngazebo_solo_ddd\\ngazebo_typhoon_h480_ddd\\ngazebo___valgrind\\ngazebo_iris_valgrind\\ngazebo_iris_opt_flow_valgrind\\ngazebo_tailsitter_valgrind\\ngazebo_standard_vtol_valgrind\\ngazebo_plane_valgrind\\ngazebo_solo_valgrind\\ngazebo_typhoon_h480_valgrind\\nreplay\\nreplay_iris\\nreplay_iris_opt_flow\\nreplay_tailsitter\\nreplay_standard_vtol\\nreplay_plane\\nreplay_solo\\nreplay_typhoon_h480\\nreplay___gdb\\nreplay_iris_gdb\\nreplay_iris_opt_flow_gdb\\nreplay_tailsitter_gdb\\nreplay_standard_vtol_gdb\\nreplay_plane_gdb\\nreplay_solo_gdb\\nreplay_typhoon_h480_gdb\\nreplay___lldb\\nreplay_iris_lldb\\nreplay_iris_opt_flow_lldb\\nreplay_tailsitter_lldb\\nreplay_standard_vtol_lldb\\nreplay_plane_lldb\\nreplay_solo_lldb\\nreplay_typhoon_h480_lldb\\nreplay___ddd\\nreplay_iris_ddd\\nreplay_iris_opt_flow_ddd\\nreplay_tailsitter_ddd\\nreplay_standard_vtol_ddd\\nreplay_plane_ddd\\nreplay_solo_ddd\\nreplay_typhoon_h480_ddd\\nreplay___valgrind\\nreplay_iris_valgrind\\nreplay_iris_opt_flow_valgrind\\nreplay_tailsitter_valgrind\\nreplay_standard_vtol_valgrind\\nreplay_plane_valgrind\\nreplay_solo_valgrind\\nreplay_typhoon_h480_valgrind\\n\""
-  DESC = List of acceptable 'posix_sitl_default' <viewer_model_debugger> targets:
 
 #############################################
 # Custom command for src/firmware/posix/CMakeFiles/sitl_gazebo-complete
@@ -6292,6 +6243,13 @@ build external/Stamp/sitl_gazebo/sitl_gazebo-update: CUSTOM_COMMAND external/Sta
   DESC = No update step for 'sitl_gazebo'
 
 #############################################
+# Custom command for src/firmware/posix/CMakeFiles/none_standard_vtol
+
+build src/firmware/posix/CMakeFiles/none_standard_vtol: CUSTOM_COMMAND || src/firmware/posix/px4
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe none none standard_vtol /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
+  pool = console
+
+#############################################
 # Custom command for external/Stamp/sitl_gazebo/sitl_gazebo-patch
 
 build external/Stamp/sitl_gazebo/sitl_gazebo-patch: CUSTOM_COMMAND external/Stamp/sitl_gazebo/sitl_gazebo-download
@@ -6304,6 +6262,13 @@ build external/Stamp/sitl_gazebo/sitl_gazebo-patch: CUSTOM_COMMAND external/Stam
 build external/Stamp/sitl_gazebo/sitl_gazebo-configure: CUSTOM_COMMAND external/tmp/sitl_gazebo/sitl_gazebo-cfgcmd.txt external/Stamp/sitl_gazebo/sitl_gazebo-update external/Stamp/sitl_gazebo/sitl_gazebo-patch
   COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/build_gazebo && /opt/cmake-3.4.3/bin/cmake -DCMAKE_INSTALL_PREFIX=/usr -GNinja /home/dani/ROS_WS/src/MyPX4/Tools/sitl_gazebo && /opt/cmake-3.4.3/bin/cmake -E touch /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/external/Stamp/sitl_gazebo/sitl_gazebo-configure
   DESC = Performing configure step for 'sitl_gazebo'
+
+#############################################
+# Custom command for src/firmware/posix/CMakeFiles/none
+
+build src/firmware/posix/CMakeFiles/none: CUSTOM_COMMAND || src/firmware/posix/px4
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe none none none /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
+  pool = console
 
 #############################################
 # Custom command for src/firmware/posix/CMakeFiles/none___gdb
@@ -6334,13 +6299,6 @@ build external/Stamp/sitl_gazebo/sitl_gazebo-install: CUSTOM_COMMAND external/St
   DESC = No install step for 'sitl_gazebo'
 
 #############################################
-# Custom command for src/firmware/posix/CMakeFiles/none
-
-build src/firmware/posix/CMakeFiles/none: CUSTOM_COMMAND || src/firmware/posix/px4
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe none none none /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
-  pool = console
-
-#############################################
 # Custom command for src/firmware/posix/CMakeFiles/none_iris_opt_flow
 
 build src/firmware/posix/CMakeFiles/none_iris_opt_flow: CUSTOM_COMMAND || src/firmware/posix/px4
@@ -6352,13 +6310,6 @@ build src/firmware/posix/CMakeFiles/none_iris_opt_flow: CUSTOM_COMMAND || src/fi
 
 build src/firmware/posix/CMakeFiles/none_tailsitter: CUSTOM_COMMAND || src/firmware/posix/px4
   COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe none none tailsitter /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
-  pool = console
-
-#############################################
-# Custom command for src/firmware/posix/CMakeFiles/none_standard_vtol
-
-build src/firmware/posix/CMakeFiles/none_standard_vtol: CUSTOM_COMMAND || src/firmware/posix/px4
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe none none standard_vtol /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
   pool = console
 
 #############################################
@@ -6453,13 +6404,6 @@ build src/firmware/posix/CMakeFiles/none_iris_opt_flow_lldb: CUSTOM_COMMAND || s
   pool = console
 
 #############################################
-# Custom command for src/firmware/posix/CMakeFiles/jmavsim_tailsitter
-
-build src/firmware/posix/CMakeFiles/jmavsim_tailsitter: CUSTOM_COMMAND || src/firmware/posix/px4
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe none jmavsim tailsitter /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
-  pool = console
-
-#############################################
 # Custom command for src/firmware/posix/CMakeFiles/none_tailsitter_lldb
 
 build src/firmware/posix/CMakeFiles/none_tailsitter_lldb: CUSTOM_COMMAND || src/firmware/posix/px4
@@ -6471,6 +6415,13 @@ build src/firmware/posix/CMakeFiles/none_tailsitter_lldb: CUSTOM_COMMAND || src/
 
 build src/firmware/posix/CMakeFiles/none_standard_vtol_lldb: CUSTOM_COMMAND || src/firmware/posix/px4
   COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe lldb none standard_vtol /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
+  pool = console
+
+#############################################
+# Custom command for src/firmware/posix/CMakeFiles/jmavsim_standard_vtol_gdb
+
+build src/firmware/posix/CMakeFiles/jmavsim_standard_vtol_gdb: CUSTOM_COMMAND || src/firmware/posix/px4
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe gdb jmavsim standard_vtol /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
   pool = console
 
 #############################################
@@ -6628,6 +6579,13 @@ build src/firmware/posix/CMakeFiles/jmavsim_iris_opt_flow: CUSTOM_COMMAND || src
   pool = console
 
 #############################################
+# Custom command for src/firmware/posix/CMakeFiles/jmavsim_tailsitter
+
+build src/firmware/posix/CMakeFiles/jmavsim_tailsitter: CUSTOM_COMMAND || src/firmware/posix/px4
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe none jmavsim tailsitter /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
+  pool = console
+
+#############################################
 # Custom command for src/firmware/posix/CMakeFiles/jmavsim_standard_vtol
 
 build src/firmware/posix/CMakeFiles/jmavsim_standard_vtol: CUSTOM_COMMAND || src/firmware/posix/px4
@@ -6681,13 +6639,6 @@ build src/firmware/posix/CMakeFiles/jmavsim_iris_opt_flow_gdb: CUSTOM_COMMAND ||
 
 build src/firmware/posix/CMakeFiles/jmavsim_tailsitter_gdb: CUSTOM_COMMAND || src/firmware/posix/px4
   COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe gdb jmavsim tailsitter /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
-  pool = console
-
-#############################################
-# Custom command for src/firmware/posix/CMakeFiles/jmavsim_standard_vtol_gdb
-
-build src/firmware/posix/CMakeFiles/jmavsim_standard_vtol_gdb: CUSTOM_COMMAND || src/firmware/posix/px4
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe gdb jmavsim standard_vtol /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
   pool = console
 
 #############################################
@@ -6936,6 +6887,13 @@ build src/firmware/posix/CMakeFiles/gazebo_typhoon_h480: CUSTOM_COMMAND || src/f
   pool = console
 
 #############################################
+# Custom command for src/firmware/posix/CMakeFiles/gazebo___lldb
+
+build src/firmware/posix/CMakeFiles/gazebo___lldb: CUSTOM_COMMAND || src/firmware/posix/px4 src/firmware/posix/sitl_gazebo
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe lldb gazebo none /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
+  pool = console
+
+#############################################
 # Custom command for src/firmware/posix/CMakeFiles/gazebo___gdb
 
 build src/firmware/posix/CMakeFiles/gazebo___gdb: CUSTOM_COMMAND || src/firmware/posix/px4 src/firmware/posix/sitl_gazebo
@@ -6985,10 +6943,10 @@ build src/firmware/posix/CMakeFiles/gazebo_solo_gdb: CUSTOM_COMMAND || src/firmw
   pool = console
 
 #############################################
-# Custom command for src/firmware/posix/CMakeFiles/gazebo___lldb
+# Custom command for src/firmware/posix/CMakeFiles/gazebo_typhoon_h480_gdb
 
-build src/firmware/posix/CMakeFiles/gazebo___lldb: CUSTOM_COMMAND || src/firmware/posix/px4 src/firmware/posix/sitl_gazebo
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe lldb gazebo none /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
+build src/firmware/posix/CMakeFiles/gazebo_typhoon_h480_gdb: CUSTOM_COMMAND || src/firmware/posix/px4 src/firmware/posix/sitl_gazebo
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe gdb gazebo typhoon_h480 /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
   pool = console
 
 #############################################
@@ -7038,6 +6996,13 @@ build src/firmware/posix/CMakeFiles/gazebo_solo_lldb: CUSTOM_COMMAND || src/firm
 
 build src/firmware/posix/CMakeFiles/gazebo_typhoon_h480_lldb: CUSTOM_COMMAND || src/firmware/posix/px4 src/firmware/posix/sitl_gazebo
   COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe lldb gazebo typhoon_h480 /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
+  pool = console
+
+#############################################
+# Custom command for src/firmware/posix/CMakeFiles/gazebo___valgrind
+
+build src/firmware/posix/CMakeFiles/gazebo___valgrind: CUSTOM_COMMAND || src/firmware/posix/px4 src/firmware/posix/sitl_gazebo
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe valgrind gazebo none /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
   pool = console
 
 #############################################
@@ -7097,13 +7062,6 @@ build src/firmware/posix/CMakeFiles/gazebo_typhoon_h480_ddd: CUSTOM_COMMAND || s
   pool = console
 
 #############################################
-# Custom command for src/firmware/posix/CMakeFiles/gazebo___valgrind
-
-build src/firmware/posix/CMakeFiles/gazebo___valgrind: CUSTOM_COMMAND || src/firmware/posix/px4 src/firmware/posix/sitl_gazebo
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe valgrind gazebo none /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
-  pool = console
-
-#############################################
 # Custom command for src/firmware/posix/CMakeFiles/gazebo_iris_valgrind
 
 build src/firmware/posix/CMakeFiles/gazebo_iris_valgrind: CUSTOM_COMMAND || src/firmware/posix/px4 src/firmware/posix/sitl_gazebo
@@ -7150,6 +7108,13 @@ build src/firmware/posix/CMakeFiles/gazebo_solo_valgrind: CUSTOM_COMMAND || src/
 
 build src/firmware/posix/CMakeFiles/gazebo_typhoon_h480_valgrind: CUSTOM_COMMAND || src/firmware/posix/px4 src/firmware/posix/sitl_gazebo
   COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe valgrind gazebo typhoon_h480 /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
+  pool = console
+
+#############################################
+# Custom command for src/firmware/posix/CMakeFiles/replay___gdb
+
+build src/firmware/posix/CMakeFiles/replay___gdb: CUSTOM_COMMAND || src/firmware/posix/px4
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe gdb replay none /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
   pool = console
 
 #############################################
@@ -7206,13 +7171,6 @@ build src/firmware/posix/CMakeFiles/replay_solo: CUSTOM_COMMAND || src/firmware/
 
 build src/firmware/posix/CMakeFiles/replay_typhoon_h480: CUSTOM_COMMAND || src/firmware/posix/px4
   COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe none replay typhoon_h480 /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
-  pool = console
-
-#############################################
-# Custom command for src/firmware/posix/CMakeFiles/replay___gdb
-
-build src/firmware/posix/CMakeFiles/replay___gdb: CUSTOM_COMMAND || src/firmware/posix/px4
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe gdb replay none /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
   pool = console
 
 #############################################
@@ -7335,20 +7293,6 @@ build src/firmware/posix/CMakeFiles/replay_iris_ddd: CUSTOM_COMMAND || src/firmw
   pool = console
 
 #############################################
-# Custom command for src/firmware/posix/CMakeFiles/replay_plane_ddd
-
-build src/firmware/posix/CMakeFiles/replay_plane_ddd: CUSTOM_COMMAND || src/firmware/posix/px4
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe ddd replay plane /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
-  pool = console
-
-#############################################
-# Custom command for src/firmware/posix/CMakeFiles/replay_solo_ddd
-
-build src/firmware/posix/CMakeFiles/replay_solo_ddd: CUSTOM_COMMAND || src/firmware/posix/px4
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe ddd replay solo /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
-  pool = console
-
-#############################################
 # Custom command for src/firmware/posix/CMakeFiles/replay_iris_opt_flow_ddd
 
 build src/firmware/posix/CMakeFiles/replay_iris_opt_flow_ddd: CUSTOM_COMMAND || src/firmware/posix/px4
@@ -7367,6 +7311,20 @@ build src/firmware/posix/CMakeFiles/replay_tailsitter_ddd: CUSTOM_COMMAND || src
 
 build src/firmware/posix/CMakeFiles/replay_standard_vtol_ddd: CUSTOM_COMMAND || src/firmware/posix/px4
   COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe ddd replay standard_vtol /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
+  pool = console
+
+#############################################
+# Custom command for src/firmware/posix/CMakeFiles/replay_plane_ddd
+
+build src/firmware/posix/CMakeFiles/replay_plane_ddd: CUSTOM_COMMAND || src/firmware/posix/px4
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe ddd replay plane /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
+  pool = console
+
+#############################################
+# Custom command for src/firmware/posix/CMakeFiles/replay_solo_ddd
+
+build src/firmware/posix/CMakeFiles/replay_solo_ddd: CUSTOM_COMMAND || src/firmware/posix/px4
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe ddd replay solo /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
   pool = console
 
 #############################################
@@ -7426,6 +7384,13 @@ build src/firmware/posix/CMakeFiles/replay_solo_valgrind: CUSTOM_COMMAND || src/
   pool = console
 
 #############################################
+# Custom command for src/firmware/posix/CMakeFiles/list_vmd_make_targets
+
+build src/firmware/posix/CMakeFiles/list_vmd_make_targets: CUSTOM_COMMAND
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix && sh -c "printf \"none\\nnone_iris\\nnone_iris_opt_flow\\nnone_tailsitter\\nnone_standard_vtol\\nnone_plane\\nnone_solo\\nnone_typhoon_h480\\nnone___gdb\\nnone_iris_gdb\\nnone_iris_opt_flow_gdb\\nnone_tailsitter_gdb\\nnone_standard_vtol_gdb\\nnone_plane_gdb\\nnone_solo_gdb\\nnone_typhoon_h480_gdb\\nnone___lldb\\nnone_iris_lldb\\nnone_iris_opt_flow_lldb\\nnone_tailsitter_lldb\\nnone_standard_vtol_lldb\\nnone_plane_lldb\\nnone_solo_lldb\\nnone_typhoon_h480_lldb\\nnone___ddd\\nnone_iris_ddd\\nnone_iris_opt_flow_ddd\\nnone_tailsitter_ddd\\nnone_standard_vtol_ddd\\nnone_plane_ddd\\nnone_solo_ddd\\nnone_typhoon_h480_ddd\\nnone___valgrind\\nnone_iris_valgrind\\nnone_iris_opt_flow_valgrind\\nnone_tailsitter_valgrind\\nnone_standard_vtol_valgrind\\nnone_plane_valgrind\\nnone_solo_valgrind\\nnone_typhoon_h480_valgrind\\njmavsim\\njmavsim_iris\\njmavsim_iris_opt_flow\\njmavsim_tailsitter\\njmavsim_standard_vtol\\njmavsim_plane\\njmavsim_solo\\njmavsim_typhoon_h480\\njmavsim___gdb\\njmavsim_iris_gdb\\njmavsim_iris_opt_flow_gdb\\njmavsim_tailsitter_gdb\\njmavsim_standard_vtol_gdb\\njmavsim_plane_gdb\\njmavsim_solo_gdb\\njmavsim_typhoon_h480_gdb\\njmavsim___lldb\\njmavsim_iris_lldb\\njmavsim_iris_opt_flow_lldb\\njmavsim_tailsitter_lldb\\njmavsim_standard_vtol_lldb\\njmavsim_plane_lldb\\njmavsim_solo_lldb\\njmavsim_typhoon_h480_lldb\\njmavsim___ddd\\njmavsim_iris_ddd\\njmavsim_iris_opt_flow_ddd\\njmavsim_tailsitter_ddd\\njmavsim_standard_vtol_ddd\\njmavsim_plane_ddd\\njmavsim_solo_ddd\\njmavsim_typhoon_h480_ddd\\njmavsim___valgrind\\njmavsim_iris_valgrind\\njmavsim_iris_opt_flow_valgrind\\njmavsim_tailsitter_valgrind\\njmavsim_standard_vtol_valgrind\\njmavsim_plane_valgrind\\njmavsim_solo_valgrind\\njmavsim_typhoon_h480_valgrind\\ngazebo\\ngazebo_iris\\ngazebo_iris_opt_flow\\ngazebo_tailsitter\\ngazebo_standard_vtol\\ngazebo_plane\\ngazebo_solo\\ngazebo_typhoon_h480\\ngazebo___gdb\\ngazebo_iris_gdb\\ngazebo_iris_opt_flow_gdb\\ngazebo_tailsitter_gdb\\ngazebo_standard_vtol_gdb\\ngazebo_plane_gdb\\ngazebo_solo_gdb\\ngazebo_typhoon_h480_gdb\\ngazebo___lldb\\ngazebo_iris_lldb\\ngazebo_iris_opt_flow_lldb\\ngazebo_tailsitter_lldb\\ngazebo_standard_vtol_lldb\\ngazebo_plane_lldb\\ngazebo_solo_lldb\\ngazebo_typhoon_h480_lldb\\ngazebo___ddd\\ngazebo_iris_ddd\\ngazebo_iris_opt_flow_ddd\\ngazebo_tailsitter_ddd\\ngazebo_standard_vtol_ddd\\ngazebo_plane_ddd\\ngazebo_solo_ddd\\ngazebo_typhoon_h480_ddd\\ngazebo___valgrind\\ngazebo_iris_valgrind\\ngazebo_iris_opt_flow_valgrind\\ngazebo_tailsitter_valgrind\\ngazebo_standard_vtol_valgrind\\ngazebo_plane_valgrind\\ngazebo_solo_valgrind\\ngazebo_typhoon_h480_valgrind\\nreplay\\nreplay_iris\\nreplay_iris_opt_flow\\nreplay_tailsitter\\nreplay_standard_vtol\\nreplay_plane\\nreplay_solo\\nreplay_typhoon_h480\\nreplay___gdb\\nreplay_iris_gdb\\nreplay_iris_opt_flow_gdb\\nreplay_tailsitter_gdb\\nreplay_standard_vtol_gdb\\nreplay_plane_gdb\\nreplay_solo_gdb\\nreplay_typhoon_h480_gdb\\nreplay___lldb\\nreplay_iris_lldb\\nreplay_iris_opt_flow_lldb\\nreplay_tailsitter_lldb\\nreplay_standard_vtol_lldb\\nreplay_plane_lldb\\nreplay_solo_lldb\\nreplay_typhoon_h480_lldb\\nreplay___ddd\\nreplay_iris_ddd\\nreplay_iris_opt_flow_ddd\\nreplay_tailsitter_ddd\\nreplay_standard_vtol_ddd\\nreplay_plane_ddd\\nreplay_solo_ddd\\nreplay_typhoon_h480_ddd\\nreplay___valgrind\\nreplay_iris_valgrind\\nreplay_iris_opt_flow_valgrind\\nreplay_tailsitter_valgrind\\nreplay_standard_vtol_valgrind\\nreplay_plane_valgrind\\nreplay_solo_valgrind\\nreplay_typhoon_h480_valgrind\\n\""
+  DESC = List of acceptable 'posix_sitl_default' <viewer_model_debugger> targets:
+
+#############################################
 # Custom command for src/firmware/posix/CMakeFiles/replay_typhoon_h480_valgrind
 
 build src/firmware/posix/CMakeFiles/replay_typhoon_h480_valgrind: CUSTOM_COMMAND || src/firmware/posix/px4
@@ -7446,7 +7411,6 @@ build examples__ekf_att_pos_estimator: phony src/examples/ekf_att_pos_estimator/
 build examples__fixedwing_control: phony src/examples/fixedwing_control/libexamples__fixedwing_control.a
 build examples__mc_att_control_multiplatform: phony src/examples/mc_att_control_multiplatform/libexamples__mc_att_control_multiplatform.a
 build examples__mc_pos_control_multiplatform: phony src/examples/mc_pos_control_multiplatform/libexamples__mc_pos_control_multiplatform.a
-build examples__new_app: phony src/examples/new_app/libexamples__new_app.a
 build examples__px4_simple_app: phony src/examples/px4_simple_app/libexamples__px4_simple_app.a
 build gazebo: phony src/firmware/posix/gazebo
 build gazebo___ddd: phony src/firmware/posix/gazebo___ddd
@@ -7556,7 +7520,6 @@ build libexamples__ekf_att_pos_estimator.a: phony src/examples/ekf_att_pos_estim
 build libexamples__fixedwing_control.a: phony src/examples/fixedwing_control/libexamples__fixedwing_control.a
 build libexamples__mc_att_control_multiplatform.a: phony src/examples/mc_att_control_multiplatform/libexamples__mc_att_control_multiplatform.a
 build libexamples__mc_pos_control_multiplatform.a: phony src/examples/mc_pos_control_multiplatform/libexamples__mc_pos_control_multiplatform.a
-build libexamples__new_app.a: phony src/examples/new_app/libexamples__new_app.a
 build libexamples__px4_simple_app.a: phony src/examples/px4_simple_app/libexamples__px4_simple_app.a
 build liblib__DriverFramework__framework.a: phony src/lib/DriverFramework/framework/liblib__DriverFramework__framework.a
 build liblib__controllib.a: phony src/lib/controllib/liblib__controllib.a
@@ -7783,13 +7746,13 @@ default all
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../cmake/common/px4_base.cmake ../cmake/configs/posix_sitl_default.cmake ../cmake/posix/px4_impl_posix.cmake ../cmake/templates/build_git_version.h.in ../cmake/toolchains/Toolchain-native.cmake ../msg/CMakeLists.txt ../src/drivers/boards/sitl/CMakeLists.txt ../src/drivers/device/CMakeLists.txt ../src/drivers/gps/CMakeLists.txt ../src/drivers/pwm_out_sim/CMakeLists.txt ../src/drivers/sf0x/sf0x_tests/CMakeLists.txt ../src/drivers/vmount/CMakeLists.txt ../src/examples/attitude_estimator_ekf/CMakeLists.txt ../src/examples/ekf_att_pos_estimator/CMakeLists.txt ../src/examples/fixedwing_control/CMakeLists.txt ../src/examples/mc_att_control_multiplatform/CMakeLists.txt ../src/examples/mc_pos_control_multiplatform/CMakeLists.txt ../src/examples/new_app/CMakeLists.txt ../src/examples/px4_simple_app/CMakeLists.txt ../src/firmware/posix/CMakeLists.txt ../src/lib/DriverFramework/cmake/df_common.cmake ../src/lib/DriverFramework/framework/CMakeLists.txt ../src/lib/DriverFramework/framework/src/CMakeLists.txt ../src/lib/controllib/CMakeLists.txt ../src/lib/conversion/CMakeLists.txt ../src/lib/ecl/CMakeLists.txt ../src/lib/external_lgpl/CMakeLists.txt ../src/lib/geo/CMakeLists.txt ../src/lib/geo_lookup/CMakeLists.txt ../src/lib/launchdetection/CMakeLists.txt ../src/lib/mathlib/CMakeLists.txt ../src/lib/mathlib/math/filter/CMakeLists.txt ../src/lib/rc/CMakeLists.txt ../src/lib/rc/rc_tests/CMakeLists.txt ../src/lib/runway_takeoff/CMakeLists.txt ../src/lib/tailsitter_recovery/CMakeLists.txt ../src/lib/terrain_estimation/CMakeLists.txt ../src/modules/attitude_estimator_q/CMakeLists.txt ../src/modules/commander/CMakeLists.txt ../src/modules/commander/commander_tests/CMakeLists.txt ../src/modules/controllib_test/CMakeLists.txt ../src/modules/dataman/CMakeLists.txt ../src/modules/ekf2/CMakeLists.txt ../src/modules/fw_att_control/CMakeLists.txt ../src/modules/fw_pos_control_l1/CMakeLists.txt ../src/modules/land_detector/CMakeLists.txt ../src/modules/local_position_estimator/CMakeLists.txt ../src/modules/logger/CMakeLists.txt ../src/modules/mavlink/CMakeLists.txt ../src/modules/mc_att_control/CMakeLists.txt ../src/modules/mc_pos_control/CMakeLists.txt ../src/modules/mc_pos_control/mc_pos_control_tests/CMakeLists.txt ../src/modules/navigator/CMakeLists.txt ../src/modules/param/CMakeLists.txt ../src/modules/position_estimator_inav/CMakeLists.txt ../src/modules/replay/CMakeLists.txt ../src/modules/sdlog2/CMakeLists.txt ../src/modules/sensors/CMakeLists.txt ../src/modules/simulator/CMakeLists.txt ../src/modules/systemlib/CMakeLists.txt ../src/modules/systemlib/mixer/CMakeLists.txt ../src/modules/uORB/CMakeLists.txt ../src/modules/uORB/uORB_tests/CMakeLists.txt ../src/modules/unit_test/CMakeLists.txt ../src/modules/vtol_att_control/CMakeLists.txt ../src/platforms/apps.cpp.in ../src/platforms/apps.h.in ../src/platforms/common/CMakeLists.txt ../src/platforms/posix/drivers/accelsim/CMakeLists.txt ../src/platforms/posix/drivers/adcsim/CMakeLists.txt ../src/platforms/posix/drivers/airspeedsim/CMakeLists.txt ../src/platforms/posix/drivers/barosim/CMakeLists.txt ../src/platforms/posix/drivers/gpssim/CMakeLists.txt ../src/platforms/posix/drivers/gyrosim/CMakeLists.txt ../src/platforms/posix/drivers/ledsim/CMakeLists.txt ../src/platforms/posix/drivers/rgbledsim/CMakeLists.txt ../src/platforms/posix/drivers/tonealrmsim/CMakeLists.txt ../src/platforms/posix/px4_layer/CMakeLists.txt ../src/platforms/posix/work_queue/CMakeLists.txt ../src/systemcmds/esc_calib/CMakeLists.txt ../src/systemcmds/mixer/CMakeLists.txt ../src/systemcmds/motor_ramp/CMakeLists.txt ../src/systemcmds/param/CMakeLists.txt ../src/systemcmds/perf/CMakeLists.txt ../src/systemcmds/reboot/CMakeLists.txt ../src/systemcmds/sd_bench/CMakeLists.txt ../src/systemcmds/tests/CMakeLists.txt ../src/systemcmds/top/CMakeLists.txt ../src/systemcmds/topic_listener/CMakeLists.txt ../src/systemcmds/ver/CMakeLists.txt /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeASMInformation.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeCInformation.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeCXXInformation.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeCommonLanguageInclude.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeGenericSystem.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeParseArguments.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeSystemSpecificInformation.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeSystemSpecificInitialize.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CPack.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CPackComponent.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Compiler/GNU-ASM.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Compiler/GNU-C.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Compiler/GNU-CXX.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Compiler/GNU.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/ExternalProject.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/FindPackageHandleStandardArgs.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/FindPackageMessage.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/FindPythonInterp.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/GNUInstallDirs.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Platform/Linux-GNU-C.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Platform/Linux-GNU-CXX.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Platform/Linux-GNU.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Platform/Linux.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Platform/UnixPaths.cmake /opt/cmake-3.4.3/share/cmake-3.4/Templates/CPackConfig.cmake.in CMakeCache.txt CMakeFiles/3.4.3/CMakeASMCompiler.cmake CMakeFiles/3.4.3/CMakeCCompiler.cmake CMakeFiles/3.4.3/CMakeCXXCompiler.cmake CMakeFiles/3.4.3/CMakeSystem.cmake external/tmp/sitl_gazebo/sitl_gazebo-cfgcmd.txt.in
+build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../cmake/common/px4_base.cmake ../cmake/configs/posix_sitl_default.cmake ../cmake/posix/px4_impl_posix.cmake ../cmake/templates/build_git_version.h.in ../cmake/toolchains/Toolchain-native.cmake ../msg/CMakeLists.txt ../src/drivers/boards/sitl/CMakeLists.txt ../src/drivers/device/CMakeLists.txt ../src/drivers/gps/CMakeLists.txt ../src/drivers/pwm_out_sim/CMakeLists.txt ../src/drivers/sf0x/sf0x_tests/CMakeLists.txt ../src/drivers/vmount/CMakeLists.txt ../src/examples/attitude_estimator_ekf/CMakeLists.txt ../src/examples/ekf_att_pos_estimator/CMakeLists.txt ../src/examples/fixedwing_control/CMakeLists.txt ../src/examples/mc_att_control_multiplatform/CMakeLists.txt ../src/examples/mc_pos_control_multiplatform/CMakeLists.txt ../src/examples/px4_simple_app/CMakeLists.txt ../src/firmware/posix/CMakeLists.txt ../src/lib/DriverFramework/cmake/df_common.cmake ../src/lib/DriverFramework/framework/CMakeLists.txt ../src/lib/DriverFramework/framework/src/CMakeLists.txt ../src/lib/controllib/CMakeLists.txt ../src/lib/conversion/CMakeLists.txt ../src/lib/ecl/CMakeLists.txt ../src/lib/external_lgpl/CMakeLists.txt ../src/lib/geo/CMakeLists.txt ../src/lib/geo_lookup/CMakeLists.txt ../src/lib/launchdetection/CMakeLists.txt ../src/lib/mathlib/CMakeLists.txt ../src/lib/mathlib/math/filter/CMakeLists.txt ../src/lib/rc/CMakeLists.txt ../src/lib/rc/rc_tests/CMakeLists.txt ../src/lib/runway_takeoff/CMakeLists.txt ../src/lib/tailsitter_recovery/CMakeLists.txt ../src/lib/terrain_estimation/CMakeLists.txt ../src/modules/attitude_estimator_q/CMakeLists.txt ../src/modules/commander/CMakeLists.txt ../src/modules/commander/commander_tests/CMakeLists.txt ../src/modules/controllib_test/CMakeLists.txt ../src/modules/dataman/CMakeLists.txt ../src/modules/ekf2/CMakeLists.txt ../src/modules/fw_att_control/CMakeLists.txt ../src/modules/fw_pos_control_l1/CMakeLists.txt ../src/modules/land_detector/CMakeLists.txt ../src/modules/local_position_estimator/CMakeLists.txt ../src/modules/logger/CMakeLists.txt ../src/modules/mavlink/CMakeLists.txt ../src/modules/mc_att_control/CMakeLists.txt ../src/modules/mc_pos_control/CMakeLists.txt ../src/modules/mc_pos_control/mc_pos_control_tests/CMakeLists.txt ../src/modules/navigator/CMakeLists.txt ../src/modules/param/CMakeLists.txt ../src/modules/position_estimator_inav/CMakeLists.txt ../src/modules/replay/CMakeLists.txt ../src/modules/sdlog2/CMakeLists.txt ../src/modules/sensors/CMakeLists.txt ../src/modules/simulator/CMakeLists.txt ../src/modules/systemlib/CMakeLists.txt ../src/modules/systemlib/mixer/CMakeLists.txt ../src/modules/uORB/CMakeLists.txt ../src/modules/uORB/uORB_tests/CMakeLists.txt ../src/modules/unit_test/CMakeLists.txt ../src/modules/vtol_att_control/CMakeLists.txt ../src/platforms/apps.cpp.in ../src/platforms/apps.h.in ../src/platforms/common/CMakeLists.txt ../src/platforms/posix/drivers/accelsim/CMakeLists.txt ../src/platforms/posix/drivers/adcsim/CMakeLists.txt ../src/platforms/posix/drivers/airspeedsim/CMakeLists.txt ../src/platforms/posix/drivers/barosim/CMakeLists.txt ../src/platforms/posix/drivers/gpssim/CMakeLists.txt ../src/platforms/posix/drivers/gyrosim/CMakeLists.txt ../src/platforms/posix/drivers/ledsim/CMakeLists.txt ../src/platforms/posix/drivers/rgbledsim/CMakeLists.txt ../src/platforms/posix/drivers/tonealrmsim/CMakeLists.txt ../src/platforms/posix/px4_layer/CMakeLists.txt ../src/platforms/posix/work_queue/CMakeLists.txt ../src/systemcmds/esc_calib/CMakeLists.txt ../src/systemcmds/mixer/CMakeLists.txt ../src/systemcmds/motor_ramp/CMakeLists.txt ../src/systemcmds/param/CMakeLists.txt ../src/systemcmds/perf/CMakeLists.txt ../src/systemcmds/reboot/CMakeLists.txt ../src/systemcmds/sd_bench/CMakeLists.txt ../src/systemcmds/tests/CMakeLists.txt ../src/systemcmds/top/CMakeLists.txt ../src/systemcmds/topic_listener/CMakeLists.txt ../src/systemcmds/ver/CMakeLists.txt /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeASMInformation.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeCInformation.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeCXXInformation.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeCommonLanguageInclude.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeGenericSystem.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeParseArguments.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeSystemSpecificInformation.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeSystemSpecificInitialize.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CPack.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CPackComponent.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Compiler/GNU-ASM.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Compiler/GNU-C.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Compiler/GNU-CXX.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Compiler/GNU.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/ExternalProject.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/FindPackageHandleStandardArgs.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/FindPackageMessage.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/FindPythonInterp.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/GNUInstallDirs.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Platform/Linux-GNU-C.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Platform/Linux-GNU-CXX.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Platform/Linux-GNU.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Platform/Linux.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Platform/UnixPaths.cmake /opt/cmake-3.4.3/share/cmake-3.4/Templates/CPackConfig.cmake.in CMakeCache.txt CMakeFiles/3.4.3/CMakeASMCompiler.cmake CMakeFiles/3.4.3/CMakeCCompiler.cmake CMakeFiles/3.4.3/CMakeCXXCompiler.cmake CMakeFiles/3.4.3/CMakeSystem.cmake external/tmp/sitl_gazebo/sitl_gazebo-cfgcmd.txt.in
   pool = console
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ../CMakeLists.txt ../cmake/common/px4_base.cmake ../cmake/configs/posix_sitl_default.cmake ../cmake/posix/px4_impl_posix.cmake ../cmake/templates/build_git_version.h.in ../cmake/toolchains/Toolchain-native.cmake ../msg/CMakeLists.txt ../src/drivers/boards/sitl/CMakeLists.txt ../src/drivers/device/CMakeLists.txt ../src/drivers/gps/CMakeLists.txt ../src/drivers/pwm_out_sim/CMakeLists.txt ../src/drivers/sf0x/sf0x_tests/CMakeLists.txt ../src/drivers/vmount/CMakeLists.txt ../src/examples/attitude_estimator_ekf/CMakeLists.txt ../src/examples/ekf_att_pos_estimator/CMakeLists.txt ../src/examples/fixedwing_control/CMakeLists.txt ../src/examples/mc_att_control_multiplatform/CMakeLists.txt ../src/examples/mc_pos_control_multiplatform/CMakeLists.txt ../src/examples/new_app/CMakeLists.txt ../src/examples/px4_simple_app/CMakeLists.txt ../src/firmware/posix/CMakeLists.txt ../src/lib/DriverFramework/cmake/df_common.cmake ../src/lib/DriverFramework/framework/CMakeLists.txt ../src/lib/DriverFramework/framework/src/CMakeLists.txt ../src/lib/controllib/CMakeLists.txt ../src/lib/conversion/CMakeLists.txt ../src/lib/ecl/CMakeLists.txt ../src/lib/external_lgpl/CMakeLists.txt ../src/lib/geo/CMakeLists.txt ../src/lib/geo_lookup/CMakeLists.txt ../src/lib/launchdetection/CMakeLists.txt ../src/lib/mathlib/CMakeLists.txt ../src/lib/mathlib/math/filter/CMakeLists.txt ../src/lib/rc/CMakeLists.txt ../src/lib/rc/rc_tests/CMakeLists.txt ../src/lib/runway_takeoff/CMakeLists.txt ../src/lib/tailsitter_recovery/CMakeLists.txt ../src/lib/terrain_estimation/CMakeLists.txt ../src/modules/attitude_estimator_q/CMakeLists.txt ../src/modules/commander/CMakeLists.txt ../src/modules/commander/commander_tests/CMakeLists.txt ../src/modules/controllib_test/CMakeLists.txt ../src/modules/dataman/CMakeLists.txt ../src/modules/ekf2/CMakeLists.txt ../src/modules/fw_att_control/CMakeLists.txt ../src/modules/fw_pos_control_l1/CMakeLists.txt ../src/modules/land_detector/CMakeLists.txt ../src/modules/local_position_estimator/CMakeLists.txt ../src/modules/logger/CMakeLists.txt ../src/modules/mavlink/CMakeLists.txt ../src/modules/mc_att_control/CMakeLists.txt ../src/modules/mc_pos_control/CMakeLists.txt ../src/modules/mc_pos_control/mc_pos_control_tests/CMakeLists.txt ../src/modules/navigator/CMakeLists.txt ../src/modules/param/CMakeLists.txt ../src/modules/position_estimator_inav/CMakeLists.txt ../src/modules/replay/CMakeLists.txt ../src/modules/sdlog2/CMakeLists.txt ../src/modules/sensors/CMakeLists.txt ../src/modules/simulator/CMakeLists.txt ../src/modules/systemlib/CMakeLists.txt ../src/modules/systemlib/mixer/CMakeLists.txt ../src/modules/uORB/CMakeLists.txt ../src/modules/uORB/uORB_tests/CMakeLists.txt ../src/modules/unit_test/CMakeLists.txt ../src/modules/vtol_att_control/CMakeLists.txt ../src/platforms/apps.cpp.in ../src/platforms/apps.h.in ../src/platforms/common/CMakeLists.txt ../src/platforms/posix/drivers/accelsim/CMakeLists.txt ../src/platforms/posix/drivers/adcsim/CMakeLists.txt ../src/platforms/posix/drivers/airspeedsim/CMakeLists.txt ../src/platforms/posix/drivers/barosim/CMakeLists.txt ../src/platforms/posix/drivers/gpssim/CMakeLists.txt ../src/platforms/posix/drivers/gyrosim/CMakeLists.txt ../src/platforms/posix/drivers/ledsim/CMakeLists.txt ../src/platforms/posix/drivers/rgbledsim/CMakeLists.txt ../src/platforms/posix/drivers/tonealrmsim/CMakeLists.txt ../src/platforms/posix/px4_layer/CMakeLists.txt ../src/platforms/posix/work_queue/CMakeLists.txt ../src/systemcmds/esc_calib/CMakeLists.txt ../src/systemcmds/mixer/CMakeLists.txt ../src/systemcmds/motor_ramp/CMakeLists.txt ../src/systemcmds/param/CMakeLists.txt ../src/systemcmds/perf/CMakeLists.txt ../src/systemcmds/reboot/CMakeLists.txt ../src/systemcmds/sd_bench/CMakeLists.txt ../src/systemcmds/tests/CMakeLists.txt ../src/systemcmds/top/CMakeLists.txt ../src/systemcmds/topic_listener/CMakeLists.txt ../src/systemcmds/ver/CMakeLists.txt /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeASMInformation.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeCInformation.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeCXXInformation.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeCommonLanguageInclude.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeGenericSystem.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeParseArguments.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeSystemSpecificInformation.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeSystemSpecificInitialize.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CPack.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CPackComponent.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Compiler/GNU-ASM.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Compiler/GNU-C.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Compiler/GNU-CXX.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Compiler/GNU.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/ExternalProject.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/FindPackageHandleStandardArgs.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/FindPackageMessage.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/FindPythonInterp.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/GNUInstallDirs.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Platform/Linux-GNU-C.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Platform/Linux-GNU-CXX.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Platform/Linux-GNU.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Platform/Linux.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Platform/UnixPaths.cmake /opt/cmake-3.4.3/share/cmake-3.4/Templates/CPackConfig.cmake.in CMakeCache.txt CMakeFiles/3.4.3/CMakeASMCompiler.cmake CMakeFiles/3.4.3/CMakeCCompiler.cmake CMakeFiles/3.4.3/CMakeCXXCompiler.cmake CMakeFiles/3.4.3/CMakeSystem.cmake external/tmp/sitl_gazebo/sitl_gazebo-cfgcmd.txt.in: phony
+build ../CMakeLists.txt ../cmake/common/px4_base.cmake ../cmake/configs/posix_sitl_default.cmake ../cmake/posix/px4_impl_posix.cmake ../cmake/templates/build_git_version.h.in ../cmake/toolchains/Toolchain-native.cmake ../msg/CMakeLists.txt ../src/drivers/boards/sitl/CMakeLists.txt ../src/drivers/device/CMakeLists.txt ../src/drivers/gps/CMakeLists.txt ../src/drivers/pwm_out_sim/CMakeLists.txt ../src/drivers/sf0x/sf0x_tests/CMakeLists.txt ../src/drivers/vmount/CMakeLists.txt ../src/examples/attitude_estimator_ekf/CMakeLists.txt ../src/examples/ekf_att_pos_estimator/CMakeLists.txt ../src/examples/fixedwing_control/CMakeLists.txt ../src/examples/mc_att_control_multiplatform/CMakeLists.txt ../src/examples/mc_pos_control_multiplatform/CMakeLists.txt ../src/examples/px4_simple_app/CMakeLists.txt ../src/firmware/posix/CMakeLists.txt ../src/lib/DriverFramework/cmake/df_common.cmake ../src/lib/DriverFramework/framework/CMakeLists.txt ../src/lib/DriverFramework/framework/src/CMakeLists.txt ../src/lib/controllib/CMakeLists.txt ../src/lib/conversion/CMakeLists.txt ../src/lib/ecl/CMakeLists.txt ../src/lib/external_lgpl/CMakeLists.txt ../src/lib/geo/CMakeLists.txt ../src/lib/geo_lookup/CMakeLists.txt ../src/lib/launchdetection/CMakeLists.txt ../src/lib/mathlib/CMakeLists.txt ../src/lib/mathlib/math/filter/CMakeLists.txt ../src/lib/rc/CMakeLists.txt ../src/lib/rc/rc_tests/CMakeLists.txt ../src/lib/runway_takeoff/CMakeLists.txt ../src/lib/tailsitter_recovery/CMakeLists.txt ../src/lib/terrain_estimation/CMakeLists.txt ../src/modules/attitude_estimator_q/CMakeLists.txt ../src/modules/commander/CMakeLists.txt ../src/modules/commander/commander_tests/CMakeLists.txt ../src/modules/controllib_test/CMakeLists.txt ../src/modules/dataman/CMakeLists.txt ../src/modules/ekf2/CMakeLists.txt ../src/modules/fw_att_control/CMakeLists.txt ../src/modules/fw_pos_control_l1/CMakeLists.txt ../src/modules/land_detector/CMakeLists.txt ../src/modules/local_position_estimator/CMakeLists.txt ../src/modules/logger/CMakeLists.txt ../src/modules/mavlink/CMakeLists.txt ../src/modules/mc_att_control/CMakeLists.txt ../src/modules/mc_pos_control/CMakeLists.txt ../src/modules/mc_pos_control/mc_pos_control_tests/CMakeLists.txt ../src/modules/navigator/CMakeLists.txt ../src/modules/param/CMakeLists.txt ../src/modules/position_estimator_inav/CMakeLists.txt ../src/modules/replay/CMakeLists.txt ../src/modules/sdlog2/CMakeLists.txt ../src/modules/sensors/CMakeLists.txt ../src/modules/simulator/CMakeLists.txt ../src/modules/systemlib/CMakeLists.txt ../src/modules/systemlib/mixer/CMakeLists.txt ../src/modules/uORB/CMakeLists.txt ../src/modules/uORB/uORB_tests/CMakeLists.txt ../src/modules/unit_test/CMakeLists.txt ../src/modules/vtol_att_control/CMakeLists.txt ../src/platforms/apps.cpp.in ../src/platforms/apps.h.in ../src/platforms/common/CMakeLists.txt ../src/platforms/posix/drivers/accelsim/CMakeLists.txt ../src/platforms/posix/drivers/adcsim/CMakeLists.txt ../src/platforms/posix/drivers/airspeedsim/CMakeLists.txt ../src/platforms/posix/drivers/barosim/CMakeLists.txt ../src/platforms/posix/drivers/gpssim/CMakeLists.txt ../src/platforms/posix/drivers/gyrosim/CMakeLists.txt ../src/platforms/posix/drivers/ledsim/CMakeLists.txt ../src/platforms/posix/drivers/rgbledsim/CMakeLists.txt ../src/platforms/posix/drivers/tonealrmsim/CMakeLists.txt ../src/platforms/posix/px4_layer/CMakeLists.txt ../src/platforms/posix/work_queue/CMakeLists.txt ../src/systemcmds/esc_calib/CMakeLists.txt ../src/systemcmds/mixer/CMakeLists.txt ../src/systemcmds/motor_ramp/CMakeLists.txt ../src/systemcmds/param/CMakeLists.txt ../src/systemcmds/perf/CMakeLists.txt ../src/systemcmds/reboot/CMakeLists.txt ../src/systemcmds/sd_bench/CMakeLists.txt ../src/systemcmds/tests/CMakeLists.txt ../src/systemcmds/top/CMakeLists.txt ../src/systemcmds/topic_listener/CMakeLists.txt ../src/systemcmds/ver/CMakeLists.txt /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeASMInformation.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeCInformation.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeCXXInformation.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeCommonLanguageInclude.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeGenericSystem.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeParseArguments.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeSystemSpecificInformation.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CMakeSystemSpecificInitialize.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CPack.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/CPackComponent.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Compiler/GNU-ASM.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Compiler/GNU-C.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Compiler/GNU-CXX.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Compiler/GNU.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/ExternalProject.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/FindPackageHandleStandardArgs.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/FindPackageMessage.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/FindPythonInterp.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/GNUInstallDirs.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Platform/Linux-GNU-C.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Platform/Linux-GNU-CXX.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Platform/Linux-GNU.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Platform/Linux.cmake /opt/cmake-3.4.3/share/cmake-3.4/Modules/Platform/UnixPaths.cmake /opt/cmake-3.4.3/share/cmake-3.4/Templates/CPackConfig.cmake.in CMakeCache.txt CMakeFiles/3.4.3/CMakeASMCompiler.cmake CMakeFiles/3.4.3/CMakeCCompiler.cmake CMakeFiles/3.4.3/CMakeCXXCompiler.cmake CMakeFiles/3.4.3/CMakeSystem.cmake external/tmp/sitl_gazebo/sitl_gazebo-cfgcmd.txt.in: phony
 
 #############################################
 # Clean all the built files.

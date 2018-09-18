@@ -1334,25 +1334,6 @@ rule C_STATIC_LIBRARY_LINKER__examples__px4_simple_app
 
 
 #############################################
-# Rule for compiling C files.
-
-rule C_COMPILER__examples__new_app
-  depfile = $DEP_FILE
-  deps = gcc
-  command = /usr/bin/cc  $DEFINES $INCLUDES $FLAGS -MMD -MT $out -MF $DEP_FILE -o $out   -c $in
-  description = Building C object $out
-
-
-#############################################
-# Rule for linking C static library.
-
-rule C_STATIC_LIBRARY_LINKER__examples__new_app
-  command = $PRE_LINK && /opt/cmake-3.4.3/bin/cmake -E remove $TARGET_FILE && /usr/bin/ar qc $TARGET_FILE $LINK_FLAGS $in && /usr/bin/ranlib $TARGET_FILE && $POST_BUILD
-  description = Linking C static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
 # Rule for compiling CXX files.
 
 rule CXX_COMPILER__examples__mc_att_control_multiplatform
