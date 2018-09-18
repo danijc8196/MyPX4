@@ -37,6 +37,7 @@ set(config_module_list
 	modules/commander
 	modules/dataman
 	modules/ekf2
+	modules/ekf2_control
 	modules/fw_att_control
 	modules/fw_pos_control_l1
 	modules/land_detector
