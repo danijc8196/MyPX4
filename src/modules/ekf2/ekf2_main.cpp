@@ -42,6 +42,7 @@
 
 #include "ekf2_main.hpp"
 
+/*
 #include <px4_config.h>
 #include <px4_defines.h>
 #include <px4_tasks.h>
@@ -66,7 +67,6 @@
 #include <mathlib/math/filter/LowPassFilter2p.hpp>
 #include <platforms/px4_defines.h>
 #include <drivers/drv_hrt.h>
-#include <controllib/uorb/blocks.hpp>
 
 #include <uORB/topics/sensor_combined.h>
 #include <uORB/topics/vehicle_gps_position.h>
@@ -87,9 +87,14 @@
 #include <uORB/topics/vehicle_status.h>
 
 #include <ecl/EKF/ekf.h>
-
+*/
 
 extern "C" __EXPORT int ekf2_main(int argc, char *argv[]);
+
+namespace ekf2
+{
+	Ekf2 *instance = nullptr;
+}
 
 Ekf2::Ekf2():
 	SuperBlock(NULL, "EKF"),
@@ -196,7 +201,7 @@ Ekf2::~Ekf2()
 
 }
 
-void set_replay_mode(bool replay)
+void Ekf2::set_replay_mode(bool replay)
 {
     _replay_mode = replay;
 }
@@ -956,7 +961,7 @@ int Ekf2::start()
 	return OK;
 }
 
-void exit()
+void Ekf2::exit()
 {
     _task_should_exit = true;
 }

@@ -38,10 +38,51 @@
 
 #pragma once
 
-namespace ekf2
-{
-Ekf2 *instance = nullptr;
-}
+#include <px4_config.h>
+#include <px4_defines.h>
+#include <px4_tasks.h>
+#include <px4_posix.h>
+#include <px4_time.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <math.h>
+#include <poll.h>
+#include <time.h>
+#include <float.h>
+
+#include <arch/board/board.h>
+#include <systemlib/param/param.h>
+#include <systemlib/err.h>
+#include <systemlib/systemlib.h>
+#include <mathlib/mathlib.h>
+#include <mathlib/math/filter/LowPassFilter2p.hpp>
+#include <platforms/px4_defines.h>
+#include <drivers/drv_hrt.h>
+#include <controllib/uorb/blocks.hpp>
+
+#include <uORB/topics/sensor_combined.h>
+#include <uORB/topics/vehicle_gps_position.h>
+#include <uORB/topics/airspeed.h>
+#include <uORB/topics/vehicle_attitude.h>
+#include <uORB/topics/vehicle_local_position.h>
+#include <uORB/topics/vision_position_estimate.h>
+#include <uORB/topics/control_state.h>
+#include <uORB/topics/vehicle_global_position.h>
+#include <uORB/topics/wind_estimate.h>
+#include <uORB/topics/estimator_status.h>
+#include <uORB/topics/ekf2_innovations.h>
+#include <uORB/topics/actuator_armed.h>
+#include <uORB/topics/ekf2_replay.h>
+#include <uORB/topics/optical_flow.h>
+#include <uORB/topics/distance_sensor.h>
+#include <uORB/topics/vehicle_land_detected.h>
+#include <uORB/topics/vehicle_status.h>
+
+#include <ecl/EKF/ekf.h>
 
 
 class Ekf2 : public control::SuperBlock
