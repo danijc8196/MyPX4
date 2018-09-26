@@ -87,14 +87,27 @@
 
 extern "C" __EXPORT int ekf2_main(int argc, char *argv[]);
 
+/** Mavlink daemon stuff */
+static bool    thread_running = false;
+static bool    thread_should_exit = false;
+//static int     control_daemon = -1;
+int start_daemon();
+int mavlink_daemon(int argc, char *argv[]);
+
+/** Control functions */
+int do_start(int argc, char *argv[]);
+int do_stop();
+int do_reboot();
+void do_status();
+void do_start_daemon();
+void do_stop_daemon();
 
 class Ekf2;
 
 namespace ekf2
 {
-Ekf2 *instance = nullptr;
+    Ekf2 *instance = nullptr;
 }
-
 
 class Ekf2 : public control::SuperBlock
 {
@@ -122,9 +135,10 @@ public:
 
 	void		task_main();
 
-	void print_status();
+        void print_status(bool ekf_running);
 
 	void exit() { _task_should_exit = true; }
+
 
 private:
 	static constexpr float _dt_max = 0.02;
@@ -393,10 +407,19 @@ Ekf2::~Ekf2()
 
 }
 
-void Ekf2::print_status()
+void Ekf2::print_status(bool ekf_running)
 {
+    if (ekf_running) {
+        warnx("Mavlink daemon running %s", (thread_running ? "[YES]" : "[NO]"));
+        warnx("Estimator running %s", (ekf_running ? "[YES]" : "[NO]"));
 	warnx("local position OK %s", (_ekf.local_position_is_valid()) ? "[YES]" : "[NO]");
 	warnx("global position OK %s", (_ekf.global_position_is_valid()) ? "[YES]" : "[NO]");
+
+    } else {
+        warnx("Mavlink daemon running %s", (thread_running ? "[YES]" : "[NO]"));
+        warnx("Estimator running %s", (ekf_running ? "[YES]" : "[NO]"));
+
+    }
 }
 
 void Ekf2::task_main()
@@ -1148,95 +1171,137 @@ int Ekf2::start()
 	return OK;
 }
 
+int do_start(int argc, char *argv[])
+{
+    if (ekf2::instance != nullptr) {
+            PX4_WARN("already running");
+            return 1;
+    }
+
+    ekf2::instance = new Ekf2();
+
+    if (ekf2::instance == nullptr) {
+            PX4_WARN("alloc failed");
+            return 1;
+    }
+
+    if (argc >= 3) {
+            if (!strcmp(argv[2], "--replay")) {
+                    ekf2::instance->set_replay_mode(true);
+            }
+    }
+
+    if (OK != ekf2::instance->start()) {
+            delete ekf2::instance;
+            ekf2::instance = nullptr;
+            PX4_WARN("start failed");
+            return 1;
+    }
+
+    return 0;
+}
+
+int do_stop()
+{
+    if (ekf2::instance == nullptr) {
+            PX4_WARN("not running");
+            return 1;
+    }
+
+    ekf2::instance->exit();
+
+    // wait for the destruction of the instance
+    while (ekf2::instance != nullptr) {
+            usleep(50000);
+    }
+
+    return 0;
+}
+
+int do_reboot()
+{
+    if (ekf2::instance == nullptr) {
+
+        PX4_WARN("Module Ekf2 is not running. Starting ekf2...");
+        ekf2::instance = new Ekf2();
+        if (OK != ekf2::instance->start()) {
+                delete ekf2::instance;
+                ekf2::instance = nullptr;
+                PX4_WARN("start failed");
+                return 1;
+        }
+        return 0;
+
+    } else {
+
+        PX4_WARN("Stopping ekf2");
+        ekf2::instance->exit();
+
+        // wait for the destruction of the instance
+        while (ekf2::instance != nullptr) {
+                usleep(50000);
+        }
+
+        PX4_WARN("Restarting ekf2");
+        ekf2::instance = new Ekf2();
+        if (OK != ekf2::instance->start()) {
+                delete ekf2::instance;
+                ekf2::instance = nullptr;
+                PX4_WARN("start failed");
+                return 1;
+        }
+        return 0;
+
+    }
+}
+
+void do_status()
+{
+    if (ekf2::instance) {
+            // ekf2 running
+            ekf2::instance->print_status(true);
+
+    } else {
+            // ekf2 not running
+            ekf2::instance->print_status(false);
+    }
+
+    return;
+}
+
+void do_start_daemon()
+{
+    thread_should_exit = false;
+    start_daemon();
+    return;
+}
+
+void do_stop_daemon()
+{
+    thread_should_exit = true;
+    return;
+}
+
+
 int ekf2_main(int argc, char *argv[])
 {
 	if (argc < 2) {
-                PX4_WARN("usage: ekf2 {start|stop|reboot|status}");
+                PX4_WARN("usage: ekf2 {start|stop|reboot|status|start_daemon|stop_daemon}");
 		return 1;
 	}
 
 	if (!strcmp(argv[1], "start")) {
-
-		if (ekf2::instance != nullptr) {
-			PX4_WARN("already running");
-			return 1;
-		}
-
-		ekf2::instance = new Ekf2();
-
-		if (ekf2::instance == nullptr) {
-			PX4_WARN("alloc failed");
-			return 1;
-		}
-
-		if (argc >= 3) {
-			if (!strcmp(argv[2], "--replay")) {
-				ekf2::instance->set_replay_mode(true);
-			}
-		}
-
-		if (OK != ekf2::instance->start()) {
-			delete ekf2::instance;
-			ekf2::instance = nullptr;
-			PX4_WARN("start failed");
-			return 1;
-		}
-
-		return 0;
+                return do_start(argc, argv);
 	}
 
 	if (!strcmp(argv[1], "stop")) {
-		if (ekf2::instance == nullptr) {
-			PX4_WARN("not running");
-			return 1;
-		}
-
-		ekf2::instance->exit();
-
-		// wait for the destruction of the instance
-		while (ekf2::instance != nullptr) {
-			usleep(50000);
-		}
-
-		return 0;
+                return do_stop();
 	}
 
         if (!strcmp(argv[1], "reboot")) {
-            if (ekf2::instance == nullptr) {
-
-                PX4_WARN("Module Ekf2 is not running. Starting ekf2...");
-                ekf2::instance = new Ekf2();
-                if (OK != ekf2::instance->start()) {
-                        delete ekf2::instance;
-                        ekf2::instance = nullptr;
-                        PX4_WARN("start failed");
-                        return 1;
-                }
-                return 0;
-
-            } else {
-
-                PX4_WARN("Stopping ekf2");
-                ekf2::instance->exit();
-
-                // wait for the destruction of the instance
-                while (ekf2::instance != nullptr) {
-                        usleep(50000);
-                }
-
-                PX4_WARN("Restarting ekf2");
-                ekf2::instance = new Ekf2();
-                if (OK != ekf2::instance->start()) {
-                        delete ekf2::instance;
-                        ekf2::instance = nullptr;
-                        PX4_WARN("start failed");
-                        return 1;
-                }
-                return 0;
-
-            }
+                return do_reboot();
         }
-
+/*
 	if (!strcmp(argv[1], "print")) {
 		if (ekf2::instance != nullptr) {
 
@@ -1245,19 +1310,70 @@ int ekf2_main(int argc, char *argv[])
 
 		return 1;
 	}
-
+*/
 	if (!strcmp(argv[1], "status")) {
-		if (ekf2::instance) {
-			PX4_WARN("running");
-			ekf2::instance->print_status();
-			return 0;
-
-		} else {
-			PX4_WARN("not running");
-			return 1;
-		}
+                do_status();
+                return 0;
 	}
+
+        if (!strcmp(argv[1], "start_daemon")) {
+                do_start_daemon();
+                return 0;
+        }
+
+        if (!strcmp(argv[1], "stop_daemon")) {
+                do_stop_daemon();
+                return 0;
+        }
 
 	PX4_WARN("unrecognized command");
 	return 1;
+}
+
+int start_daemon()
+{
+    px4_task_spawn_cmd("mavlink_deamon",
+                         SCHED_DEFAULT,
+                         SCHED_PRIORITY_MAX - 5,
+                         2500,
+                         mavlink_daemon,
+                         nullptr);
+
+    return OK;
+}
+
+int mavlink_daemon(int argc, char *argv[]) {
+
+
+    /**
+     * CODIGO DE PRUEBA: FUNCIONA!!!!
+     *
+     * Proximos pasos:
+     *      0. Verse el codigo de mavlink, como funciona y como se utiliza + ver como definir mensajes mavlink
+     *      1. Definir mensajes mavlink custom
+     *      2. Abrir una conexion mavlink y esperar a recibir los comandos defindios
+     *      3. Segun el mensaje que llegue, llamamos a una do_funcion o a otra
+     *      4. Recordar añadir en el iris la linea para arrancar el daemon y asi poder trabajar desde mavlink
+     */
+
+
+
+    PX4_WARN("Mavlink daemon starting . . .\n");
+
+    thread_running = true;
+
+    do_start(0, nullptr);
+    sleep(10);
+
+    while (!thread_should_exit) {
+            PX4_WARN("Hello daemon!\n");
+            do_reboot();
+            sleep(20);
+    }
+
+    PX4_WARN("Mavlink daemon exiting . . .\n");
+
+    thread_running = false;
+
+    return 0;
 }
