@@ -6203,6 +6203,13 @@ build src/firmware/posix/run_config: phony src/firmware/posix/CMakeFiles/run_con
 build src/firmware/posix/sitl_gazebo: phony src/firmware/posix/CMakeFiles/sitl_gazebo src/firmware/posix/CMakeFiles/sitl_gazebo-complete external/Stamp/sitl_gazebo/sitl_gazebo-done external/Stamp/sitl_gazebo/sitl_gazebo-install external/Stamp/sitl_gazebo/sitl_gazebo-mkdir external/Stamp/sitl_gazebo/sitl_gazebo-download external/Stamp/sitl_gazebo/sitl_gazebo-update external/Stamp/sitl_gazebo/sitl_gazebo-patch external/Stamp/sitl_gazebo/sitl_gazebo-configure external/Stamp/sitl_gazebo/sitl_gazebo-build
 
 #############################################
+# Custom command for src/firmware/posix/CMakeFiles/gazebo___lldb
+
+build src/firmware/posix/CMakeFiles/gazebo___lldb: CUSTOM_COMMAND || src/firmware/posix/px4 src/firmware/posix/sitl_gazebo
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe lldb gazebo none /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
+  pool = console
+
+#############################################
 # Custom command for src/firmware/posix/CMakeFiles/run_config
 
 build src/firmware/posix/CMakeFiles/run_config: CUSTOM_COMMAND || src/firmware/posix/px4
@@ -6257,32 +6264,18 @@ build external/Stamp/sitl_gazebo/sitl_gazebo-patch: CUSTOM_COMMAND external/Stam
   DESC = No patch step for 'sitl_gazebo'
 
 #############################################
+# Custom command for src/firmware/posix/CMakeFiles/list_vmd_make_targets
+
+build src/firmware/posix/CMakeFiles/list_vmd_make_targets: CUSTOM_COMMAND
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix && sh -c "printf \"none\\nnone_iris\\nnone_iris_opt_flow\\nnone_tailsitter\\nnone_standard_vtol\\nnone_plane\\nnone_solo\\nnone_typhoon_h480\\nnone___gdb\\nnone_iris_gdb\\nnone_iris_opt_flow_gdb\\nnone_tailsitter_gdb\\nnone_standard_vtol_gdb\\nnone_plane_gdb\\nnone_solo_gdb\\nnone_typhoon_h480_gdb\\nnone___lldb\\nnone_iris_lldb\\nnone_iris_opt_flow_lldb\\nnone_tailsitter_lldb\\nnone_standard_vtol_lldb\\nnone_plane_lldb\\nnone_solo_lldb\\nnone_typhoon_h480_lldb\\nnone___ddd\\nnone_iris_ddd\\nnone_iris_opt_flow_ddd\\nnone_tailsitter_ddd\\nnone_standard_vtol_ddd\\nnone_plane_ddd\\nnone_solo_ddd\\nnone_typhoon_h480_ddd\\nnone___valgrind\\nnone_iris_valgrind\\nnone_iris_opt_flow_valgrind\\nnone_tailsitter_valgrind\\nnone_standard_vtol_valgrind\\nnone_plane_valgrind\\nnone_solo_valgrind\\nnone_typhoon_h480_valgrind\\njmavsim\\njmavsim_iris\\njmavsim_iris_opt_flow\\njmavsim_tailsitter\\njmavsim_standard_vtol\\njmavsim_plane\\njmavsim_solo\\njmavsim_typhoon_h480\\njmavsim___gdb\\njmavsim_iris_gdb\\njmavsim_iris_opt_flow_gdb\\njmavsim_tailsitter_gdb\\njmavsim_standard_vtol_gdb\\njmavsim_plane_gdb\\njmavsim_solo_gdb\\njmavsim_typhoon_h480_gdb\\njmavsim___lldb\\njmavsim_iris_lldb\\njmavsim_iris_opt_flow_lldb\\njmavsim_tailsitter_lldb\\njmavsim_standard_vtol_lldb\\njmavsim_plane_lldb\\njmavsim_solo_lldb\\njmavsim_typhoon_h480_lldb\\njmavsim___ddd\\njmavsim_iris_ddd\\njmavsim_iris_opt_flow_ddd\\njmavsim_tailsitter_ddd\\njmavsim_standard_vtol_ddd\\njmavsim_plane_ddd\\njmavsim_solo_ddd\\njmavsim_typhoon_h480_ddd\\njmavsim___valgrind\\njmavsim_iris_valgrind\\njmavsim_iris_opt_flow_valgrind\\njmavsim_tailsitter_valgrind\\njmavsim_standard_vtol_valgrind\\njmavsim_plane_valgrind\\njmavsim_solo_valgrind\\njmavsim_typhoon_h480_valgrind\\ngazebo\\ngazebo_iris\\ngazebo_iris_opt_flow\\ngazebo_tailsitter\\ngazebo_standard_vtol\\ngazebo_plane\\ngazebo_solo\\ngazebo_typhoon_h480\\ngazebo___gdb\\ngazebo_iris_gdb\\ngazebo_iris_opt_flow_gdb\\ngazebo_tailsitter_gdb\\ngazebo_standard_vtol_gdb\\ngazebo_plane_gdb\\ngazebo_solo_gdb\\ngazebo_typhoon_h480_gdb\\ngazebo___lldb\\ngazebo_iris_lldb\\ngazebo_iris_opt_flow_lldb\\ngazebo_tailsitter_lldb\\ngazebo_standard_vtol_lldb\\ngazebo_plane_lldb\\ngazebo_solo_lldb\\ngazebo_typhoon_h480_lldb\\ngazebo___ddd\\ngazebo_iris_ddd\\ngazebo_iris_opt_flow_ddd\\ngazebo_tailsitter_ddd\\ngazebo_standard_vtol_ddd\\ngazebo_plane_ddd\\ngazebo_solo_ddd\\ngazebo_typhoon_h480_ddd\\ngazebo___valgrind\\ngazebo_iris_valgrind\\ngazebo_iris_opt_flow_valgrind\\ngazebo_tailsitter_valgrind\\ngazebo_standard_vtol_valgrind\\ngazebo_plane_valgrind\\ngazebo_solo_valgrind\\ngazebo_typhoon_h480_valgrind\\nreplay\\nreplay_iris\\nreplay_iris_opt_flow\\nreplay_tailsitter\\nreplay_standard_vtol\\nreplay_plane\\nreplay_solo\\nreplay_typhoon_h480\\nreplay___gdb\\nreplay_iris_gdb\\nreplay_iris_opt_flow_gdb\\nreplay_tailsitter_gdb\\nreplay_standard_vtol_gdb\\nreplay_plane_gdb\\nreplay_solo_gdb\\nreplay_typhoon_h480_gdb\\nreplay___lldb\\nreplay_iris_lldb\\nreplay_iris_opt_flow_lldb\\nreplay_tailsitter_lldb\\nreplay_standard_vtol_lldb\\nreplay_plane_lldb\\nreplay_solo_lldb\\nreplay_typhoon_h480_lldb\\nreplay___ddd\\nreplay_iris_ddd\\nreplay_iris_opt_flow_ddd\\nreplay_tailsitter_ddd\\nreplay_standard_vtol_ddd\\nreplay_plane_ddd\\nreplay_solo_ddd\\nreplay_typhoon_h480_ddd\\nreplay___valgrind\\nreplay_iris_valgrind\\nreplay_iris_opt_flow_valgrind\\nreplay_tailsitter_valgrind\\nreplay_standard_vtol_valgrind\\nreplay_plane_valgrind\\nreplay_solo_valgrind\\nreplay_typhoon_h480_valgrind\\n\""
+  DESC = List of acceptable 'posix_sitl_default' <viewer_model_debugger> targets:
+
+#############################################
 # Custom command for external/Stamp/sitl_gazebo/sitl_gazebo-configure
 
 build external/Stamp/sitl_gazebo/sitl_gazebo-configure: CUSTOM_COMMAND external/tmp/sitl_gazebo/sitl_gazebo-cfgcmd.txt external/Stamp/sitl_gazebo/sitl_gazebo-update external/Stamp/sitl_gazebo/sitl_gazebo-patch
   COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/build_gazebo && /opt/cmake-3.4.3/bin/cmake -DCMAKE_INSTALL_PREFIX=/usr -GNinja /home/dani/ROS_WS/src/MyPX4/Tools/sitl_gazebo && /opt/cmake-3.4.3/bin/cmake -E touch /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/external/Stamp/sitl_gazebo/sitl_gazebo-configure
   DESC = Performing configure step for 'sitl_gazebo'
-
-#############################################
-# Custom command for src/firmware/posix/CMakeFiles/none
-
-build src/firmware/posix/CMakeFiles/none: CUSTOM_COMMAND || src/firmware/posix/px4
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe none none none /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
-  pool = console
-
-#############################################
-# Custom command for src/firmware/posix/CMakeFiles/none___gdb
-
-build src/firmware/posix/CMakeFiles/none___gdb: CUSTOM_COMMAND || src/firmware/posix/px4
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe gdb none none /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
-  pool = console
-
-#############################################
-# Custom command for src/firmware/posix/CMakeFiles/none_iris
-
-build src/firmware/posix/CMakeFiles/none_iris: CUSTOM_COMMAND || src/firmware/posix/px4
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe none none iris /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
-  pool = console
 
 #############################################
 # Custom command for external/Stamp/sitl_gazebo/sitl_gazebo-build
@@ -6292,11 +6285,25 @@ build external/Stamp/sitl_gazebo/sitl_gazebo-build: CUSTOM_COMMAND external/Stam
   DESC = Performing build step for 'sitl_gazebo'
 
 #############################################
+# Custom command for src/firmware/posix/CMakeFiles/none
+
+build src/firmware/posix/CMakeFiles/none: CUSTOM_COMMAND || src/firmware/posix/px4
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe none none none /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
+  pool = console
+
+#############################################
 # Custom command for external/Stamp/sitl_gazebo/sitl_gazebo-install
 
 build external/Stamp/sitl_gazebo/sitl_gazebo-install: CUSTOM_COMMAND external/Stamp/sitl_gazebo/sitl_gazebo-build
   COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/build_gazebo && /opt/cmake-3.4.3/bin/cmake -E echo_append && /opt/cmake-3.4.3/bin/cmake -E touch /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/external/Stamp/sitl_gazebo/sitl_gazebo-install
   DESC = No install step for 'sitl_gazebo'
+
+#############################################
+# Custom command for src/firmware/posix/CMakeFiles/none_iris
+
+build src/firmware/posix/CMakeFiles/none_iris: CUSTOM_COMMAND || src/firmware/posix/px4
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe none none iris /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
+  pool = console
 
 #############################################
 # Custom command for src/firmware/posix/CMakeFiles/none_iris_opt_flow
@@ -6331,6 +6338,20 @@ build src/firmware/posix/CMakeFiles/none_solo: CUSTOM_COMMAND || src/firmware/po
 
 build src/firmware/posix/CMakeFiles/none_typhoon_h480: CUSTOM_COMMAND || src/firmware/posix/px4
   COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe none none typhoon_h480 /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
+  pool = console
+
+#############################################
+# Custom command for src/firmware/posix/CMakeFiles/none___ddd
+
+build src/firmware/posix/CMakeFiles/none___ddd: CUSTOM_COMMAND || src/firmware/posix/px4
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe ddd none none /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
+  pool = console
+
+#############################################
+# Custom command for src/firmware/posix/CMakeFiles/none___gdb
+
+build src/firmware/posix/CMakeFiles/none___gdb: CUSTOM_COMMAND || src/firmware/posix/px4
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe gdb none none /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
   pool = console
 
 #############################################
@@ -6418,13 +6439,6 @@ build src/firmware/posix/CMakeFiles/none_standard_vtol_lldb: CUSTOM_COMMAND || s
   pool = console
 
 #############################################
-# Custom command for src/firmware/posix/CMakeFiles/jmavsim_standard_vtol_gdb
-
-build src/firmware/posix/CMakeFiles/jmavsim_standard_vtol_gdb: CUSTOM_COMMAND || src/firmware/posix/px4
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe gdb jmavsim standard_vtol /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
-  pool = console
-
-#############################################
 # Custom command for src/firmware/posix/CMakeFiles/none_plane_lldb
 
 build src/firmware/posix/CMakeFiles/none_plane_lldb: CUSTOM_COMMAND || src/firmware/posix/px4
@@ -6443,13 +6457,6 @@ build src/firmware/posix/CMakeFiles/none_solo_lldb: CUSTOM_COMMAND || src/firmwa
 
 build src/firmware/posix/CMakeFiles/none_typhoon_h480_lldb: CUSTOM_COMMAND || src/firmware/posix/px4
   COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe lldb none typhoon_h480 /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
-  pool = console
-
-#############################################
-# Custom command for src/firmware/posix/CMakeFiles/none___ddd
-
-build src/firmware/posix/CMakeFiles/none___ddd: CUSTOM_COMMAND || src/firmware/posix/px4
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe ddd none none /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
   pool = console
 
 #############################################
@@ -6593,6 +6600,13 @@ build src/firmware/posix/CMakeFiles/jmavsim_standard_vtol: CUSTOM_COMMAND || src
   pool = console
 
 #############################################
+# Custom command for src/firmware/posix/CMakeFiles/gazebo_plane_gdb
+
+build src/firmware/posix/CMakeFiles/gazebo_plane_gdb: CUSTOM_COMMAND || src/firmware/posix/px4 src/firmware/posix/sitl_gazebo
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe gdb gazebo plane /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
+  pool = console
+
+#############################################
 # Custom command for src/firmware/posix/CMakeFiles/jmavsim_plane
 
 build src/firmware/posix/CMakeFiles/jmavsim_plane: CUSTOM_COMMAND || src/firmware/posix/px4
@@ -6639,6 +6653,13 @@ build src/firmware/posix/CMakeFiles/jmavsim_iris_opt_flow_gdb: CUSTOM_COMMAND ||
 
 build src/firmware/posix/CMakeFiles/jmavsim_tailsitter_gdb: CUSTOM_COMMAND || src/firmware/posix/px4
   COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe gdb jmavsim tailsitter /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
+  pool = console
+
+#############################################
+# Custom command for src/firmware/posix/CMakeFiles/jmavsim_standard_vtol_gdb
+
+build src/firmware/posix/CMakeFiles/jmavsim_standard_vtol_gdb: CUSTOM_COMMAND || src/firmware/posix/px4
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe gdb jmavsim standard_vtol /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
   pool = console
 
 #############################################
@@ -6887,13 +6908,6 @@ build src/firmware/posix/CMakeFiles/gazebo_typhoon_h480: CUSTOM_COMMAND || src/f
   pool = console
 
 #############################################
-# Custom command for src/firmware/posix/CMakeFiles/gazebo___lldb
-
-build src/firmware/posix/CMakeFiles/gazebo___lldb: CUSTOM_COMMAND || src/firmware/posix/px4 src/firmware/posix/sitl_gazebo
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe lldb gazebo none /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
-  pool = console
-
-#############################################
 # Custom command for src/firmware/posix/CMakeFiles/gazebo___gdb
 
 build src/firmware/posix/CMakeFiles/gazebo___gdb: CUSTOM_COMMAND || src/firmware/posix/px4 src/firmware/posix/sitl_gazebo
@@ -6929,17 +6943,17 @@ build src/firmware/posix/CMakeFiles/gazebo_standard_vtol_gdb: CUSTOM_COMMAND || 
   pool = console
 
 #############################################
-# Custom command for src/firmware/posix/CMakeFiles/gazebo_plane_gdb
-
-build src/firmware/posix/CMakeFiles/gazebo_plane_gdb: CUSTOM_COMMAND || src/firmware/posix/px4 src/firmware/posix/sitl_gazebo
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe gdb gazebo plane /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
-  pool = console
-
-#############################################
 # Custom command for src/firmware/posix/CMakeFiles/gazebo_solo_gdb
 
 build src/firmware/posix/CMakeFiles/gazebo_solo_gdb: CUSTOM_COMMAND || src/firmware/posix/px4 src/firmware/posix/sitl_gazebo
   COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe gdb gazebo solo /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
+  pool = console
+
+#############################################
+# Custom command for src/firmware/posix/CMakeFiles/gazebo___ddd
+
+build src/firmware/posix/CMakeFiles/gazebo___ddd: CUSTOM_COMMAND || src/firmware/posix/px4 src/firmware/posix/sitl_gazebo
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe ddd gazebo none /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
   pool = console
 
 #############################################
@@ -6999,20 +7013,6 @@ build src/firmware/posix/CMakeFiles/gazebo_typhoon_h480_lldb: CUSTOM_COMMAND || 
   pool = console
 
 #############################################
-# Custom command for src/firmware/posix/CMakeFiles/gazebo___valgrind
-
-build src/firmware/posix/CMakeFiles/gazebo___valgrind: CUSTOM_COMMAND || src/firmware/posix/px4 src/firmware/posix/sitl_gazebo
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe valgrind gazebo none /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
-  pool = console
-
-#############################################
-# Custom command for src/firmware/posix/CMakeFiles/gazebo___ddd
-
-build src/firmware/posix/CMakeFiles/gazebo___ddd: CUSTOM_COMMAND || src/firmware/posix/px4 src/firmware/posix/sitl_gazebo
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe ddd gazebo none /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
-  pool = console
-
-#############################################
 # Custom command for src/firmware/posix/CMakeFiles/gazebo_iris_ddd
 
 build src/firmware/posix/CMakeFiles/gazebo_iris_ddd: CUSTOM_COMMAND || src/firmware/posix/px4 src/firmware/posix/sitl_gazebo
@@ -7062,6 +7062,13 @@ build src/firmware/posix/CMakeFiles/gazebo_typhoon_h480_ddd: CUSTOM_COMMAND || s
   pool = console
 
 #############################################
+# Custom command for src/firmware/posix/CMakeFiles/gazebo___valgrind
+
+build src/firmware/posix/CMakeFiles/gazebo___valgrind: CUSTOM_COMMAND || src/firmware/posix/px4 src/firmware/posix/sitl_gazebo
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe valgrind gazebo none /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
+  pool = console
+
+#############################################
 # Custom command for src/firmware/posix/CMakeFiles/gazebo_iris_valgrind
 
 build src/firmware/posix/CMakeFiles/gazebo_iris_valgrind: CUSTOM_COMMAND || src/firmware/posix/px4 src/firmware/posix/sitl_gazebo
@@ -7108,13 +7115,6 @@ build src/firmware/posix/CMakeFiles/gazebo_solo_valgrind: CUSTOM_COMMAND || src/
 
 build src/firmware/posix/CMakeFiles/gazebo_typhoon_h480_valgrind: CUSTOM_COMMAND || src/firmware/posix/px4 src/firmware/posix/sitl_gazebo
   COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe valgrind gazebo typhoon_h480 /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
-  pool = console
-
-#############################################
-# Custom command for src/firmware/posix/CMakeFiles/replay___gdb
-
-build src/firmware/posix/CMakeFiles/replay___gdb: CUSTOM_COMMAND || src/firmware/posix/px4
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe gdb replay none /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
   pool = console
 
 #############################################
@@ -7171,6 +7171,13 @@ build src/firmware/posix/CMakeFiles/replay_solo: CUSTOM_COMMAND || src/firmware/
 
 build src/firmware/posix/CMakeFiles/replay_typhoon_h480: CUSTOM_COMMAND || src/firmware/posix/px4
   COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe none replay typhoon_h480 /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
+  pool = console
+
+#############################################
+# Custom command for src/firmware/posix/CMakeFiles/replay___gdb
+
+build src/firmware/posix/CMakeFiles/replay___gdb: CUSTOM_COMMAND || src/firmware/posix/px4
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe gdb replay none /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
   pool = console
 
 #############################################
@@ -7349,6 +7356,20 @@ build src/firmware/posix/CMakeFiles/replay_iris_valgrind: CUSTOM_COMMAND || src/
   pool = console
 
 #############################################
+# Custom command for src/firmware/posix/CMakeFiles/replay_standard_vtol_valgrind
+
+build src/firmware/posix/CMakeFiles/replay_standard_vtol_valgrind: CUSTOM_COMMAND || src/firmware/posix/px4
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe valgrind replay standard_vtol /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
+  pool = console
+
+#############################################
+# Custom command for src/firmware/posix/CMakeFiles/replay_typhoon_h480_valgrind
+
+build src/firmware/posix/CMakeFiles/replay_typhoon_h480_valgrind: CUSTOM_COMMAND || src/firmware/posix/px4
+  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe valgrind replay typhoon_h480 /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
+  pool = console
+
+#############################################
 # Custom command for src/firmware/posix/CMakeFiles/replay_iris_opt_flow_valgrind
 
 build src/firmware/posix/CMakeFiles/replay_iris_opt_flow_valgrind: CUSTOM_COMMAND || src/firmware/posix/px4
@@ -7363,13 +7384,6 @@ build src/firmware/posix/CMakeFiles/replay_tailsitter_valgrind: CUSTOM_COMMAND |
   pool = console
 
 #############################################
-# Custom command for src/firmware/posix/CMakeFiles/replay_standard_vtol_valgrind
-
-build src/firmware/posix/CMakeFiles/replay_standard_vtol_valgrind: CUSTOM_COMMAND || src/firmware/posix/px4
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe valgrind replay standard_vtol /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
-  pool = console
-
-#############################################
 # Custom command for src/firmware/posix/CMakeFiles/replay_plane_valgrind
 
 build src/firmware/posix/CMakeFiles/replay_plane_valgrind: CUSTOM_COMMAND || src/firmware/posix/px4
@@ -7381,20 +7395,6 @@ build src/firmware/posix/CMakeFiles/replay_plane_valgrind: CUSTOM_COMMAND || src
 
 build src/firmware/posix/CMakeFiles/replay_solo_valgrind: CUSTOM_COMMAND || src/firmware/posix/px4
   COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe valgrind replay solo /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
-  pool = console
-
-#############################################
-# Custom command for src/firmware/posix/CMakeFiles/list_vmd_make_targets
-
-build src/firmware/posix/CMakeFiles/list_vmd_make_targets: CUSTOM_COMMAND
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix && sh -c "printf \"none\\nnone_iris\\nnone_iris_opt_flow\\nnone_tailsitter\\nnone_standard_vtol\\nnone_plane\\nnone_solo\\nnone_typhoon_h480\\nnone___gdb\\nnone_iris_gdb\\nnone_iris_opt_flow_gdb\\nnone_tailsitter_gdb\\nnone_standard_vtol_gdb\\nnone_plane_gdb\\nnone_solo_gdb\\nnone_typhoon_h480_gdb\\nnone___lldb\\nnone_iris_lldb\\nnone_iris_opt_flow_lldb\\nnone_tailsitter_lldb\\nnone_standard_vtol_lldb\\nnone_plane_lldb\\nnone_solo_lldb\\nnone_typhoon_h480_lldb\\nnone___ddd\\nnone_iris_ddd\\nnone_iris_opt_flow_ddd\\nnone_tailsitter_ddd\\nnone_standard_vtol_ddd\\nnone_plane_ddd\\nnone_solo_ddd\\nnone_typhoon_h480_ddd\\nnone___valgrind\\nnone_iris_valgrind\\nnone_iris_opt_flow_valgrind\\nnone_tailsitter_valgrind\\nnone_standard_vtol_valgrind\\nnone_plane_valgrind\\nnone_solo_valgrind\\nnone_typhoon_h480_valgrind\\njmavsim\\njmavsim_iris\\njmavsim_iris_opt_flow\\njmavsim_tailsitter\\njmavsim_standard_vtol\\njmavsim_plane\\njmavsim_solo\\njmavsim_typhoon_h480\\njmavsim___gdb\\njmavsim_iris_gdb\\njmavsim_iris_opt_flow_gdb\\njmavsim_tailsitter_gdb\\njmavsim_standard_vtol_gdb\\njmavsim_plane_gdb\\njmavsim_solo_gdb\\njmavsim_typhoon_h480_gdb\\njmavsim___lldb\\njmavsim_iris_lldb\\njmavsim_iris_opt_flow_lldb\\njmavsim_tailsitter_lldb\\njmavsim_standard_vtol_lldb\\njmavsim_plane_lldb\\njmavsim_solo_lldb\\njmavsim_typhoon_h480_lldb\\njmavsim___ddd\\njmavsim_iris_ddd\\njmavsim_iris_opt_flow_ddd\\njmavsim_tailsitter_ddd\\njmavsim_standard_vtol_ddd\\njmavsim_plane_ddd\\njmavsim_solo_ddd\\njmavsim_typhoon_h480_ddd\\njmavsim___valgrind\\njmavsim_iris_valgrind\\njmavsim_iris_opt_flow_valgrind\\njmavsim_tailsitter_valgrind\\njmavsim_standard_vtol_valgrind\\njmavsim_plane_valgrind\\njmavsim_solo_valgrind\\njmavsim_typhoon_h480_valgrind\\ngazebo\\ngazebo_iris\\ngazebo_iris_opt_flow\\ngazebo_tailsitter\\ngazebo_standard_vtol\\ngazebo_plane\\ngazebo_solo\\ngazebo_typhoon_h480\\ngazebo___gdb\\ngazebo_iris_gdb\\ngazebo_iris_opt_flow_gdb\\ngazebo_tailsitter_gdb\\ngazebo_standard_vtol_gdb\\ngazebo_plane_gdb\\ngazebo_solo_gdb\\ngazebo_typhoon_h480_gdb\\ngazebo___lldb\\ngazebo_iris_lldb\\ngazebo_iris_opt_flow_lldb\\ngazebo_tailsitter_lldb\\ngazebo_standard_vtol_lldb\\ngazebo_plane_lldb\\ngazebo_solo_lldb\\ngazebo_typhoon_h480_lldb\\ngazebo___ddd\\ngazebo_iris_ddd\\ngazebo_iris_opt_flow_ddd\\ngazebo_tailsitter_ddd\\ngazebo_standard_vtol_ddd\\ngazebo_plane_ddd\\ngazebo_solo_ddd\\ngazebo_typhoon_h480_ddd\\ngazebo___valgrind\\ngazebo_iris_valgrind\\ngazebo_iris_opt_flow_valgrind\\ngazebo_tailsitter_valgrind\\ngazebo_standard_vtol_valgrind\\ngazebo_plane_valgrind\\ngazebo_solo_valgrind\\ngazebo_typhoon_h480_valgrind\\nreplay\\nreplay_iris\\nreplay_iris_opt_flow\\nreplay_tailsitter\\nreplay_standard_vtol\\nreplay_plane\\nreplay_solo\\nreplay_typhoon_h480\\nreplay___gdb\\nreplay_iris_gdb\\nreplay_iris_opt_flow_gdb\\nreplay_tailsitter_gdb\\nreplay_standard_vtol_gdb\\nreplay_plane_gdb\\nreplay_solo_gdb\\nreplay_typhoon_h480_gdb\\nreplay___lldb\\nreplay_iris_lldb\\nreplay_iris_opt_flow_lldb\\nreplay_tailsitter_lldb\\nreplay_standard_vtol_lldb\\nreplay_plane_lldb\\nreplay_solo_lldb\\nreplay_typhoon_h480_lldb\\nreplay___ddd\\nreplay_iris_ddd\\nreplay_iris_opt_flow_ddd\\nreplay_tailsitter_ddd\\nreplay_standard_vtol_ddd\\nreplay_plane_ddd\\nreplay_solo_ddd\\nreplay_typhoon_h480_ddd\\nreplay___valgrind\\nreplay_iris_valgrind\\nreplay_iris_opt_flow_valgrind\\nreplay_tailsitter_valgrind\\nreplay_standard_vtol_valgrind\\nreplay_plane_valgrind\\nreplay_solo_valgrind\\nreplay_typhoon_h480_valgrind\\n\""
-  DESC = List of acceptable 'posix_sitl_default' <viewer_model_debugger> targets:
-
-#############################################
-# Custom command for src/firmware/posix/CMakeFiles/replay_typhoon_h480_valgrind
-
-build src/firmware/posix/CMakeFiles/replay_typhoon_h480_valgrind: CUSTOM_COMMAND || src/firmware/posix/px4
-  COMMAND = cd /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/tmp && /home/dani/ROS_WS/src/MyPX4/Tools/sitl_run.sh /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default/src/firmware/posix/px4 posix-configs/SITL/init/lpe valgrind replay typhoon_h480 /home/dani/ROS_WS/src/MyPX4 /home/dani/ROS_WS/src/MyPX4/build_posix_sitl_default
   pool = console
 # =============================================================================
 # Target aliases.

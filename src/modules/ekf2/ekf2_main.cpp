@@ -1151,7 +1151,7 @@ int Ekf2::start()
 int ekf2_main(int argc, char *argv[])
 {
 	if (argc < 2) {
-		PX4_WARN("usage: ekf2 {start|stop|status}");
+                PX4_WARN("usage: ekf2 {start|stop|reboot|status}");
 		return 1;
 	}
 
@@ -1200,6 +1200,42 @@ int ekf2_main(int argc, char *argv[])
 
 		return 0;
 	}
+
+        if (!strcmp(argv[1], "reboot")) {
+            if (ekf2::instance == nullptr) {
+
+                PX4_WARN("Module Ekf2 is not running. Starting ekf2...");
+                ekf2::instance = new Ekf2();
+                if (OK != ekf2::instance->start()) {
+                        delete ekf2::instance;
+                        ekf2::instance = nullptr;
+                        PX4_WARN("start failed");
+                        return 1;
+                }
+                return 0;
+
+            } else {
+
+                PX4_WARN("Stopping ekf2");
+                ekf2::instance->exit();
+
+                // wait for the destruction of the instance
+                while (ekf2::instance != nullptr) {
+                        usleep(50000);
+                }
+
+                PX4_WARN("Restarting ekf2");
+                ekf2::instance = new Ekf2();
+                if (OK != ekf2::instance->start()) {
+                        delete ekf2::instance;
+                        ekf2::instance = nullptr;
+                        PX4_WARN("start failed");
+                        return 1;
+                }
+                return 0;
+
+            }
+        }
 
 	if (!strcmp(argv[1], "print")) {
 		if (ekf2::instance != nullptr) {
