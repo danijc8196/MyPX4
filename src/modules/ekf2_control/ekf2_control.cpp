@@ -41,6 +41,7 @@
  * @author Daniel Jáuregui <danijc8196@gmail.com>
  */
 
+/*
 #include <px4_config.h>
 #include <px4_tasks.h>
 #include <stdio.h>
@@ -53,14 +54,15 @@
 #include <poll.h>
 #include <time.h>
 #include <systemlib/param/param.h>
-#include <systemlib/pid/pid.h>
-#include <geo/geo.h>
-#include <systemlib/perf_counter.h>
+//#include <systemlib/pid/pid.h>
+//#include <geo/geo.h>
+//#include <systemlib/perf_counter.h>
 #include <systemlib/systemlib.h>
 #include <systemlib/err.h>
 
 #include <matrix/math.hpp>
-
+*/
+#include <ekf2/ekf2_main.hpp>
 
 /* Prototypes */
 
@@ -76,37 +78,41 @@
  */
 extern "C" __EXPORT int ekf2_control_main(int argc, char *argv[]);
 
+namespace ekf2 {
+    Ekf2 *estimator = nullptr;
+}
+
 /**
  * Mainloop of daemon.
  */
-int daemon_thread(int argc, char *argv[]);
+//int daemon_thread(int argc, char *argv[]);
 
 /**
  * Print the correct usage.
  */
-static void usage(const char *reason);
+//static void usage(const char *reason);
 
 
 /* Variables */
-static bool thread_should_exit = false;		/**< Daemon exit flag */
-static bool thread_running = false;		/**< Daemon status flag */
-static int deamon_task;				/**< Handle of deamon task / thread */
+//static bool thread_should_exit = false;		/**< Daemon exit flag */
+//static bool thread_running = false;		/**< Daemon status flag */
+//static int deamon_task;				/**< Handle of deamon task / thread */
 
 /*  */
 
 /* Main Thread (Daemon) */
-int daemon_thread(int argc, char *argv[])
-{
+//int daemon_thread(int argc, char *argv[])
+//{
     /*
      * Open mavlink connection and wait for custom messages of start, stop, reset
      *
      */
-    return 0;
-}
+  //  return 0;
+//}
 
 
 /* Startup Functions */
-
+/*
 static void usage(const char *reason)
 {
         if (reason) {
@@ -116,10 +122,91 @@ static void usage(const char *reason)
         fprintf(stderr, "usage: ekf2_control {start|stop|status|reset}\n\n");
         return;
 }
-
+*/
 
 int ekf2_control_main(int argc, char *argv[])
 {
+
+    if (argc < 2) {
+            PX4_WARN("usage: ekf2 {start|stop|status}");
+            return 1;
+    }
+
+    if (!strcmp(argv[1], "start")) {
+
+            if (ekf2::estimator != nullptr) {
+                    PX4_WARN("already running");
+                    return 1;
+            }
+
+            ekf2::estimator = new ekf2::Ekf2();
+
+            if (ekf2::estimator == nullptr) {
+                    PX4_WARN("alloc failed");
+                    return 1;
+            }
+
+            if (argc >= 3) {
+                    if (!strcmp(argv[2], "--replay")) {
+                            ekf2::estimator->set_replay_mode(true);
+                    }
+            }
+
+            if (OK != ekf2::estimator->start()) {
+                    delete ekf2::estimator;
+                    ekf2::estimator = nullptr;
+                    PX4_WARN("start failed");
+                    return 1;
+            }
+
+            return 0;
+    }
+
+    if (!strcmp(argv[1], "stop")) {
+            if (ekf2::estimator == nullptr) {
+                    PX4_WARN("not running");
+                    return 1;
+            }
+
+            ekf2::estimator->exit();
+
+            // wait for the destruction of the instance
+            while (ekf2::estimator != nullptr) {
+                    usleep(50000);
+            }
+
+            return 0;
+    }
+
+    if (!strcmp(argv[1], "print")) {
+            if (ekf2::estimator != nullptr) {
+
+                    return 0;
+            }
+
+            return 1;
+    }
+
+    if (!strcmp(argv[1], "status")) {
+            if (ekf2::estimator) {
+                    PX4_WARN("running");
+                    ekf2::estimator->print_status();
+                    return 0;
+
+            } else {
+                    PX4_WARN("not running");
+                    return 1;
+            }
+    }
+
+    PX4_WARN("unrecognized command");
+    return 1;
+
+
+
+    // -------------------------------------------------------------------------------------
+
+    /*
         if (argc < 2) {
                 usage("missing command");
         }
@@ -128,7 +215,7 @@ int ekf2_control_main(int argc, char *argv[])
 
                 if (thread_running) {
                         printf("ekf2_control already running\n");
-                        /* this is not an error */
+                        // this is not an error
                         return 0;
                 }
 
@@ -142,6 +229,8 @@ int ekf2_control_main(int argc, char *argv[])
                 thread_running = true;
 
                 // Ekf2 start
+                ekf2::estimator = new ekf2::Ekf2();
+                ekf2::estimator->start();
 
 
                 return 0;
@@ -175,4 +264,7 @@ int ekf2_control_main(int argc, char *argv[])
 
         usage("unrecognized command");
         return 1;
+        */
+
+    // ------------------------------------------------------------------------------------
 }
