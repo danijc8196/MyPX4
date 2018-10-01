@@ -125,6 +125,7 @@ static bool check_timeout(const hrt_abstime& time) {
 #include <uORB/topics/fence.h>
 #include <uORB/topics/vehicle_gps_position.h>
 #include <uORB/topics/actuator_direct.h>
+#include <uORB/topics/estimator_control.h>
 #include <uORB/topics/sensor_baro.h>
 #include <uORB/topics/camera_trigger.h>
 #include <uORB/topics/airspeed.h>
@@ -2058,6 +2059,30 @@ int listener_main(int argc, char *argv[]) {
 				printf("%8.4f ",(double)container.values[j]);
 			}
 			printf("\n");
+			} else {
+				if (check_timeout(start_time)) {
+					break;
+				}
+			}
+		}
+	} else if (strncmp(argv[1],"estimator_control",50) == 0) {
+		sub = orb_subscribe(ORB_ID(estimator_control));
+		ID = ORB_ID(estimator_control);
+		struct estimator_control_s container;
+		memset(&container, 0, sizeof(container));
+		bool updated;
+		unsigned i = 0;
+		hrt_abstime start_time = hrt_absolute_time();
+		while(i < num_msgs) {
+			orb_check(sub,&updated);
+			if (i == 0) { updated = true; } else { usleep(500); }
+			if (updated) {
+			start_time = hrt_absolute_time();
+			i++;
+			printf("\nTOPIC: estimator_control #%d\n", i);
+			orb_copy(ID,sub,&container);
+			printf("timestamp: %" PRIu64 "\n", container.timestamp);
+			printf("cmd: %u\n",(unsigned)container.cmd);
 			} else {
 				if (check_timeout(start_time)) {
 					break;

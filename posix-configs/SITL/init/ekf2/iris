@@ -1,6 +1,8 @@
 uorb start
 param load
 param set MAV_TYPE 2
+param set MAV_COMP_ID 1
+param set MAV_SYS_ID 1
 param set SYS_AUTOSTART 4010
 param set SYS_RESTART_TYPE 2
 dataman start

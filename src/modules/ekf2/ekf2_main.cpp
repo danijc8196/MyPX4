@@ -64,6 +64,7 @@
 #include <drivers/drv_hrt.h>
 #include <controllib/uorb/blocks.hpp>
 
+#include <uORB/uORB.h>
 #include <uORB/topics/sensor_combined.h>
 #include <uORB/topics/vehicle_gps_position.h>
 #include <uORB/topics/airspeed.h>
@@ -81,6 +82,7 @@
 #include <uORB/topics/distance_sensor.h>
 #include <uORB/topics/vehicle_land_detected.h>
 #include <uORB/topics/vehicle_status.h>
+#include <uORB/topics/estimator_control.h>
 
 #include <ecl/EKF/ekf.h>
 
@@ -1344,33 +1346,45 @@ int start_daemon()
 
 int mavlink_daemon(int argc, char *argv[]) {
 
-
-    /**
-     * CODIGO DE PRUEBA: FUNCIONA!!!!
-     *
-     * Proximos pasos:
-     *      0. Verse el codigo de mavlink, como funciona y como se utiliza + ver como definir mensajes mavlink
-     *      1. Definir mensajes mavlink custom
-     *      2. Abrir una conexion mavlink y esperar a recibir los comandos defindios
-     *      3. Segun el mensaje que llegue, llamamos a una do_funcion o a otra
-     *      4. Recordar añadir en el iris la linea para arrancar el daemon y asi poder trabajar desde mavlink
-     */
-
-
-
     PX4_WARN("Mavlink daemon starting . . .\n");
 
     thread_running = true;
 
     do_start(0, nullptr);
     sleep(10);
+/*
+    int est_ctrl_sub = orb_subscribe(ORB_ID(estimator_control));
+
+    px4_pollfd_struct_t fds[1];
+    fds[0].fd = est_ctrl_sub;
+    fds[0].events = POLLIN;
+
+    estimator_control_s est_ctrl;
+    memset(&est_ctrl, 0, sizeof(est_ctrl));
 
     while (!thread_should_exit) {
-            PX4_WARN("Hello daemon!\n");
-            do_reboot();
-            sleep(20);
+
+        int poll_ret = px4_poll(fds, 1, 1000);
+
+        if (poll_ret > 0) {
+
+            if (fds[0].revents & POLLIN) {
+                if (OK == orb_copy(ORB_ID(estimator_control), est_ctrl_sub, &est_ctrl)) {
+                    warnx("Received orb message: %d", est_ctrl.cmd);
+                } else {
+                    return ERROR;
+                }
+            }
+
+        } else {
+            warnx("POLL_RET <= 0");
+        }
+
+        sleep(1);
     }
 
+    orb_unsubscribe(est_ctrl_sub);
+*/
     PX4_WARN("Mavlink daemon exiting . . .\n");
 
     thread_running = false;

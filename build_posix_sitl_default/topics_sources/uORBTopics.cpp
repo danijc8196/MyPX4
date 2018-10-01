@@ -52,6 +52,7 @@
 #include <uORB/topics/ekf2_replay.h>
 #include <uORB/topics/esc_report.h>
 #include <uORB/topics/esc_status.h>
+#include <uORB/topics/estimator_control.h>
 #include <uORB/topics/estimator_status.h>
 #include <uORB/topics/fence.h>
 #include <uORB/topics/fence_vertex.h>
@@ -127,7 +128,7 @@
 #include <uORB/topics/collision_report.h>
 
 
-const size_t _uorb_topics_count = 103;
+const size_t _uorb_topics_count = 104;
 const struct orb_metadata* _uorb_topics_list[_uorb_topics_count] = { 
     ORB_ID(mc_virtual_rates_setpoint),
     ORB_ID(sensor_baro),
@@ -177,6 +178,7 @@ const struct orb_metadata* _uorb_topics_list[_uorb_topics_count] = {
     ORB_ID(vehicle_control_mode),
     ORB_ID(fw_virtual_rates_setpoint),
     ORB_ID(system_power),
+    ORB_ID(estimator_control),
     ORB_ID(vehicle_force_setpoint),
     ORB_ID(sensor_combined),
     ORB_ID(vehicle_rates_setpoint),

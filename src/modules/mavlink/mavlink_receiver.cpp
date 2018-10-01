@@ -82,13 +82,18 @@
 #include <commander/px4_custom_mode.h>
 #include <geo/geo.h>
 
+#include <uORB/uORBManager.hpp>
 #include <uORB/topics/vehicle_command_ack.h>
+#include <uORB/topics/estimator_control.h>
 
 #include "mavlink_bridge_header.h"
 #include "mavlink_receiver.h"
 #include "mavlink_main.h"
 
 static const float mg2ms2 = CONSTANTS_ONE_G / 1000.0f;
+
+orb_advert_t est_ctrl_pub = nullptr;
+estimator_control_s est_ctrl;
 
 MavlinkReceiver::MavlinkReceiver(Mavlink *parent) :
 	_mavlink(parent),
@@ -132,7 +137,7 @@ MavlinkReceiver::MavlinkReceiver(Mavlink *parent) :
 	_control_state_pub(nullptr),
 	_gps_inject_data_pub(nullptr),
 	_command_ack_pub(nullptr),
-	_control_mode_sub(orb_subscribe(ORB_ID(vehicle_control_mode))),
+        _control_mode_sub(orb_subscribe(ORB_ID(vehicle_control_mode))),
 	_hil_frames(0),
 	_old_timestamp(0),
 	_hil_last_frame(0),
@@ -362,6 +367,9 @@ MavlinkReceiver::handle_message_command_long(mavlink_message_t *msg)
 	bool target_ok = evaluate_target_ok(cmd_mavlink.command, cmd_mavlink.target_system, cmd_mavlink.target_component);
 
 	if (target_ok) {
+
+            warnx("HANDLE_COMMAND_LONG. Message received: %d", cmd_mavlink.command);
+
 		//check for MAVLINK terminate command
 		if (cmd_mavlink.command == MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN && ((int)cmd_mavlink.param1) == 10) {
 			/* This is the link shutdown command, terminate mavlink */
@@ -401,7 +409,21 @@ MavlinkReceiver::handle_message_command_long(mavlink_message_t *msg)
 		} else if (cmd_mavlink.command == MAV_CMD_GET_MESSAGE_INTERVAL) {
 			get_message_interval((int)cmd_mavlink.param1);
 
-		} else {
+                } else if (cmd_mavlink.command == 999) {
+
+                    warnx("HANDLE_COMMAND_LONG (999) COMANDO RECIBIDO: %d", cmd_mavlink.command);
+/*
+                    if (est_ctrl_pub == nullptr) {
+
+                        memset(&est_ctrl, 0, sizeof(est_ctrl));
+                        est_ctrl_pub = orb_advertise(ORB_ID(estimator_control), &est_ctrl);
+                    }
+
+                    est_ctrl.cmd = cmd_mavlink.param1;
+                    orb_publish(ORB_ID(estimator_control), est_ctrl_pub, &est_ctrl);
+
+*/
+                } else {
 
 			if (msg->sysid == mavlink_system.sysid && msg->compid == mavlink_system.compid) {
 				warnx("ignoring CMD with same SYS/COMP (%d/%d) ID",
@@ -489,7 +511,7 @@ MavlinkReceiver::handle_message_command_int(mavlink_message_t *msg)
 		} else if (cmd_mavlink.command == MAV_CMD_GET_HOME_POSITION) {
 			_mavlink->configure_stream_threadsafe("HOME_POSITION", 0.5f);
 
-		} else {
+                } else {
 
 			if (msg->sysid == mavlink_system.sysid && msg->compid == mavlink_system.compid) {
 				warnx("ignoring CMD with same SYS/COMP (%d/%d) ID",
