@@ -1,1 +1,0 @@
-cmd='/opt/cmake-3.4.3/bin/cmake;-DCMAKE_INSTALL_PREFIX=/usr;-GNinja;/home/dani/ROS_WS/src/MyPX4/Tools/sitl_gazebo'
