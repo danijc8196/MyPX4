@@ -543,6 +543,11 @@ MavlinkReceiver::handle_message_command_int(mavlink_message_t *msg)
 void
 MavlinkReceiver::handle_message_estimator_control(mavlink_message_t *msg) {
         warnx("HANDLER_EST_CTRL - Received message -> id: %d", msg->msgid);
+
+        mavlink_estimator_control_msg_t msg_decoded;
+        mavlink_msg_estimator_control_msg_decode(msg, &msg_decoded);
+
+        warnx("HANDLER_EST_CTRL - Received message -> command: %d", msg_decoded.command);
         return;
 }
 
