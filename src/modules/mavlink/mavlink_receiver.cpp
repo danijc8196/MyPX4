@@ -193,7 +193,6 @@ MavlinkReceiver::handle_message(mavlink_message_t *msg)
 		if (_mavlink->accepting_commands()) {
 			handle_message_set_mode(msg);
 		}
-
 		break;
 
 	case MAVLINK_MSG_ID_ATT_POS_MOCAP:
@@ -236,7 +235,6 @@ MavlinkReceiver::handle_message(mavlink_message_t *msg)
 		if (_mavlink->accepting_commands()) {
 			handle_message_request_data_stream(msg);
 		}
-
 		break;
 
 	case MAVLINK_MSG_ID_SYSTEM_TIME:
@@ -278,6 +276,10 @@ MavlinkReceiver::handle_message(mavlink_message_t *msg)
 	case MAVLINK_MSG_ID_LOGGING_ACK:
 		handle_message_logging_ack(msg);
 		break;
+
+        case MAVLINK_MSG_ID_ESTIMATOR_CONTROL_MSG:
+                handle_message_estimator_control(msg);
+                break;
 
 	default:
 		break;
@@ -536,6 +538,12 @@ MavlinkReceiver::handle_message_command_int(mavlink_message_t *msg)
 			}
 		}
 	}
+}
+
+void
+MavlinkReceiver::handle_message_estimator_control(mavlink_message_t *msg) {
+        warnx("HANDLER_EST_CTRL - Received message -> id: %d", msg->msgid);
+        return;
 }
 
 void
