@@ -1352,7 +1352,7 @@ int mavlink_daemon(int argc, char *argv[]) {
 
     do_start(0, nullptr);
     sleep(10);
-/*
+
     int est_ctrl_sub = orb_subscribe(ORB_ID(estimator_control));
 
     px4_pollfd_struct_t fds[1];
@@ -1371,20 +1371,47 @@ int mavlink_daemon(int argc, char *argv[]) {
             if (fds[0].revents & POLLIN) {
                 if (OK == orb_copy(ORB_ID(estimator_control), est_ctrl_sub, &est_ctrl)) {
                     warnx("Received orb message: %d", est_ctrl.cmd);
+
+                    switch(est_ctrl.cmd) {
+
+                        case 0:
+                            warnx("<uorb> stop daemon");
+                            do_stop_daemon();
+                            break;
+
+                        case 1:
+                            warnx("<uorb> start ekf2");
+                            do_start(0, nullptr);
+                            break;
+
+                        case 2:
+                            warnx("<uorb> stop ekf2");
+                            do_stop();
+                            break;
+
+                        case 3:
+                            warnx("<uorb> reboot ekf2");
+                            do_reboot();
+                            break;
+
+                        default:
+                            warnx("<uorb> Undefined command received: %d", est_ctrl.cmd);
+                            break;
+                    }
+
+
                 } else {
                     return ERROR;
                 }
             }
 
-        } else {
-            warnx("POLL_RET <= 0");
         }
 
         sleep(1);
     }
 
     orb_unsubscribe(est_ctrl_sub);
-*/
+
     PX4_WARN("Mavlink daemon exiting . . .\n");
 
     thread_running = false;

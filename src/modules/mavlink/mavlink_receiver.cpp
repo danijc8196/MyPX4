@@ -83,12 +83,16 @@
 #include <geo/geo.h>
 
 #include <uORB/topics/vehicle_command_ack.h>
+#include <uORB/topics/estimator_control.h>
 
 #include "mavlink_bridge_header.h"
 #include "mavlink_receiver.h"
 #include "mavlink_main.h"
 
 static const float mg2ms2 = CONSTANTS_ONE_G / 1000.0f;
+
+orb_advert_t est_ctrl_pub = nullptr;
+estimator_control_s est_ctrl;
 
 MavlinkReceiver::MavlinkReceiver(Mavlink *parent) :
 	_mavlink(parent),
@@ -546,6 +550,14 @@ MavlinkReceiver::handle_message_estimator_control(mavlink_message_t *msg) {
 
         mavlink_estimator_control_msg_t msg_decoded;
         mavlink_msg_estimator_control_msg_decode(msg, &msg_decoded);
+
+        if (est_ctrl_pub == nullptr) {
+            memset(&est_ctrl, 0, sizeof(est_ctrl));
+            est_ctrl_pub = orb_advertise(ORB_ID(estimator_control), &est_ctrl);
+        }
+
+        est_ctrl.cmd = msg_decoded.command;
+        orb_publish(ORB_ID(estimator_control), est_ctrl_pub, &est_ctrl);
 
         warnx("HANDLER_EST_CTRL - Received message -> command: %d", msg_decoded.command);
         return;
