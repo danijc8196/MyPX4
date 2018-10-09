@@ -416,8 +416,8 @@ void Ekf2::print_status(bool ekf_running)
     if (ekf_running) {
         warnx("Mavlink daemon running %s", (thread_running ? "[YES]" : "[NO]"));
         warnx("Estimator running %s", (ekf_running ? "[YES]" : "[NO]"));
-		warnx("local position OK %s", (_ekf.local_position_is_valid()) ? "[YES]" : "[NO]");
-		warnx("global position OK %s", (_ekf.global_position_is_valid()) ? "[YES]" : "[NO]");
+        warnx("local position OK %s", (_ekf.local_position_is_valid()) ? "[YES]" : "[NO]");
+        warnx("global position OK %s", (_ekf.global_position_is_valid()) ? "[YES]" : "[NO]");
 
     } else {
         warnx("Mavlink daemon running %s", (thread_running ? "[YES]" : "[NO]"));
@@ -1176,15 +1176,6 @@ int Ekf2::start()
 }
 
 /** Do functions */
-
-void do_send_status(bool ekf_running) 
-{
-	Mavlink mavlink = new Mavlink();
-	mavlink.set_protocol(UDP);
-	mavlink_msg_estimator_control_msg_send(mavlink.get_channel(), 0, 0, 27);
-	delete mavlink;
-
-}
 
 int do_start(int argc, char *argv[])
 {
