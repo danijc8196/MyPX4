@@ -63,6 +63,7 @@
 #include <platforms/px4_defines.h>
 #include <drivers/drv_hrt.h>
 #include <controllib/uorb/blocks.hpp>
+#include <mavlink/mavlink_main.h>
 
 #include <uORB/uORB.h>
 #include <uORB/topics/sensor_combined.h>
@@ -97,6 +98,7 @@ int start_daemon();
 int mavlink_daemon(int argc, char *argv[]);
 
 /** Control functions */
+void do_send_status(bool ekf_running);
 int do_start(int argc, char *argv[]);
 int do_stop();
 int do_reboot();
@@ -414,8 +416,8 @@ void Ekf2::print_status(bool ekf_running)
     if (ekf_running) {
         warnx("Mavlink daemon running %s", (thread_running ? "[YES]" : "[NO]"));
         warnx("Estimator running %s", (ekf_running ? "[YES]" : "[NO]"));
-	warnx("local position OK %s", (_ekf.local_position_is_valid()) ? "[YES]" : "[NO]");
-	warnx("global position OK %s", (_ekf.global_position_is_valid()) ? "[YES]" : "[NO]");
+		warnx("local position OK %s", (_ekf.local_position_is_valid()) ? "[YES]" : "[NO]");
+		warnx("global position OK %s", (_ekf.global_position_is_valid()) ? "[YES]" : "[NO]");
 
     } else {
         warnx("Mavlink daemon running %s", (thread_running ? "[YES]" : "[NO]"));
@@ -1173,6 +1175,17 @@ int Ekf2::start()
 	return OK;
 }
 
+/** Do functions */
+
+void do_send_status(bool ekf_running) 
+{
+	Mavlink mavlink = new Mavlink();
+	mavlink.set_protocol(UDP);
+	mavlink_msg_estimator_control_msg_send(mavlink.get_channel(), 0, 0, 27);
+	delete mavlink;
+
+}
+
 int do_start(int argc, char *argv[])
 {
     if (ekf2::instance != nullptr) {
@@ -1283,7 +1296,6 @@ void do_stop_daemon()
     thread_should_exit = true;
     return;
 }
-
 
 int ekf2_main(int argc, char *argv[])
 {
