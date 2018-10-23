@@ -63,7 +63,6 @@
 #include <platforms/px4_defines.h>
 #include <drivers/drv_hrt.h>
 #include <controllib/blocks.hpp>
-#include <mavlink/mavlink_main.h>
 
 #include <uORB/topics/sensor_combined.h>
 #include <uORB/topics/vehicle_gps_position.h>
