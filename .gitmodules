@@ -31,3 +31,9 @@
 [submodule "src/drivers/gps/devices"]
 	path = src/drivers/gps/devices
 	url = https://github.com/PX4/GpsDrivers.git
+[submodule "mavlink/include/mavlink/v1.0"]
+	path = mavlink/include/mavlink/v1.0
+	url = https://github.com/danijc8196/c_library_v1.git
+[submodule "mavlink/include/mavlink/v2.0"]
+	path = mavlink/include/mavlink/v2.0
+	url = https://github.com/danijc8196/c_library_v2.git
