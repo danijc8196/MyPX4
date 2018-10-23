@@ -77,6 +77,7 @@
 #include <uORB/topics/gps_inject_data.h>
 #include <uORB/topics/control_state.h>
 #include <uORB/topics/collision_report.h>
+#include <uORB/topics/estimator_control.h>
 
 
 #include "mavlink_mission.h"
@@ -119,6 +120,7 @@ private:
 	void handle_message_command_long(mavlink_message_t *msg);
 	void handle_message_command_int(mavlink_message_t *msg);
 	void handle_message_command_ack(mavlink_message_t *msg);
+        void handle_message_estimator_control(mavlink_message_t *msg);
 	void handle_message_optical_flow_rad(mavlink_message_t *msg);
 	void handle_message_hil_optical_flow(mavlink_message_t *msg);
 	void handle_message_set_mode(mavlink_message_t *msg);

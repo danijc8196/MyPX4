@@ -63,6 +63,7 @@
 #include <platforms/px4_defines.h>
 #include <drivers/drv_hrt.h>
 #include <controllib/blocks.hpp>
+#include <mavlink/mavlink_main.h>
 
 #include <uORB/topics/sensor_combined.h>
 #include <uORB/topics/vehicle_gps_position.h>
@@ -81,18 +82,33 @@
 #include <uORB/topics/vehicle_land_detected.h>
 #include <uORB/topics/vehicle_status.h>
 #include <uORB/topics/sensor_selection.h>
+#include <uORB/topics/estimator_control.h>
 
 #include <ecl/EKF/ekf.h>
 
 
 extern "C" __EXPORT int ekf2_main(int argc, char *argv[]);
 
+/** Mavlink daemon stuff */
+static bool    thread_running = false;
+static bool    thread_should_exit = false;
+int     start_daemon();
+int     mavlink_daemon(int argc, char *argv[]);
+
+/** Control functions */
+void    do_send_status(bool ekf_running);
+int     do_start(int argc, char *argv[]);
+int     do_stop();
+int     do_reboot();
+void    do_status();
+void    do_start_daemon();
+void    do_stop_daemon();
 
 class Ekf2;
 
 namespace ekf2
 {
-Ekf2 *instance = nullptr;
+    Ekf2 *instance = nullptr;
 }
 
 
@@ -122,7 +138,7 @@ public:
 
 	void		task_main();
 
-	void print_status();
+        void print_status(bool ekf_running);
 
 	void exit() { _task_should_exit = true; }
 
@@ -450,11 +466,19 @@ Ekf2::~Ekf2()
 
 }
 
-void Ekf2::print_status()
+void Ekf2::print_status(bool ekf_running)
 {
-	PX4_INFO("local position OK %s", (_ekf.local_position_is_valid()) ? "[YES]" : "[NO]");
-	PX4_INFO("global position OK %s", (_ekf.global_position_is_valid()) ? "[YES]" : "[NO]");
-	PX4_INFO("time slip: %" PRIu64 " us", _last_time_slip_us);
+    if (ekf_running) {
+        warnx("Mavlink daemon running %s", (thread_running ? "[YES]" : "[NO]"));
+        warnx("Estimator running %s", (ekf_running ? "[YES]" : "[NO]"));
+        warnx("local position OK %s", (_ekf.local_position_is_valid()) ? "[YES]" : "[NO]");
+        warnx("global position OK %s", (_ekf.global_position_is_valid()) ? "[YES]" : "[NO]");
+
+    } else {
+        warnx("Mavlink daemon running %s", (thread_running ? "[YES]" : "[NO]"));
+        warnx("Estimator running %s", (ekf_running ? "[YES]" : "[NO]"));
+
+    }
 }
 
 void Ekf2::task_main()
@@ -1410,78 +1434,249 @@ int Ekf2::start()
 
 int ekf2_main(int argc, char *argv[])
 {
-	if (argc < 2) {
-		PX4_WARN("usage: ekf2 {start|stop|status}");
-		return 1;
-	}
+        if (argc < 2) {
+                PX4_WARN("usage: ekf2 {start|stop|reboot|status|start_daemon|stop_daemon}");
+                return 1;
+        }
 
-	if (!strcmp(argv[1], "start")) {
+        if (!strcmp(argv[1], "start")) {
+                return do_start(argc, argv);
+        }
 
-		if (ekf2::instance != nullptr) {
-			PX4_WARN("already running");
-			return 1;
-		}
+        if (!strcmp(argv[1], "stop")) {
+                return do_stop();
+        }
 
-		ekf2::instance = new Ekf2();
+        if (!strcmp(argv[1], "reboot")) {
+                return do_reboot();
+        }
+/*
+        if (!strcmp(argv[1], "print")) {
+                if (ekf2::instance != nullptr) {
 
-		if (ekf2::instance == nullptr) {
-			PX4_WARN("alloc failed");
-			return 1;
-		}
+                        return 0;
+                }
 
-		if (argc >= 3) {
-			if (!strcmp(argv[2], "--replay")) {
-				ekf2::instance->set_replay_mode(true);
-			}
-		}
+                return 1;
+        }
+*/
+        if (!strcmp(argv[1], "status")) {
+                do_status();
+                return 0;
+        }
 
-		if (OK != ekf2::instance->start()) {
-			delete ekf2::instance;
-			ekf2::instance = nullptr;
-			PX4_WARN("start failed");
-			return 1;
-		}
+        if (!strcmp(argv[1], "start_daemon")) {
+                do_start_daemon();
+                return 0;
+        }
 
-		return 0;
-	}
+        if (!strcmp(argv[1], "stop_daemon")) {
+                do_stop_daemon();
+                return 0;
+        }
 
-	if (!strcmp(argv[1], "stop")) {
-		if (ekf2::instance == nullptr) {
-			PX4_WARN("not running");
-			return 1;
-		}
+        PX4_WARN("unrecognized command");
+        return 1;
+}
 
-		ekf2::instance->exit();
+/** Do functions */
 
-		// wait for the destruction of the instance
-		while (ekf2::instance != nullptr) {
-			usleep(50000);
-		}
+int do_start(int argc, char *argv[])
+{
+    if (ekf2::instance != nullptr) {
+            PX4_WARN("already running");
+            return 1;
+    }
 
-		return 0;
-	}
+    ekf2::instance = new Ekf2();
 
-	if (!strcmp(argv[1], "print")) {
-		if (ekf2::instance != nullptr) {
+    if (ekf2::instance == nullptr) {
+            PX4_WARN("alloc failed");
+            return 1;
+    }
 
-			return 0;
-		}
+    if (argc >= 3) {
+            if (!strcmp(argv[2], "--replay")) {
+                    ekf2::instance->set_replay_mode(true);
+            }
+    }
 
-		return 1;
-	}
+    if (OK != ekf2::instance->start()) {
+            delete ekf2::instance;
+            ekf2::instance = nullptr;
+            PX4_WARN("start failed");
+            return 1;
+    }
 
-	if (!strcmp(argv[1], "status")) {
-		if (ekf2::instance) {
-			PX4_WARN("running");
-			ekf2::instance->print_status();
-			return 0;
+    return 0;
+}
 
-		} else {
-			PX4_WARN("not running");
-			return 1;
-		}
-	}
+int do_stop()
+{
+    if (ekf2::instance == nullptr) {
+            PX4_WARN("not running");
+            return 1;
+    }
 
-	PX4_WARN("unrecognized command");
-	return 1;
+    ekf2::instance->exit();
+
+    // wait for the destruction of the instance
+    while (ekf2::instance != nullptr) {
+            usleep(50000);
+    }
+
+    return 0;
+}
+
+int do_reboot()
+{
+    if (ekf2::instance == nullptr) {
+
+        PX4_WARN("Module Ekf2 is not running. Starting ekf2...");
+        ekf2::instance = new Ekf2();
+        if (OK != ekf2::instance->start()) {
+                delete ekf2::instance;
+                ekf2::instance = nullptr;
+                PX4_WARN("start failed");
+                return 1;
+        }
+        return 0;
+
+    } else {
+
+        PX4_WARN("Stopping ekf2");
+        ekf2::instance->exit();
+
+        // wait for the destruction of the instance
+        while (ekf2::instance != nullptr) {
+                usleep(50000);
+        }
+
+        PX4_WARN("Restarting ekf2");
+        ekf2::instance = new Ekf2();
+        if (OK != ekf2::instance->start()) {
+                delete ekf2::instance;
+                ekf2::instance = nullptr;
+                PX4_WARN("start failed");
+                return 1;
+        }
+        return 0;
+
+    }
+}
+
+void do_status()
+{
+    if (ekf2::instance) {
+            // ekf2 running
+            ekf2::instance->print_status(true);
+
+    } else {
+            // ekf2 not running
+            ekf2::instance->print_status(false);
+    }
+
+    return;
+}
+
+void do_start_daemon()
+{
+    thread_should_exit = false;
+    start_daemon();
+    return;
+}
+
+void do_stop_daemon()
+{
+    thread_should_exit = true;
+    return;
+}
+
+/** Daemon stuff */
+
+int start_daemon()
+{
+    px4_task_spawn_cmd("mavlink_deamon",
+                         SCHED_DEFAULT,
+                         SCHED_PRIORITY_MAX - 5,
+                         2500,
+                         mavlink_daemon,
+                         nullptr);
+
+    return OK;
+}
+
+int mavlink_daemon(int argc, char *argv[]) {
+
+    PX4_WARN("Mavlink daemon starting . . .\n");
+
+    thread_running = true;
+
+    do_start(0, nullptr);
+    sleep(10);
+
+    int est_ctrl_sub = orb_subscribe(ORB_ID(estimator_control));
+
+    px4_pollfd_struct_t fds[1];
+    fds[0].fd = est_ctrl_sub;
+    fds[0].events = POLLIN;
+
+    estimator_control_s est_ctrl;
+    memset(&est_ctrl, 0, sizeof(est_ctrl));
+
+    while (!thread_should_exit) {
+
+        int poll_ret = px4_poll(fds, 1, 1000);
+
+        if (poll_ret > 0) {
+
+            if (fds[0].revents & POLLIN) {
+                if (OK == orb_copy(ORB_ID(estimator_control), est_ctrl_sub, &est_ctrl)) {
+                    warnx("Received orb message: %d", est_ctrl.cmd);
+
+                    switch(est_ctrl.cmd) {
+
+                        case 0:
+                            warnx("<uorb> stop daemon");
+                            do_stop_daemon();
+                            break;
+
+                        case 1:
+                            warnx("<uorb> start ekf2");
+                            do_start(0, nullptr);
+                            break;
+
+                        case 2:
+                            warnx("<uorb> stop ekf2");
+                            do_stop();
+                            break;
+
+                        case 3:
+                            warnx("<uorb> reboot ekf2");
+                            do_reboot();
+                            break;
+
+                        default:
+                            warnx("<uorb> Undefined command received: %d", est_ctrl.cmd);
+                            break;
+                    }
+
+
+                } else {
+                    return ERROR;
+                }
+            }
+
+        }
+
+        sleep(1);
+    }
+
+    orb_unsubscribe(est_ctrl_sub);
+
+    PX4_WARN("Mavlink daemon exiting . . .\n");
+
+    thread_running = false;
+
+    return 0;
 }

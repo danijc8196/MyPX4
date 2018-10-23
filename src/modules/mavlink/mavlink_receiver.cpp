@@ -92,6 +92,10 @@
 
 static const float mg2ms2 = CONSTANTS_ONE_G / 1000.0f;
 
+/** Estimator control handler stuff */
+orb_advert_t est_ctrl_pub = nullptr;
+estimator_control_s est_ctrl;
+
 MavlinkReceiver::MavlinkReceiver(Mavlink *parent) :
 	_mavlink(parent),
 	_mission_manager(parent),
@@ -306,6 +310,10 @@ MavlinkReceiver::handle_message(mavlink_message_t *msg)
 	case MAVLINK_MSG_ID_PLAY_TUNE:
 		handle_message_play_tune(msg);
 		break;
+
+        case MAVLINK_MSG_ID_ESTIMATOR_CONTROL_MSG:
+                handle_message_estimator_control(msg);
+                break;
 
 	default:
 		break;
@@ -635,6 +643,25 @@ MavlinkReceiver::handle_message_command_ack(mavlink_message_t *msg)
 			PX4_WARN("Got unsuccessful result %d from camera", ack.result);
 		}
 	}
+}
+
+void
+MavlinkReceiver::handle_message_estimator_control(mavlink_message_t *msg) {
+        warnx("HANDLER_EST_CTRL - Received message -> id: %d", msg->msgid);
+
+        mavlink_estimator_control_msg_t msg_decoded;
+        mavlink_msg_estimator_control_msg_decode(msg, &msg_decoded);
+
+        if (est_ctrl_pub == nullptr) {
+            memset(&est_ctrl, 0, sizeof(est_ctrl));
+            est_ctrl_pub = orb_advertise(ORB_ID(estimator_control), &est_ctrl);
+        }
+
+        est_ctrl.cmd = msg_decoded.command;
+        orb_publish(ORB_ID(estimator_control), est_ctrl_pub, &est_ctrl);
+
+        warnx("HANDLER_EST_CTRL - Received message -> command: %d", msg_decoded.command);
+        return;
 }
 
 void
